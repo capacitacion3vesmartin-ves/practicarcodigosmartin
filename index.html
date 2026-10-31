@@ -61,6 +61,7 @@ td.e input:placeholder-shown{background:#e9e6dc}td.e input.inc{background:#ffe4e
 .pwb{position:relative}.pwb input{padding-right:46px}.pwb button{position:absolute;right:6px;top:5px;border:0;background:transparent;color:var(--mu);cursor:pointer;padding:6px;border-radius:8px}
 .sp{width:34px;height:34px;border:4px solid var(--bd);border-top-color:var(--c);border-radius:50%;margin:10px auto;animation:spn .8s linear infinite}@keyframes spn{to{transform:rotate(360deg)}}
 @media(max-width:480px){.bn.mm{padding-right:128px;font-size:10px;letter-spacing:0}}
+.stt{display:inline-flex;align-items:center;gap:10px;border-radius:30px;padding:12px 26px;font-weight:800;font-size:22px;color:#fff;margin:6px 0}.stt.lock{background:#e11d48}.stt.free{background:#16a34a}
 </style></head><body>
 <div class="bn" id="bn"></div><div id="app"></div><div class="md" id="md"></div>
 <script id="cfg" type="application/json">{"api":"https://script.google.com/macros/s/AKfycbxb-SzgZd2H3FUfTQf3uoWZIlV9RcuYsheiqWfZzdBj4wFWHctJFm8TO79PkaY3NScj-w/exec"}</script>
@@ -101,24 +102,48 @@ function pick(t){S.t=t;S.ef=false;S.m=new Set([fm1(t)]);home()}
 function tg(m){if(S.multi&&!S.ef)S.m.has(m)?S.m.delete(m):S.m.add(m);else S.m=new Set([m]);S.ef=false;home()}
 function ef(){S.ef=true;S.m=new Set(mods(S.t));home()}
 function mm(v){S.multi=v;if(!v&&!S.ef&&S.m.size>1)S.m=new Set([[...S.m][0]]);home()}
-function ss(x){S.sede=x;S.nom='';S.dni='';LOCK=!!LOCKS[x];home()}
-function wel(){S.nom='';S.dni='';S.v='h';document.body.classList.remove('wide');bn(false);
+function ss(x){S.sede=x;LOCK=!!LOCKS[x];refLock();if(S.nom.trim()&&S.dni.length===8)home();else idScreen()}
+function idScreen(er){S.v='i';document.body.classList.remove('wide');paint(TEM[S.t]?S.t:'mad');bn(false);
+  A.innerHTML=`<h1>${ic('pen')} Tus datos</h1><p class="sub">${e(S.sede)} · <a href="#" onclick="S.sede='';wel();return false" style="color:var(--c)">cambiar sede</a></p>
+  <div class="box f"><input id="inm" placeholder="Nombre completo" autocomplete="name" value="${e(S.nom)}"><input id="idn" inputmode="numeric" maxlength="8" placeholder="DNI" value="${e(S.dni)}">
+  <label class="mu"><input type="checkbox" id="irm" ${J('dc_id')?'checked':''}> Recordar mis datos en este celular</label></div>
+  ${er?`<p class="er">${er}</p>`:''}<button class="bt" style="width:100%;font-size:17px" onclick="idok()">Continuar</button>`;
+  $('idn').oninput=function(){this.value=this.value.replace(/\D/g,'')};
+  $('idn').onkeydown=$('inm').onkeydown=ev=>{if(ev.key==='Enter'){ev.preventDefault();idok()}}}
+function idok(){const n=$('inm').value.trim().replace(/\s+/g,' '),d=$('idn').value.replace(/\D/g,'');S.nom=n;S.dni=d;
+  if(n.length<3)return idScreen('Escribe tu nombre completo.');if(d.length!==8)return idScreen('El DNI debe tener 8 dígitos.');
+  if($('irm').checked)lset('dc_id',JSON.stringify({nom:n,dni:d}));else try{localStorage.removeItem('dc_id')}catch(x){}
+  home()}
+function noyo(){S.nom='';S.dni='';try{localStorage.removeItem('dc_id')}catch(x){}idScreen()}
+async function refLock(){if(!API)return;try{const c=new AbortController(),t=setTimeout(()=>c.abort(),4500),r=await(await fetch(API+'?action=get&t='+Date.now(),{signal:c.signal})).json();clearTimeout(t);if(r.locks){LOCKS=r.locks;lset('dc_locks',JSON.stringify(LOCKS))}}catch(x){}LOCK=!!LOCKS[S.sede]}
+const mstr=()=>S.ef?'Examen Final':[...S.m].join(', ');
+const dk=()=>'dc_'+S.sede+'|'+S.dni+'|'+TEM[S.t].n+'|'+(S.ef?'EF':[...S.m].sort().join(','));
+const YA=()=>'<h3>'+ic('lock')+' Ya realizaste esta evaluación</h3><p>Tu DNI ya tiene registrado el dictado de <b>'+e(TEM[S.t].n+' · '+mstr())+'</b>. Solo se puede rendir una vez.</p><button class="bt" onclick="closeM()">Entendido</button>';
+async function yaHizo(){if(lget(dk()))return true;
+  if(API)try{const q='&dni='+S.dni+'&sede='+encodeURIComponent(S.sede)+'&tema='+encodeURIComponent(TEM[S.t].n)+'&modulos='+encodeURIComponent(mstr());if((await(await fetch(API+'?action=check'+q)).json()).done)return true}catch(x){}
+  return false}
+function wel(){if(!J('dc_id')){S.nom='';S.dni=''}S.v='h';document.body.classList.remove('wide');bn(false);
   A.innerHTML=`<h1>Dictado de códigos</h1><p class="sub">Elige tu sede</p><div class="sg">${SEDES.map(x=>`<button class="sd" style="--c:${SC[x]||'#06621c'}" onclick="ss('${e(x)}')"><i>${ic('bld')}</i><span>${e(x)}<small>Sede</small></span></button>`).join('')}</div>`}
-function home(er){KEY='';if(!S.sede)return wel();if(!P.length)return boot();S.v='h';document.body.classList.remove('wide');if(!S.m.size)S.m=new Set([fm1(S.t)]);paint(S.t);bn(false);
+function home(er){KEY='';if(!S.sede)return wel();if(!S.nom.trim()||S.dni.length!==8)return idScreen();if(!P.length)return boot();S.v='h';document.body.classList.remove('wide');if(!S.m.size)S.m=new Set([fm1(S.t)]);paint(S.t);bn(false);
   const cnt=m=>P.filter(p=>p.t===S.t&&p.m===m).length;
   A.innerHTML=`<h1>${ic('pen')} Dictado de códigos</h1><p class="sub">${e(S.sede)} · <a href="#" onclick="S.sede='';home();return false" style="color:var(--c)">cambiar sede</a></p>
+  <p class="lk" style="margin:-8px 0 14px">${e(S.nom)} · DNI ${e(S.dni)} · <a href="#" onclick="noyo();return false" style="color:var(--c)">no soy yo</a></p>
   <div class="box"><h3>Temática</h3><div class="chips">${temas().map(k=>`<button class="ch ${S.t===k?'on':''}" style="${S.t===k?`background:${TEM[k].c};border-color:${TEM[k].c}`:`border-color:${TEM[k].c}`}" onclick="pick('${k}')">${ic(TEM[k].i)} ${TEM[k].n}</button>`).join('')}</div>
   <h3>Módulo</h3><div class="chips">${mods(S.t).map(m=>`<button class="ch ${S.m.has(m)&&!S.ef?'on':''}" ${hm(S.t,m)?`onclick="tg('${m}')"`:'disabled style="opacity:.4;cursor:not-allowed"'}>${e(m)}</button>`).join('')}<button class="ch ${S.ef?'on':''}" style="border-style:dashed" onclick="ef()">${ic('star')} Examen Final</button></div><label class="mu"><input type="checkbox" ${S.multi?'checked':''} onchange="mm(this.checked)"> Elegir varios módulos</label></div>
-  ${LOCK?'<div class="warn">'+ic('lock')+' Este dictado está bloqueado: solo podrás llenarlo <b>una vez</b>.</div>':''}
+  ${LOCK?'<div class="warn">'+ic('lock')+' Examen bloqueado: cada módulo se puede llenar <b>una sola vez</b> por alumno.</div>':''}
   ${er?`<p class="er">${er}</p>`:''}
   <button class="bt" style="width:100%;font-size:17px" onclick="gen(true)">Generar dictado</button>`}
 async function gen(first){
-  if(!S.sede)return home('Elige tu sede.');LOCK=!!LOCKS[S.sede];
+  if(!S.sede)return home('Elige tu sede.');
+  if(!S.nom.trim()||S.dni.length!==8)return idScreen();
+  if(S.busy)return;S.busy=1;await refLock();
+  if(LOCK){if(await yaHizo()){S.busy=0;return modal(YA())}first=true}
+  S.busy=0;
   S.v='g';paint(S.t);bn(true);S.done=false;const seen=new Set();
   let r=P.filter(p=>p.t===S.t&&S.m.has(p.m)).filter(p=>!seen.has(p.p)&&seen.add(p.p));
   if(!first){r=sh(r);const lo=Math.min(5,r.length);r=r.slice(0,lo+(Math.random()*(r.length-lo+1)|0))}
   S.rows=r;
-  A.innerHTML=`<div class="stk" id="stk0" style="margin:0 0 12px"></div>${S.nom.trim()&&S.dni.length===8?'':`<div class="box f" id="dat"><input placeholder="Nombre completo" value="${e(S.nom)}" oninput="S.nom=this.value;wh()"><input inputmode="numeric" maxlength="8" placeholder="DNI" value="${e(S.dni)}" oninput="S.dni=this.value.replace(/\\D/g,'');this.value=S.dni;wh()"></div>`}<div id="cap"><div class="who" id="who"></div>
+  A.innerHTML=`<div class="stk" id="stk0" style="margin:0 0 12px"></div>${LOCK?'<div class="warn">'+ic('lock')+' EXAMEN: solo puedes llenarlo <b>una vez</b>. Al calificar no podrás repetirlo.</div>':''}<div id="cap"><div class="who" id="who"></div>
   <span class="tag">${ic(TEM[S.t].i)} ${TEM[S.t].n} · ${S.ef?'Examen Final':[...S.m].map(e).join(', ')}</span><div id="res"></div>
   <div class="tw"><table><tr><th>Producto</th><th>Código</th></tr>${r.map((p,i)=>`<tr><td class="p">${e(p.p)}</td><td class="k"><input data-i="${i}" maxlength="${p.code.length}" placeholder=" " autocomplete="off" autocapitalize="characters" spellcheck="false"></td></tr>`).join('')}</table></div></div>
   ${LOCK?'<p class="lk">'+ic('lock')+' Solo puedes llenarlo una vez</p>':''}<div class="stk" id="stk"></div>`;
@@ -128,27 +153,38 @@ async function gen(first){
 function bar(){const h=S.done?
   (LOCK?'':'<button class="bt" onclick="gen(false)">'+ic('choc')+' Chocolatear</button>')+'<button class="bt w" onclick="img()">'+ic('dl')+' Descargar imagen</button><button class="bt w" onclick="home()">Inicio</button>':
   '<button class="bt" onclick="calif()">Calificar</button>'+(LOCK?'':'<button class="bt w" onclick="gen(false)">'+ic('choc')+' Chocolatear</button>');$('stk').innerHTML=h;$('stk0').innerHTML=h}
-function wh(){$('who').innerHTML='<b>'+e(S.nom)+'</b><span>'+e(S.sede)+' · '+(S.dni?'DNI '+e(S.dni)+' · ':'')+new Date().toLocaleDateString('es-PE')+'</span>'}
+function wh(){$('who').innerHTML='<div><b>'+e(S.nom)+'</b><br><span>DNI '+e(S.dni)+'</span></div><span style="text-align:right">'+e(S.sede)+'<br>'+new Date().toLocaleDateString('es-PE')+'</span>'}
 function faltan(){const d=$('dat');if(d){window.scrollTo(0,0);const i=d.querySelector('input');i&&i.focus()}}
 function tip(x,on){let t=$('tip');if(!t){t=document.createElement('div');t.id='tip';document.body.appendChild(t)}
   if(!on){t.style.display='none';return}
   const r=x.getBoundingClientRect();t.textContent='Correcto: '+S.rows[+x.dataset.i].code;t.style.left=Math.max(6,r.left)+'px';t.style.top=(r.bottom+6)+'px';t.style.display='block'}
 function wrong(x){x.addEventListener('mouseenter',()=>tip(x,1));x.addEventListener('mouseleave',()=>tip(x,0));x.addEventListener('click',()=>{tip(x,1);setTimeout(()=>tip(x,0),2500)})}
-async function calif(){if(S.done||S.busy)return;
-  if(!S.nom.trim()||S.dni.length!==8)return modal('<h3>Faltan tus datos</h3><p>Escribe tu nombre completo y tu DNI (8 dígitos) para poder calificar.</p><button class="bt" onclick="closeM();faltan()">Entendido</button>');
-  if(LOCK){S.busy=1;let d=!!lget('dc_'+S.dni);if(!d&&API)try{d=!!(await(await fetch(API+'?action=check&dni='+S.dni)).json()).done}catch(x){}S.busy=0;
-    if(d)return modal('<h3>Dictado ya realizado</h3><p>Este DNI ya llenó el dictado. Solo se puede una vez.</p><button class="bt" onclick="closeM()">Cerrar</button>');if(S.done)return}let ok=0;
+async function calif(sure){if(S.done||S.busy)return;
+  if(!S.nom.trim()||S.dni.length!==8)return idScreen();
+  S.busy=1;await refLock();bar();
+  if(LOCK){if(await yaHizo()){S.busy=0;return modal(YA())}
+    if(sure!==true){S.busy=0;return modal('<h3>'+ic('lock')+' Solo tienes una oportunidad</h3><p>Este dictado es un <b>examen de una sola vez</b>. Al calificar ya no podrás repetirlo ni chocolatear.</p><button class="bt" onclick="closeM();calif(true)">Sí, calificar</button><button class="bt w" onclick="closeM()">Seguir revisando</button>')}}
+  S.busy=0;if(S.done)return;let ok=0;
   A.querySelectorAll('#cap input').forEach(x=>{const g=nz(x.value)===nz(S.rows[+x.dataset.i].code);x.readOnly=true;x.classList.add(g?'ok':'bad');if(g)ok++;else wrong(x)});
-  const dt=$('dat');if(dt)dt.remove();wh();const n=S.rows.length,nota=Math.round(ok/n*200)/10,pts=!LOCK?0:nota>=20?1:nota>=17?.5:0;S.done=true;
-  if(LOCK)lset('dc_'+S.dni,'1');
-  guardar({ts:new Date().toISOString(),fecha:hoy(),nombre:S.nom.trim(),dni:S.dni,tema:TEM[S.t].n,modulos:S.ef?'Examen Final':[...S.m].join(', '),ok,total:n,nota,puntos:pts,modo:LOCK?'Examen':'Práctica',sede:S.sede});
-  $('res').innerHTML=`<div class="res"><p class="big">${nota}/20</p><b>${nota>=20?'¡Perfecto!':nota>=17?'¡Muy bien!':'Sigue practicando'}</b>${pts?`<p class="pt">${ic('star')} +${pts} punto${pts===1?'':'s'}</p>`:''}${nota<17?'<p class="er">Tienes que repasar más.</p>':''}</div>`;
+  const dt=$('dat');if(dt)dt.remove();wh();const n=S.rows.length,nota=Math.round(ok/n*200)/10,pts=S.ef?0:nota>=20?1:nota>=17?.5:0;S.done=true;
+  if(LOCK)lset(dk(),'1');
+  guardar({ts:new Date().toISOString(),fecha:hoy(),nombre:S.nom.trim(),dni:S.dni,tema:TEM[S.t].n,modulos:mstr(),ok,total:n,nota,puntos:pts,modo:LOCK?'Examen':'Práctica',sede:S.sede});
+  $('res').innerHTML=`<div class="res"><p class="big">${nota}/20</p><b>${nota>=20?'¡Perfecto!':nota>=17?'¡Muy bien!':'Sigue practicando'}</b><p class="pt">${S.ef?'Examen Final · no suma puntos':ic('star')+' Puntos ganados: '+pts}</p>${nota<17?'<p class="er">Tienes que repasar más.</p>':''}</div>`;
   bar();window.scrollTo(0,0)}
 async function img(){
   if(!window.html2canvas)return modal('<h3>No se pudo preparar la imagen</h3><button class="bt" onclick="closeM()">Cerrar</button>');
-  const cv=await html2canvas($('cap'),{scale:2,backgroundColor:null,onclone:d=>{d.querySelectorAll('#cap input').forEach(x=>{const v=d.createElement('div');v.className='fake '+x.className;v.textContent=x.value.toUpperCase();x.replaceWith(v)})}});
-  const b=await new Promise(r=>cv.toBlob(r,'image/png')),nm='dictado_'+(S.dni||'alumno')+'.png';
-  const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=nm;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000)}
+  if(S.imgb)return;S.imgb=1;
+  modal('<h3>Generando imagen…</h3><div class="sp"></div><p>Un momento, no cierres la página.</p>');
+  await new Promise(r=>requestAnimationFrame(()=>setTimeout(r,60)));
+  try{const el=$('cap'),w=el.offsetWidth,h=el.offsetHeight,sc=Math.max(1,Math.min(2,Math.sqrt(2200000/(w*h)))),
+    cv=await html2canvas(el,{scale:sc,backgroundColor:'#ffffff',logging:false,imageTimeout:0,removeContainer:true,onclone:d=>{
+      d.body.style.cssText='background:#fff!important;padding:0!important';d.documentElement.style.cssText='background:#fff!important';
+      ['bn','md','stk','stk0','dat','tip'].forEach(i=>{const x=d.getElementById(i);x&&x.remove()});
+      d.querySelectorAll('#cap input').forEach(x=>{const v=d.createElement('div');v.className='fake '+x.className;v.textContent=x.value.toUpperCase();x.replaceWith(v)})}});
+    const b=await new Promise(r=>cv.toBlob(r,'image/png')),nm='dictado_'+(S.dni||'alumno')+'.png';
+    const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=nm;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);closeM()
+  }catch(x){modal('<h3>No se pudo generar la imagen</h3><p>Intenta de nuevo.</p><button class="bt" onclick="closeM()">Cerrar</button>')}
+  S.imgb=0}
 /* ===== Master ===== */
 function master(){if(KEY)return mp();modal('<h3>'+ic('lock')+' Master</h3>'+(S.sede?'<p>Sede: <b>'+e(S.sede)+'</b></p><input type="hidden" id="ms" value="'+e(S.sede)+'">':'<div class="f"><select id="ms">'+SEDES.map(x=>'<option>'+e(x)+'</option>').join('')+'</select></div>')+'<div class="f pwb"><input id="pw" type="password" placeholder="Clave de la sede" onkeydown="if(event.key===\'Enter\')mlog()"><button type="button" id="ey" onclick="eye()" aria-label="Mostrar clave">'+ic('eye')+'</button></div><button class="bt" onclick="mlog()">Entrar</button><button class="bt w" onclick="closeM()">Cerrar</button>');setTimeout(()=>$('pw')&&$('pw').focus(),50)}
 function eye(){const i=$('pw'),h=i.type==='password';i.type=h?'text':'password';$('ey').innerHTML=ic(h?'eyeoff':'eye');i.focus()}
@@ -158,18 +194,19 @@ async function mlog(){const k=$('pw').value;MS=$('ms').value;let ok=false;modal(
   KEY=k||' ';modal('<h3>'+ic('ok')+' Credenciales correctas</h3><div class="sp"></div><p>Cargando datos de '+e(MS)+'…</p>');await mp();closeM()}
 let MT='n',N=[],D=[],F={q:'',d1:'',d2:'',p:'',c:'',m:'',t:''},PQ='',PM='',VAL=false,DIRTY=0,PL='';
 async function mp(){S.v='m';bn(true);document.body.classList.add('wide');
-  try{N=API?((await api('notas')).notas||[]):(J('dc_notas')||[]).filter(x=>x.sede===MS)}catch(x){N=[]}N=N.map(x=>{const pt=String(x.tema||'').split('·').map(a=>a.trim()),ci=pt[0],mt=String(x.modulos||'').trim()||pt[1]||'';return Object.assign({},x,{fecha:fd(x.fecha),ciclo:ci,ck:CK(ci),mods:mt.split(',').map(a=>a.trim()).filter(Boolean)})});F.c='';F.m='';F.t='';
-  D=RAW.map((r,i)=>({id:i,m:String(r[0]).trim()||'Sin módulo',p:r[1],c:r[2]}));PQ='';PM='';VAL=false;DIRTY=0;mv()}
+  try{N=API?((await api('notas')).notas||[]):(J('dc_notas')||[]).filter(x=>x.sede===MS)}catch(x){N=[]}N=N.map(x=>{const pt=String(x.tema||'').split('·').map(a=>a.trim()),ci=pt[0],mt=String(x.modulos||'').trim()||pt[1]||'';return Object.assign({},x,{fecha:fd(x.fecha),ciclo:ci,ck:CK(ci),puntos:pp(x.nota,mt),mods:mt.split(',').map(a=>a.trim()).filter(Boolean)})});F.c='';F.m='';F.t='';
+  D=RAW.map((r,i)=>({id:i,m:String(r[0]).trim()||'Sin módulo',p:r[1],c:r[2]}));PQ='';PM='';PC='';VAL=false;DIRTY=0;mv()}
 const MO={jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
 const fd=x=>{const t=String(x||'').trim(),z=n=>String(n).padStart(2,'0');let m=t.match(/^(\d{4})-(\d{2})-(\d{2})/);if(m)return m[1]+'-'+m[2]+'-'+m[3];
   m=t.match(/^\w{3},?\s+(\w{3})\s+(\d{1,2})\s+(\d{4})/);if(m&&MO[m[1].toLowerCase()])return m[3]+'-'+z(MO[m[1].toLowerCase()])+'-'+z(m[2]);
   m=t.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);if(m)return m[3]+'-'+z(m[2])+'-'+z(m[1]);
   const d=new Date(t);return isNaN(d)?t:d.getFullYear()+'-'+z(d.getMonth()+1)+'-'+z(d.getDate())};
 const fv=f=>/^\d{4}-\d\d-\d\d$/.test(f)?f.split('-').reverse().join('/'):f;
+const pp=(n,m)=>/examen final/i.test(String(m))?0:+n>=20?1:+n>=17?.5:0;
 const CK=n=>Object.keys(TEM).find(k=>TEM[k].n===String(n).trim())||'';
 const tc=n=>(Object.values(TEM).find(t=>t.n===n)||{c:'#555'}).c;
 function xm(){if(DIRTY&&!confirm('Tienes cambios sin guardar. ¿Salir de todos modos?'))return;home()}
-function mv(){A.innerHTML=`<h1>Modo master · ${e(MS)}</h1><div class="chips" style="justify-content:center;margin-bottom:14px">${[['n','Notas'],['p','Productos'],['a','Ajustes']].map(([k,t])=>`<button class="ch ${MT===k?'on':''}" onclick="MT='${k}';mv()">${t}</button>`).join('')}<button class="ch" style="border-color:#e11d48;color:#e11d48" onclick="xm()">${ic('out')} Salir de master</button></div><div id="mb"></div>`;({n:mn,p:mpr,a:maj})[MT]()}
+function mv(){A.innerHTML=`<h1>Modo master · ${e(MS)}</h1><div class="chips" style="justify-content:center;margin-bottom:14px">${[['n','Notas'],['p','Productos'],['a','Ajustes']].map(([k,t])=>`<button class="ch ${MT===k?'on':''}" onclick="MT='${k}';mv()">${t}${k==='a'&&LOCKS[MS]?' '+ic('lock'):''}</button>`).join('')}<button class="ch" style="border-color:#e11d48;color:#e11d48" onclick="xm()">${ic('out')} Salir de master</button></div><div id="mb"></div>`;({n:mn,p:mpr,a:maj})[MT]()}
 function mn(){$('mb').innerHTML=`<div class="box"><div class="fl"><input placeholder="Nombre o DNI" value="${e(F.q)}" oninput="F.q=this.value;nt()"><label>Desde <input type="date" value="${F.d1}" onchange="F.d1=this.value;nt()"></label><label>Hasta <input type="date" value="${F.d2}" onchange="F.d2=this.value;nt()"></label><select onchange="F.p=this.value;nt()">${[['','Todos los puntos'],['1','1 punto'],['0.5','0.5 puntos'],['0','Sin puntos']].map(([v,t])=>`<option value="${v}" ${F.p===v?'selected':''}>${t}</option>`).join('')}</select><select onchange="F.t=this.value;nt()">${[['','Examen y práctica'],['Examen','Solo examen'],['Práctica','Solo práctica']].map(([v,t])=>`<option value="${v}" ${F.t===v?'selected':''}>${t}</option>`).join('')}</select></div><div id="nc"></div><p class="lk" id="sm"></p><div class="tw"><table id="tn"></table></div></div>`;nt()}
 let NM=[];const EFC='#b45309';
 const fc=k=>{F.c=k;F.m='';nt()},fm=i=>{F.m=F.m===NM[i].m?'':NM[i].m;nt()},ft=v=>{F.t=v;nt()};
@@ -180,33 +217,41 @@ function nt(){const q=nz(F.q),r=N.filter(x=>(!q||nz(x.nombre+x.dni).includes(q))
   const pt=r.reduce((s,x)=>s+ +x.puntos,0),pr=r.length?Math.round(r.reduce((s,x)=>s+ +x.nota,0)/r.length*10)/10:0;
   $('nc').innerHTML=ncp();$('sm').textContent=r.length+' registros · Promedio '+pr+' · Puntos totales '+pt;
   const mc=(x,m)=>m==='Examen Final'?EFC:(TEM[x.ck]||{c:'#555'}).c;
-  $('tn').innerHTML='<tr><th style="min-width:105px">Fecha</th><th style="min-width:300px">Alumno</th><th>DNI</th><th>Ciclo</th><th style="min-width:120px">Módulo</th><th>Nota</th><th>Puntos</th><th>Tipo</th></tr>'+r.map(x=>`<tr><td class="p" style="white-space:nowrap">${e(fv(x.fecha))}</td><td class="p" style="text-align:left;min-width:300px">${e(x.nombre)}</td><td class="p">${e(x.dni)}</td><td class="p"><span class="nm" style="background:${(TEM[x.ck]||{c:'#555'}).c}">${e(x.ciclo)}</span></td><td class="p">${x.mods.map(m=>`<span class="nm" style="background:${mc(x,m)}">${e(m)}</span>`).join('')}</td><td class="p">${e(x.nota)}</td><td class="p"><b>${e(x.puntos)}</b></td><td class="p"><span class="nm" style="background:${x.modo==='Examen'?'#e11d48':'#64748b'}">${e(x.modo)}</span></td></tr>`).join('')}
+  $('tn').innerHTML='<tr><th style="min-width:105px">Fecha</th><th style="min-width:300px">Alumno</th><th>DNI</th><th>Ciclo</th><th style="min-width:120px">Módulo</th><th>Nota</th><th>Puntos</th><th>Tipo</th></tr>'+r.map(x=>`<tr><td class="p" style="white-space:nowrap">${e(fv(x.fecha))}</td><td class="p" style="text-align:left;min-width:300px">${e(x.nombre)}</td><td class="p">${e(x.dni)}</td><td class="p"><span class="nm" style="background:${(TEM[x.ck]||{c:'#555'}).c}">${e(x.ciclo)}</span></td><td class="p">${x.mods.map(m=>`<span class="nm" style="background:${mc(x,m)}">${e(m)}</span>`).join('')}</td><td class="p">${e(x.nota)}</td><td class="p"><b>${x.mods.includes('Examen Final')?'—':ic('star')+' '+e(x.puntos)}</b></td><td class="p"><span class="nm" style="background:${x.modo==='Examen'?'#e11d48':'#64748b'}">${e(x.modo)}</span></td></tr>`).join('')}
 const ML=()=>[...new Set([...Object.keys(TEM).flatMap(base),...D.map(d=>d.m.trim()).filter(Boolean)])].sort((a,b)=>a.localeCompare(b,'es',{numeric:true}));
-function mpr(){$('mb').innerHTML=`<div class="box"><div class="fl"><input placeholder="Buscar producto, módulo o código" value="${e(PQ)}" oninput="PQ=this.value;pl()"><button class="bt w" id="ba" onclick="pa()"></button><button class="bt" onclick="ps()">Guardar cambios</button></div><div class="chips" id="mc" style="margin:4px 0 10px"></div><datalist id="dm">${ML().map(m=>`<option value="${e(m)}">`).join('')}</datalist><p class="lk" id="pm"></p><div class="tw"><table id="tp"></table></div></div>`;mcp();pl()}
-const tOf=d=>mk([d.m,d.p||'x',d.c||'x']).t;let MLS=[],MK={};
-function mcp(){const g={};Object.keys(TEM).forEach(k=>base(k).forEach(m=>g[m]=k));D.forEach(d=>{const m=d.m.trim();if(m&&!g[m])g[m]=tOf(d)});MK=g;const o=Object.keys(TEM);MLS=Object.keys(g).sort((a,b)=>o.indexOf(g[a])-o.indexOf(g[b])||a.localeCompare(b,'es',{numeric:true}));if(PM&&!g[PM])PM='';
-  $('mc').innerHTML='<button class="ch '+(PM?'':'on')+'" onclick="pmod(-1)">Todos</button>'+MLS.map((m,i)=>{const c=TEM[g[m]].c;return`<button class="ch ${PM===m?'on':''}" style="border-color:${c};${PM===m?'background:'+c:''}" onclick="pmod(${i})">${e(m)}</button>`}).join('');$('ba').innerHTML=ic('plus')+' Agregar'+(PM?' a '+e(PM):'')}
+function mpr(){$('mb').innerHTML=`<div class="box"><div class="fl"><input placeholder="Buscar producto, módulo o código" value="${e(PQ)}" oninput="PQ=this.value;pl()"><button class="bt w" id="ba" onclick="pa()"></button><button class="bt" onclick="ps()">Guardar cambios</button></div><div id="mc" style="margin:4px 0 10px"></div><datalist id="dm">${ML().map(m=>`<option value="${e(m)}">`).join('')}</datalist><p class="lk" id="pm"></p><div class="tw"><table id="tp"></table></div></div>`;mcp();pl()}
+const tOf=d=>mk([d.m,d.p||'x',d.c||'x']).t;let MLS=[],MK={},PC='';
+function mcp(){const g={};Object.keys(TEM).forEach(k=>base(k).forEach(m=>g[m]=k));D.forEach(d=>{const m=d.m.trim();if(m&&!g[m])g[m]=tOf(d)});MK=g;const o=Object.keys(TEM);
+  const all=Object.keys(g).sort((a,b)=>o.indexOf(g[a])-o.indexOf(g[b])||a.localeCompare(b,'es',{numeric:true}));
+  if(PM&&(!g[PM]||(PC&&g[PM]!==PC)))PM='';MLS=PC?all.filter(m=>g[m]===PC):[];
+  const chip=(l,c,on,fn)=>`<button class="ch ${on?'on':''}" style="border-color:${c};${on?'background:'+c+';color:#fff':''}" onclick="${fn}">${l}</button>`;
+  $('mc').innerHTML=`<div class="chips" style="margin-bottom:8px">${chip('Todos','#475569',!PC,"pcy('')")}${o.map(k=>chip(ic(TEM[k].i)+' '+TEM[k].n,TEM[k].c,PC===k,`pcy('${k}')`)).join('')}</div>`+(PC?`<div class="chips">${chip('Todos','#475569',!PM,'pmod(-1)')}${MLS.map((m,i)=>chip(e(m),TEM[PC].c,PM===m,`pmod(${i})`)).join('')}</div>`:'');
+  $('ba').innerHTML=ic('plus')+' Agregar'+(PM?' a '+e(PM):PC?' a '+e(TEM[PC].n):'')}
+const pcy=k=>{PC=k;PM='';mcp();pl()};
 const pmod=i=>{PM=i<0?'':MLS[i];mcp();pl()}
 const pmx=()=>{const p=$('pm');if(p)p.textContent=PL+(DIRTY?' · cambios sin guardar':'')};
 const pf=(i,k,v)=>{D.find(d=>d.id===i)[k]=v;DIRTY=1;pmx()};
-function pl(){const q=nz(PQ),r=D.filter(d=>(!q||nz(d.p+d.c+d.m).includes(q))&&(!PM||d.m.trim()===PM));PL=r.length+' de '+D.length+' productos';pmx();
+function pl(){const q=nz(PQ),r=D.filter(d=>(!q||nz(d.p+d.c+d.m).includes(q))&&(!PC||MK[d.m.trim()]===PC)&&(!PM||d.m.trim()===PM));PL=r.length+' de '+D.length+' productos';pmx();
   const c=(d,k,x)=>`<td class="e"><input ${k==='m'?'onchange="mcp()"':''} ${x||''} placeholder=" " class="${VAL&&!String(d[k]).trim()?'inc':''}" value="${e(d[k])}" oninput="pf(${d.id},'${k}',this.value);this.classList.remove('inc')"></td>`;
-  const hc=PM&&MK[PM]?TEM[MK[PM]].c:'',hs=hc?` style="background:${hc}"`:'';
+  const hk=PM?MK[PM]:PC,hc=hk&&TEM[hk]?TEM[hk].c:'',hs=hc?` style="background:${hc}"`:'';
   $('tp').innerHTML=`<tr><th style="width:8px;padding:0${hc?';background:'+hc:''}"></th><th${hs}>Módulo</th><th${hs}>Producto</th><th${hs}>Código</th><th${hs}></th></tr>`+r.map(d=>`<tr><td style="background:${TEM[tOf(d)].c};width:8px;padding:0"></td>`+c(d,'m','list="dm"')+c(d,'p')+c(d,'c')+`<td class="e"><button class="bt w" style="padding:8px 10px" onclick="pd(${d.id})" aria-label="Quitar">${ic('trash')}</button></td></tr>`).join('')}
-function pa(){D.unshift({id:Date.now(),m:PM,p:'',c:''});PQ='';DIRTY=1;mpr();const i=document.querySelector('#tp tr:nth-child(2) td:nth-child(2) input');if(i)i.focus()}
+function pa(){D.unshift({id:Date.now(),m:PM||(PC?base(PC)[0]:''),p:'',c:''});PQ='';DIRTY=1;mpr();const i=document.querySelector('#tp tr:nth-child(2) td:nth-child(2) input');if(i)i.focus()}
 function pd(i){if(confirm('¿Quitar este producto?')){D=D.filter(d=>d.id!==i);DIRTY=1;pl()}}
 function fi(){const i=document.querySelector('#tp input.inc');if(i){i.scrollIntoView({block:'center'});i.focus()}}
 async function ps(){const bad=D.filter(d=>!d.m.trim()||!d.p.trim()||!d.c.trim());
-  if(bad.length){VAL=true;PQ='';PM='';mpr();return modal('<h3>Hay filas incompletas</h3><p>'+bad.length+' fila'+(bad.length>1?'s tienen':' tiene')+' campos vacíos (marcados en rojo). Complétalas o quítalas para poder guardar.</p><button class="bt" onclick="closeM();fi()">Entendido</button>')}
+  if(bad.length){VAL=true;PQ='';PM='';PC='';mpr();return modal('<h3>Hay filas incompletas</h3><p>'+bad.length+' fila'+(bad.length>1?'s tienen':' tiene')+' campos vacíos (marcados en rojo). Complétalas o quítalas para poder guardar.</p><button class="bt" onclick="closeM();fi()">Entendido</button>')}
   VAL=false;const rows=D.map(d=>[d.m.trim()==='Sin módulo'?'':d.m.trim(),d.p.trim(),d.c.trim().replace(/\s+/g,'').toUpperCase()]);
   modal('<h3>Guardando…</h3><p>Un momento, no cierres la página.</p>');
   try{if(API){const r=await api('guardarProductos',{productos:rows});if(!r.ok)throw 0;const g=await(await fetch(API+'?action=get')).json();if(!g.productos||g.productos.length!==rows.length)throw 0;const nr=r=>[String(r[0]).trim()==='Sin módulo'?'':String(r[0]).trim(),String(r[1]).trim(),String(r[2]).replace(/\s+/g,'').toUpperCase()].join('|'),bd=rows.map((r,k)=>[r,g.productos[k]]).filter(([a,b])=>nr(a)!==nr(b));
       if(bd.length){lset('dc_prod',JSON.stringify(rows));setP(rows);DIRTY=0;pmx();return modal('<h3>Guardado con diferencias</h3><p>Google Sheets no dejó '+bd.length+' fila'+(bd.length>1?'s':'')+' igual que en pantalla. Ejemplo: <b>'+e(bd[0][0][1])+'</b> quedó con módulo «'+e(String(bd[0][1][0]||'Sin módulo'))+'» y debería ser «'+e(bd[0][0][0]||'Sin módulo')+'». Avísame para revisar el Apps Script.</p><button class="bt" onclick="closeM()">Cerrar</button>')}}}catch(x){return modal('<h3>No se pudo guardar</h3><p>Revisa tu conexión e intenta de nuevo. Tus cambios siguen en pantalla.</p><button class="bt" onclick="closeM()">Cerrar</button>')}
   lset('dc_prod',JSON.stringify(rows));setP(rows);DIRTY=0;pmx();modal('<h3>'+ic('ok')+' Guardado</h3><p>'+rows.length+' productos guardados'+(API?' en Google Sheets.':' en este dispositivo.')+'</p><button class="bt" onclick="closeM()">Cerrar</button>')}
-function maj(){const L=!!LOCKS[MS];$('mb').innerHTML=`<div class="box" style="text-align:center"><p>Chocolateo en ${e(MS)}: <b>${L?'bloqueado':'libre'}</b></p><p class="lk">Bloqueado = examen (1 intento por DNI, suma puntos). Libre = práctica (no suma puntos).</p><button class="bt" onclick="sl()">${L?'Desbloquear':'Bloquear'} chocolateo</button><p class="lk">${API?'Conectado a Google Sheets.':'Sin Google Sheets: los datos se guardan solo en este dispositivo.'}</p></div>`}
-async function sl(){const v=!LOCKS[MS];try{if(API&&!(await api('setLock',{lock:v})).ok)throw 0}catch(x){return modal('<h3>No se pudo guardar</h3><button class="bt" onclick="closeM()">Cerrar</button>')}
-  LOCKS[MS]=v?1:0;lset('dc_locks',JSON.stringify(LOCKS));LOCK=!!LOCKS[S.sede];maj()}
-(function(){const c=J('dc_prod');if(c&&c.length)setP(c);LOCKS=J('dc_locks')||{};LOCK=!!LOCKS[S.sede]})();
+function maj(){const L=!!LOCKS[MS];$('mb').innerHTML=`<div class="box" style="text-align:center"><p class="lk" style="margin:0">Chocolateo en ${e(MS)}</p><div class="stt ${L?'lock':'free'}">${L?ic('lock')+' BLOQUEADO':ic('ok')+' LIBRE'}</div><p class="lk">${L?'Examen: cada alumno puede llenar cada módulo una sola vez y no puede chocolatear. Suma puntos (excepto el Examen Final).':'Práctica: los alumnos pueden chocolatear las veces que quieran. Suma puntos (excepto el Examen Final).'}</p><button class="bt" style="background:${L?'#16a34a':'#e11d48'}" onclick="sl()">${L?'Desbloquear chocolateo':'Bloquear chocolateo'}</button><p class="lk">${API?'Conectado a Google Sheets.':'Sin Google Sheets: los datos se guardan solo en este dispositivo.'}</p></div>`}
+async function sl(){const v=!LOCKS[MS];modal('<h3>Guardando…</h3><div class="sp"></div><p>Un momento, por favor.</p>');
+  try{if(API&&!(await api('setLock',{lock:v})).ok)throw 0}catch(x){return modal('<h3>No se pudo guardar</h3><p>No se cambió nada. Revisa tu conexión e intenta de nuevo.</p><button class="bt" onclick="closeM()">Cerrar</button>')}
+  LOCKS[MS]=v?1:0;lset('dc_locks',JSON.stringify(LOCKS));LOCK=!!LOCKS[S.sede];bn(true);mv();
+  modal('<h3>'+ic(v?'lock':'ok')+' Chocolateo '+(v?'bloqueado':'desbloqueado')+'</h3><p>'+(v?'Desde ahora cada alumno solo puede llenar cada módulo una vez.':'Los alumnos vuelven a poder chocolatear.')+'</p><button class="bt" onclick="closeM()">Entendido</button>')}
+(function(){const c=J('dc_prod');if(c&&c.length)setP(c);LOCKS=J('dc_locks')||{};LOCK=!!LOCKS[S.sede];const R=J('dc_id');if(R&&R.nom&&String(R.dni).length===8){S.nom=R.nom;S.dni=String(R.dni)}})();
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&S.sede&&API&&S.v==='h')refLock().then(()=>{if(S.v==='h')home()})});
 function boot(){if(P.length)return pick(S.t);S.v='h';document.body.classList.remove('wide');bn(false);
   A.innerHTML=LD?'<div class="box" style="text-align:center"><div class="sp"></div><b>Cargando productos…</b></div>':'<div class="box" style="text-align:center"><b>No hay productos para mostrar.</b><p>Revisa tu conexión o que la hoja de productos del Excel tenga datos.</p><button class="bt" onclick="load()">Reintentar</button></div>'}
 function load(){if(!API){LD=0;return boot()}LD=1;if(!P.length)boot();

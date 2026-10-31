@@ -1,0 +1,215 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Dictado de códigos</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b7a22'/%3E%3Crect x='10' y='14' width='44' height='28' rx='3' fill='white'/%3E%3Cpath d='M32 42v8M22 52h20' stroke='white' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M18 35l8-8 6 6 6-9 8 9' stroke='%230b7a22' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style id="sty">
+:root{color-scheme:light;--tx:#13302a;--mu:#5b6f66;--bd:#cfe9d6;--card:#fff;--pc:#f3f1ec;--b1:#e6f7ff;--b2:#f3fff1;--b3:#fff8e4;--c:#06621c;--d:#044a15}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--tx:#e8f3ee;--mu:#9db3a9;--bd:#2d4a3c;--card:#16231d;--pc:#22312a;--b1:#0e1a22;--b2:#0f1d14;--b3:#1b1a10}}
+*{box-sizing:border-box}
+html{scroll-padding-top:calc(60px + env(safe-area-inset-top,0px))}
+body{margin:0;padding-top:calc(52px + env(safe-area-inset-top,0px));padding-bottom:env(safe-area-inset-bottom,0px);color:var(--tx);font:15px/1.4 Poppins,"Segoe UI",system-ui,Arial,sans-serif;min-height:100vh;background:linear-gradient(180deg,var(--b1) 0,var(--b2) 38%,var(--b3) 100%) fixed}
+button,input{font:inherit}
+.bn{position:fixed;top:0;left:0;right:0;z-index:70;padding:calc(10px + env(safe-area-inset-top,0px)) 12px 10px;background:linear-gradient(135deg,#16335f,#2b64b8);color:#fff;font-weight:800;letter-spacing:1px;font-size:15px;display:flex;align-items:center;justify-content:center;min-height:46px}
+.bn button{position:absolute;bottom:7px;background:#fff;color:#1d4e89;border:0;border-radius:18px;font-weight:800;font-size:12px;padding:6px 11px;cursor:pointer}
+.bn .l{left:8px}.bn .r{right:8px}
+@media(max-width:480px){.bn{font-size:11px;letter-spacing:.3px;padding-left:84px;padding-right:84px}}
+#app{max-width:640px;margin:0 auto;padding:18px 14px 100px}
+h1{text-align:center;font-size:26px;margin:6px 0 2px}.sub{text-align:center;color:var(--mu);font-weight:600;margin:0 0 18px}
+.box{background:var(--card);border:2px solid var(--bd);border-radius:18px;padding:16px;margin-bottom:14px}
+.box h3{margin:12px 0 8px;font-size:13px;color:var(--mu);text-transform:uppercase;letter-spacing:.6px}
+.f input{width:100%;border:2px solid var(--bd);border-radius:12px;padding:10px 14px;margin-bottom:8px;background:var(--card);color:var(--tx)}.f input:focus{outline:0;border-color:var(--c)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.ch{border:2px solid var(--bd);background:var(--card);border-radius:20px;padding:7px 14px;font-weight:700;cursor:pointer;color:var(--tx)}
+.ch.on{background:var(--c);border-color:var(--c);color:#fff}.ch small{opacity:.8;font-weight:600}
+.bt{border:0;border-radius:14px;padding:12px 18px;font-weight:700;color:#fff;background:var(--c);cursor:pointer;box-shadow:0 3px 0 rgba(0,0,0,.25)}
+.bt.w{background:var(--card);color:var(--tx);border:2px solid var(--bd);box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.warn{background:#fff8d6;border:2px dashed #e5b800;border-radius:14px;padding:10px 14px;margin-bottom:14px;font-weight:700;color:#7a5d00;font-size:14px}
+.er{color:#e11d48;font-weight:700;text-align:center;margin:0 0 10px}
+#cap{background:var(--card);border-radius:16px;padding:14px}
+.who{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-weight:700;margin-bottom:10px}.who span{color:var(--mu)}
+.tag{display:inline-block;border-radius:18px;padding:4px 14px;font-weight:800;color:#fff;background:var(--c);font-size:13px;margin-bottom:12px}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;border:2px solid #3a3a3a}
+th{background:var(--d);color:#fff;padding:12px;font-weight:800;border:1px solid #3a3a3a}
+td{border:1px solid #3a3a3a}
+td.p{background:var(--pc);text-align:center;padding:12px 10px;font-weight:600}
+td.k{background:var(--c);padding:8px;width:42%;min-width:130px}
+td.k input,td.k .fake{width:100%;border:2px solid transparent;border-radius:8px;padding:8px 10px;text-align:center;font-weight:800;letter-spacing:1px;text-transform:uppercase;background:#fff;color:#13302a;min-height:38px}
+td.k input:placeholder-shown:not(.ok):not(.bad){background:#e9e6dc}
+td.k input:focus{outline:0;border-color:#ffd43b}
+td.k .ok{background:#dcfce7;border-color:#16a34a}td.k .bad{background:#ffe4ea;border-color:#e11d48}
+.res{text-align:center;margin-bottom:12px}.big{font-size:52px;font-weight:800;margin:0;color:var(--c);line-height:1.1}
+.lk{text-align:center;color:var(--mu);font-weight:700;font-size:13px;margin:10px 0 0}
+.stk{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.md{position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:16px}.md.on{display:flex}
+.mc{background:var(--card);border-radius:18px;padding:20px;max-width:420px;width:100%;text-align:center;max-height:90vh;overflow:auto}.mc h3{margin:0 0 8px}.mc img{max-width:100%;border-radius:10px}
+.mc .bt{margin:6px 4px 0}
+.i{width:1.15em;height:1.15em;vertical-align:-.22em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+body.wide #app{max-width:1000px}
+.fl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}.fl input,.fl select,td.e input{border:2px solid var(--bd);border-radius:10px;padding:8px 10px;background:var(--card);color:var(--tx);min-width:0}.fl input:not([type=date]){flex:1 1 180px}.fl label{font-size:12px;color:var(--mu);font-weight:600}
+td.e{padding:4px}td.e input{width:100%}.pt{font-weight:800;color:var(--c);margin:6px 0 0;font-size:18px}
+.f select{width:100%;border:2px solid var(--bd);border-radius:12px;padding:10px 14px;margin-bottom:8px;background:var(--card);color:var(--tx)}
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:480px){.sg{grid-template-columns:1fr}}
+.sd{display:flex;align-items:center;gap:14px;border:0;border-radius:22px;padding:20px;color:#fff;cursor:pointer;text-align:left;background:var(--c);box-shadow:0 6px 0 rgba(0,0,0,.22);transition:.15s;font-weight:800;font-size:17px}.sd:hover{transform:translateY(-3px)}.sd:active{transform:translateY(1px)}
+.sd i{width:52px;height:52px;border-radius:16px;background:rgba(255,255,255,.22);display:grid;place-items:center;flex:none;font-size:26px}.sd small{display:block;font-weight:600;opacity:.9;font-size:12px}
+body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg transform='translate%288 10%29 rotate%28-10%29 scale%281.5%29' fill='none' stroke='rgba%2820%2C70%2C110%2C.10%29' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22v-5'/%3E%3Cpath d='M12 17c-4 0-6-2.5-6-5.5 0-1.5.7-2.6 1.7-3.4C7.6 5 9.4 2 12 2s4.4 3 4.3 6.1c1 .8 1.7 1.9 1.7 3.4 0 3-2 5.5-6 5.5z'/%3E%3C/g%3E%3Cg transform='translate%2892 18%29 rotate%2815%29 scale%281.5%29' fill='none' stroke='rgba%2820%2C70%2C110%2C.10%29' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z'/%3E%3C/g%3E%3Cg transform='translate%2820 92%29 rotate%288%29 scale%281.5%29' fill='none' stroke='rgba%2820%2C70%2C110%2C.10%29' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 2h6'/%3E%3Cpath d='M10 2v6.5L4.5 19a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L14 8.5V2'/%3E%3Cpath d='M7.5 15h9'/%3E%3C/g%3E%3Cg transform='translate%28100 98%29 rotate%28-8%29 scale%281.5%29' fill='none' stroke='rgba%2820%2C70%2C110%2C.10%29' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/g%3E%3C/svg%3E"),linear-gradient(180deg,var(--b1) 0,var(--b2) 38%,var(--b3) 100%);background-attachment:scroll,fixed;background-size:160px 160px,auto}
+@media(prefers-color-scheme:dark){body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg transform='translate%288 10%29 rotate%28-10%29 scale%281.5%29' fill='none' stroke='rgba%28255%2C255%2C255%2C.06%29' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22v-5'/%3E%3Cpath d='M12 17c-4 0-6-2.5-6-5.5 0-1.5.7-2.6 1.7-3.4C7.6 5 9.4 2 12 2s4.4 3 4.3 6.1c1 .8 1.7 1.9 1.7 3.4 0 3-2 5.5-6 5.5z'/%3E%3C/g%3E%3Cg transform='translate%2892 18%29 rotate%2815%29 scale%281.5%29' fill='none' stroke='rgba%28255%2C255%2C255%2C.06%29' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z'/%3E%3C/g%3E%3Cg transform='translate%2820 92%29 rotate%288%29 scale%281.5%29' fill='none' stroke='rgba%28255%2C255%2C255%2C.06%29' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 2h6'/%3E%3Cpath d='M10 2v6.5L4.5 19a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L14 8.5V2'/%3E%3Cpath d='M7.5 15h9'/%3E%3C/g%3E%3Cg transform='translate%28100 98%29 rotate%28-8%29 scale%281.5%29' fill='none' stroke='rgba%28255%2C255%2C255%2C.06%29' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/g%3E%3C/svg%3E"),linear-gradient(180deg,var(--b1) 0,var(--b2) 38%,var(--b3) 100%)}}
+.mu{display:block;margin-top:12px;font-size:13px;color:var(--mu);font-weight:600;cursor:pointer}
+td.k input[readonly]{cursor:default}td.k input.bad{cursor:help}
+#tip{position:fixed;z-index:80;display:none;background:#13302a;color:#fff;border-radius:8px;padding:6px 12px;font-weight:800;letter-spacing:1px;pointer-events:none;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+td.e input:placeholder-shown{background:#e9e6dc}td.e input.inc{background:#ffe4ea;border-color:#e11d48}
+.mu2{font-weight:800;color:var(--mu);font-size:12px;text-transform:uppercase;align-self:center;min-width:54px}
+.nm{display:inline-block;border-radius:14px;padding:2px 10px;margin:2px;font-weight:800;color:#fff;font-size:12px;white-space:nowrap}
+.pwb{position:relative}.pwb input{padding-right:46px}.pwb button{position:absolute;right:6px;top:5px;border:0;background:transparent;color:var(--mu);cursor:pointer;padding:6px;border-radius:8px}
+.sp{width:34px;height:34px;border:4px solid var(--bd);border-top-color:var(--c);border-radius:50%;margin:10px auto;animation:spn .8s linear infinite}@keyframes spn{to{transform:rotate(360deg)}}
+@media(max-width:480px){.bn.mm{padding-right:128px;font-size:10px;letter-spacing:0}}
+</style></head><body>
+<div class="bn" id="bn"></div><div id="app"></div><div class="md" id="md"></div>
+<script id="cfg" type="application/json">{"api":"https://script.google.com/macros/s/AKfycbxb-SzgZd2H3FUfTQf3uoWZIlV9RcuYsheiqWfZzdBj4wFWHctJFm8TO79PkaY3NScj-w/exec"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script id="main">
+const CFG=(()=>{try{return JSON.parse(document.getElementById('cfg').textContent)}catch(x){return{}}})(),API=CFG.api||'';let LOCK=false,KEY='',MS='',LOCKS={},SEDES=['Villa el Salvador','Puente Piedra','Arequipa','Piura'];const SC={'Villa el Salvador':'#0a8f2a','Puente Piedra':'#2563eb','Arequipa':'#7c3aed','Piura':'#f58a07'};
+const TEM={mad:{n:'Maderas',c:'#06621c',d:'#044a15',i:'tree'},fer:{n:'Ferretería',c:'#323232',d:'#1c1c1c',i:'wrench'},sin:{n:'Sintéticos',c:'#00b8a0',d:'#008a78',i:'flask'},pro:{n:'Proyectos',c:'#2563eb',d:'#1e40af',i:'proj'}};
+const mk=([m,p,c])=>{const code=String(c).replace(/\s+/g,'').toUpperCase(),mu=String(m).trim(),tm=/^maderas/i.test(mu)?'mad':/^ferreter/i.test(mu)?'fer':/^sint/i.test(mu)?'sin':/^proyect/i.test(mu)?'pro':'',
+  t=tm||(/^MAD/.test(code)?'mad':/^(FER|SUM)/.test(code)?'fer':'sin'),nu=mu.match(/(\d+)\s*$/);
+  return{p,code,t,m:tm&&nu?TEM[tm].n+' '+nu[1]:(mu&&mu.toLowerCase()!=='sin módulo'?mu[0].toUpperCase()+mu.slice(1).toLowerCase():'Sin módulo')}};
+let RAW=[],P=[],LD=1;
+const e=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const nz=s=>String(s).toLowerCase().replace(/[^a-z0-9]/g,'');
+const sh=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const temas=()=>Object.keys(TEM).filter(k=>P.some(p=>p.t===k));
+const base=t=>[1,2,3,4].map(n=>TEM[t].n+' '+n);
+const mods=t=>{const b=base(t),x=[...new Set(P.filter(p=>p.t===t).map(p=>p.m))].filter(m=>!b.includes(m)).sort((a,c)=>(a==='Sin módulo')-(c==='Sin módulo')||a.localeCompare(c,'es',{numeric:true}));return b.concat(x)};
+const hm=(t,m)=>P.some(p=>p.t===t&&p.m===m),fm1=t=>mods(t).find(m=>hm(t,m))||mods(t)[0];
+const $=id=>document.getElementById(id),A=$('app'),MD=$('md');
+let S={t:temas()[0],v:'h',multi:false,ef:false,sede:'',m:new Set(),nom:'',dni:'',rows:[],done:false};
+const lget=k=>{try{return localStorage.getItem(k)}catch(x){return null}},lset=(k,v)=>{try{localStorage.setItem(k,v)}catch(x){}};
+const J=k=>{try{return JSON.parse(lget(k))}catch(x){return null}};
+const hoy=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const IC={tree:'<path d="M12 22v-5"/><path d="M12 17c-4 0-6-2.5-6-5.5 0-1.5.7-2.6 1.7-3.4C7.6 5 9.4 2 12 2s4.4 3 4.3 6.1c1 .8 1.7 1.9 1.7 3.4 0 3-2 5.5-6 5.5z"/>',wrench:'<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/>',flask:'<path d="M9 2h6"/><path d="M10 2v6.5L4.5 19a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L14 8.5V2"/><path d="M7.5 15h9"/>',choc:'<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M5 8h14M5 14h14M12 2v20"/>',lock:'<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',dl:'<path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 21h16"/>',pen:'<path d="M17 3a2.8 2.8 0 0 1 4 4L7.5 20.5 2 22l1.5-5.5z"/>',star:'<path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/>',plus:'<path d="M12 5v14M5 12h14"/>',trash:'<path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M6 6l1 15h10l1-15"/>'};
+IC.eye='<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>';IC.eyeoff='<path d="M3 3l18 18"/><path d="M10.6 5.1A10 10 0 0 1 12 5c6.5 0 10 7 10 7a17 17 0 0 1-3.2 4.2M6.6 6.6A17 17 0 0 0 2 12s3.5 7 10 7a10 10 0 0 0 4.4-1"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/>';IC.proj='<rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4h6v3H9z"/><path d="M9 12h6M9 16h4"/>';IC.out='<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/>';IC.ok='<path d="M5 12l5 5L20 7"/>';IC.bld='<path d="M4 21V7l8-4 8 4v14"/><path d="M2 21h20"/><path d="M9 21v-6h6v6"/><path d="M9 10h.01M15 10h.01"/>';
+const ic=n=>'<svg class="i" viewBox="0 0 24 24" aria-hidden="true">'+IC[n]+'</svg>';
+async function api(a,d){const r=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(Object.assign({action:a,clave:KEY,sede:MS},d))});return r.json()}
+function setP(rows){RAW=rows;P=RAW.map(mk);if(!temas().includes(S.t))S.t=temas()[0]}
+async function guardar(r){if(!r.nombre&&!r.dni)return;
+  if(API)try{await api('registrar',{r});return}catch(x){}
+  const a=J('dc_notas')||[];a.push(r);lset('dc_notas',JSON.stringify(a))}
+function paint(t){const T=TEM[t],r=document.documentElement.style;r.setProperty('--c',T.c);r.setProperty('--d',T.d)}
+function bn(back){$('bn').className='bn'+(S.v==='m'?' mm':'');$('bn').innerHTML=(back?'<button class="l" onclick="'+(S.v==='m'?'xm()':'home()')+'">← Inicio</button>':'')+'DICTADO DE CÓDIGOS'+(LOCK?' '+ic('lock'):'')+(S.v==='m'?'<button class="r" style="background:#e11d48;color:#fff" onclick="xm()">'+ic('out')+' Salir de master</button>':'<button class="r" onclick="master()">'+ic('lock')+' Master</button>')}
+function modal(h){MD.innerHTML='<div class="mc">'+h+'</div>';MD.classList.add('on')}
+function closeM(){MD.classList.remove('on')}
+MD.addEventListener('click',ev=>{if(ev.target===MD)closeM()});
+function pick(t){S.t=t;S.ef=false;S.m=new Set([fm1(t)]);home()}
+function tg(m){if(S.multi&&!S.ef)S.m.has(m)?S.m.delete(m):S.m.add(m);else S.m=new Set([m]);S.ef=false;home()}
+function ef(){S.ef=true;S.m=new Set(mods(S.t));home()}
+function mm(v){S.multi=v;if(!v&&!S.ef&&S.m.size>1)S.m=new Set([[...S.m][0]]);home()}
+function ss(x){S.sede=x;S.nom='';S.dni='';LOCK=!!LOCKS[x];home()}
+function wel(){S.nom='';S.dni='';S.v='h';document.body.classList.remove('wide');bn(false);
+  A.innerHTML=`<h1>Dictado de códigos</h1><p class="sub">Elige tu sede</p><div class="sg">${SEDES.map(x=>`<button class="sd" style="--c:${SC[x]||'#06621c'}" onclick="ss('${e(x)}')"><i>${ic('bld')}</i><span>${e(x)}<small>Sede</small></span></button>`).join('')}</div>`}
+function home(er){KEY='';if(!S.sede)return wel();if(!P.length)return boot();S.v='h';document.body.classList.remove('wide');if(!S.m.size)S.m=new Set([fm1(S.t)]);paint(S.t);bn(false);
+  const cnt=m=>P.filter(p=>p.t===S.t&&p.m===m).length;
+  A.innerHTML=`<h1>${ic('pen')} Dictado de códigos</h1><p class="sub">${e(S.sede)} · <a href="#" onclick="S.sede='';home();return false" style="color:var(--c)">cambiar sede</a></p>
+  <div class="box"><h3>Temática</h3><div class="chips">${temas().map(k=>`<button class="ch ${S.t===k?'on':''}" style="${S.t===k?`background:${TEM[k].c};border-color:${TEM[k].c}`:`border-color:${TEM[k].c}`}" onclick="pick('${k}')">${ic(TEM[k].i)} ${TEM[k].n}</button>`).join('')}</div>
+  <h3>Módulo</h3><div class="chips">${mods(S.t).map(m=>`<button class="ch ${S.m.has(m)&&!S.ef?'on':''}" ${hm(S.t,m)?`onclick="tg('${m}')"`:'disabled style="opacity:.4;cursor:not-allowed"'}>${e(m)}</button>`).join('')}<button class="ch ${S.ef?'on':''}" style="border-style:dashed" onclick="ef()">${ic('star')} Examen Final</button></div><label class="mu"><input type="checkbox" ${S.multi?'checked':''} onchange="mm(this.checked)"> Elegir varios módulos</label></div>
+  ${LOCK?'<div class="warn">'+ic('lock')+' Este dictado está bloqueado: solo podrás llenarlo <b>una vez</b>.</div>':''}
+  ${er?`<p class="er">${er}</p>`:''}
+  <button class="bt" style="width:100%;font-size:17px" onclick="gen(true)">Generar dictado</button>`}
+async function gen(first){
+  if(!S.sede)return home('Elige tu sede.');LOCK=!!LOCKS[S.sede];
+  S.v='g';paint(S.t);bn(true);S.done=false;const seen=new Set();
+  let r=P.filter(p=>p.t===S.t&&S.m.has(p.m)).filter(p=>!seen.has(p.p)&&seen.add(p.p));
+  if(!first){r=sh(r);const lo=Math.min(5,r.length);r=r.slice(0,lo+(Math.random()*(r.length-lo+1)|0))}
+  S.rows=r;
+  A.innerHTML=`<div class="stk" id="stk0" style="margin:0 0 12px"></div>${S.nom.trim()&&S.dni.length===8?'':`<div class="box f" id="dat"><input placeholder="Nombre completo" value="${e(S.nom)}" oninput="S.nom=this.value;wh()"><input inputmode="numeric" maxlength="8" placeholder="DNI" value="${e(S.dni)}" oninput="S.dni=this.value.replace(/\\D/g,'');this.value=S.dni;wh()"></div>`}<div id="cap"><div class="who" id="who"></div>
+  <span class="tag">${ic(TEM[S.t].i)} ${TEM[S.t].n} · ${S.ef?'Examen Final':[...S.m].map(e).join(', ')}</span><div id="res"></div>
+  <div class="tw"><table><tr><th>Producto</th><th>Código</th></tr>${r.map((p,i)=>`<tr><td class="p">${e(p.p)}</td><td class="k"><input data-i="${i}" maxlength="${p.code.length}" placeholder=" " autocomplete="off" autocapitalize="characters" spellcheck="false"></td></tr>`).join('')}</table></div></div>
+  ${LOCK?'<p class="lk">'+ic('lock')+' Solo puedes llenarlo una vez</p>':''}<div class="stk" id="stk"></div>`;
+  bar();wh();const ins=[...A.querySelectorAll('#cap input')];
+  ins.forEach((x,i)=>x.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();ins[i+1]?ins[i+1].focus():calif()}}));
+  window.scrollTo(0,0);ins[0]&&ins[0].focus()}
+function bar(){const h=S.done?
+  (LOCK?'':'<button class="bt" onclick="gen(false)">'+ic('choc')+' Chocolatear</button>')+'<button class="bt w" onclick="img()">'+ic('dl')+' Descargar imagen</button><button class="bt w" onclick="home()">Inicio</button>':
+  '<button class="bt" onclick="calif()">Calificar</button>'+(LOCK?'':'<button class="bt w" onclick="gen(false)">'+ic('choc')+' Chocolatear</button>');$('stk').innerHTML=h;$('stk0').innerHTML=h}
+function wh(){$('who').innerHTML='<b>'+e(S.nom)+'</b><span>'+e(S.sede)+' · '+(S.dni?'DNI '+e(S.dni)+' · ':'')+new Date().toLocaleDateString('es-PE')+'</span>'}
+function faltan(){const d=$('dat');if(d){window.scrollTo(0,0);const i=d.querySelector('input');i&&i.focus()}}
+function tip(x,on){let t=$('tip');if(!t){t=document.createElement('div');t.id='tip';document.body.appendChild(t)}
+  if(!on){t.style.display='none';return}
+  const r=x.getBoundingClientRect();t.textContent='Correcto: '+S.rows[+x.dataset.i].code;t.style.left=Math.max(6,r.left)+'px';t.style.top=(r.bottom+6)+'px';t.style.display='block'}
+function wrong(x){x.addEventListener('mouseenter',()=>tip(x,1));x.addEventListener('mouseleave',()=>tip(x,0));x.addEventListener('click',()=>{tip(x,1);setTimeout(()=>tip(x,0),2500)})}
+async function calif(){if(S.done||S.busy)return;
+  if(!S.nom.trim()||S.dni.length!==8)return modal('<h3>Faltan tus datos</h3><p>Escribe tu nombre completo y tu DNI (8 dígitos) para poder calificar.</p><button class="bt" onclick="closeM();faltan()">Entendido</button>');
+  if(LOCK){S.busy=1;let d=!!lget('dc_'+S.dni);if(!d&&API)try{d=!!(await(await fetch(API+'?action=check&dni='+S.dni)).json()).done}catch(x){}S.busy=0;
+    if(d)return modal('<h3>Dictado ya realizado</h3><p>Este DNI ya llenó el dictado. Solo se puede una vez.</p><button class="bt" onclick="closeM()">Cerrar</button>');if(S.done)return}let ok=0;
+  A.querySelectorAll('#cap input').forEach(x=>{const g=nz(x.value)===nz(S.rows[+x.dataset.i].code);x.readOnly=true;x.classList.add(g?'ok':'bad');if(g)ok++;else wrong(x)});
+  const dt=$('dat');if(dt)dt.remove();wh();const n=S.rows.length,nota=Math.round(ok/n*200)/10,pts=!LOCK?0:nota>=20?1:nota>=17?.5:0;S.done=true;
+  if(LOCK)lset('dc_'+S.dni,'1');
+  guardar({ts:new Date().toISOString(),fecha:hoy(),nombre:S.nom.trim(),dni:S.dni,tema:TEM[S.t].n,modulos:S.ef?'Examen Final':[...S.m].join(', '),ok,total:n,nota,puntos:pts,modo:LOCK?'Examen':'Práctica',sede:S.sede});
+  $('res').innerHTML=`<div class="res"><p class="big">${nota}/20</p><b>${nota>=20?'¡Perfecto!':nota>=17?'¡Muy bien!':'Sigue practicando'}</b>${pts?`<p class="pt">${ic('star')} +${pts} punto${pts===1?'':'s'}</p>`:''}${nota<17?'<p class="er">Tienes que repasar más.</p>':''}</div>`;
+  bar();window.scrollTo(0,0)}
+async function img(){
+  if(!window.html2canvas)return modal('<h3>No se pudo preparar la imagen</h3><button class="bt" onclick="closeM()">Cerrar</button>');
+  const cv=await html2canvas($('cap'),{scale:2,backgroundColor:null,onclone:d=>{d.querySelectorAll('#cap input').forEach(x=>{const v=d.createElement('div');v.className='fake '+x.className;v.textContent=x.value.toUpperCase();x.replaceWith(v)})}});
+  const b=await new Promise(r=>cv.toBlob(r,'image/png')),nm='dictado_'+(S.dni||'alumno')+'.png';
+  const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=nm;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000)}
+/* ===== Master ===== */
+function master(){if(KEY)return mp();modal('<h3>'+ic('lock')+' Master</h3>'+(S.sede?'<p>Sede: <b>'+e(S.sede)+'</b></p><input type="hidden" id="ms" value="'+e(S.sede)+'">':'<div class="f"><select id="ms">'+SEDES.map(x=>'<option>'+e(x)+'</option>').join('')+'</select></div>')+'<div class="f pwb"><input id="pw" type="password" placeholder="Clave de la sede" onkeydown="if(event.key===\'Enter\')mlog()"><button type="button" id="ey" onclick="eye()" aria-label="Mostrar clave">'+ic('eye')+'</button></div><button class="bt" onclick="mlog()">Entrar</button><button class="bt w" onclick="closeM()">Cerrar</button>');setTimeout(()=>$('pw')&&$('pw').focus(),50)}
+function eye(){const i=$('pw'),h=i.type==='password';i.type=h?'text':'password';$('ey').innerHTML=ic(h?'eyeoff':'eye');i.focus()}
+async function mlog(){const k=$('pw').value;MS=$('ms').value;let ok=false;modal('<h3>Verificando credenciales…</h3><div class="sp"></div><p>Un momento, por favor.</p>');
+  if(API){KEY=k;try{ok=(await api('login')).ok}catch(x){}}
+  if(!ok){KEY='';return modal('<h3>Clave incorrecta</h3><button class="bt" onclick="master()">Reintentar</button>')}
+  KEY=k||' ';modal('<h3>'+ic('ok')+' Credenciales correctas</h3><div class="sp"></div><p>Cargando datos de '+e(MS)+'…</p>');await mp();closeM()}
+let MT='n',N=[],D=[],F={q:'',d1:'',d2:'',p:'',c:'',m:'',t:''},PQ='',PM='',VAL=false,DIRTY=0,PL='';
+async function mp(){S.v='m';bn(true);document.body.classList.add('wide');
+  try{N=API?((await api('notas')).notas||[]):(J('dc_notas')||[]).filter(x=>x.sede===MS)}catch(x){N=[]}N=N.map(x=>{const pt=String(x.tema||'').split('·').map(a=>a.trim()),ci=pt[0],mt=String(x.modulos||'').trim()||pt[1]||'';return Object.assign({},x,{fecha:fd(x.fecha),ciclo:ci,ck:CK(ci),mods:mt.split(',').map(a=>a.trim()).filter(Boolean)})});F.c='';F.m='';F.t='';
+  D=RAW.map((r,i)=>({id:i,m:String(r[0]).trim()||'Sin módulo',p:r[1],c:r[2]}));PQ='';PM='';VAL=false;DIRTY=0;mv()}
+const MO={jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
+const fd=x=>{const t=String(x||'').trim(),z=n=>String(n).padStart(2,'0');let m=t.match(/^(\d{4})-(\d{2})-(\d{2})/);if(m)return m[1]+'-'+m[2]+'-'+m[3];
+  m=t.match(/^\w{3},?\s+(\w{3})\s+(\d{1,2})\s+(\d{4})/);if(m&&MO[m[1].toLowerCase()])return m[3]+'-'+z(MO[m[1].toLowerCase()])+'-'+z(m[2]);
+  m=t.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);if(m)return m[3]+'-'+z(m[2])+'-'+z(m[1]);
+  const d=new Date(t);return isNaN(d)?t:d.getFullYear()+'-'+z(d.getMonth()+1)+'-'+z(d.getDate())};
+const fv=f=>/^\d{4}-\d\d-\d\d$/.test(f)?f.split('-').reverse().join('/'):f;
+const CK=n=>Object.keys(TEM).find(k=>TEM[k].n===String(n).trim())||'';
+const tc=n=>(Object.values(TEM).find(t=>t.n===n)||{c:'#555'}).c;
+function xm(){if(DIRTY&&!confirm('Tienes cambios sin guardar. ¿Salir de todos modos?'))return;home()}
+function mv(){A.innerHTML=`<h1>Modo master · ${e(MS)}</h1><div class="chips" style="justify-content:center;margin-bottom:14px">${[['n','Notas'],['p','Productos'],['a','Ajustes']].map(([k,t])=>`<button class="ch ${MT===k?'on':''}" onclick="MT='${k}';mv()">${t}</button>`).join('')}<button class="ch" style="border-color:#e11d48;color:#e11d48" onclick="xm()">${ic('out')} Salir de master</button></div><div id="mb"></div>`;({n:mn,p:mpr,a:maj})[MT]()}
+function mn(){$('mb').innerHTML=`<div class="box"><div class="fl"><input placeholder="Nombre o DNI" value="${e(F.q)}" oninput="F.q=this.value;nt()"><label>Desde <input type="date" value="${F.d1}" onchange="F.d1=this.value;nt()"></label><label>Hasta <input type="date" value="${F.d2}" onchange="F.d2=this.value;nt()"></label><select onchange="F.p=this.value;nt()">${[['','Todos los puntos'],['1','1 punto'],['0.5','0.5 puntos'],['0','Sin puntos']].map(([v,t])=>`<option value="${v}" ${F.p===v?'selected':''}>${t}</option>`).join('')}</select><select onchange="F.t=this.value;nt()">${[['','Examen y práctica'],['Examen','Solo examen'],['Práctica','Solo práctica']].map(([v,t])=>`<option value="${v}" ${F.t===v?'selected':''}>${t}</option>`).join('')}</select></div><div id="nc"></div><p class="lk" id="sm"></p><div class="tw"><table id="tn"></table></div></div>`;nt()}
+let NM=[];const EFC='#b45309';
+const fc=k=>{F.c=k;F.m='';nt()},fm=i=>{F.m=F.m===NM[i].m?'':NM[i].m;nt()},ft=v=>{F.t=v;nt()};
+function ncp(){const chip=(l,c,on,fn)=>`<button class="ch" style="border-color:${c};${on?'background:'+c+';color:#fff':''}" onclick="${fn}">${l}</button>`;
+  NM=[];if(F.c){const c=TEM[F.c].c;mods(F.c).forEach(m=>NM.push({m,c}));N.forEach(x=>x.ck===F.c&&x.mods.forEach(m=>{if(m!=='Examen Final'&&!NM.some(o=>o.m===m))NM.push({m,c})}));NM.push({m:'Examen Final',c:EFC})}
+  return `<div class="chips" style="margin:10px 0">${chip('Todos','#475569',!F.c,"fc('')")}${Object.keys(TEM).map(k=>chip(ic(TEM[k].i)+' '+TEM[k].n,TEM[k].c,F.c===k,`fc('${k}')`)).join('')}</div>`+(F.c?`<div class="chips" style="margin:0 0 10px">${chip('Todos','#475569',!F.m,"F.m='';nt()")}${NM.map((o,i)=>chip(e(o.m.replace(/^\D+(?=\d)/,'Módulo ')),o.c,F.m===o.m,`fm(${i})`)).join('')}</div>`:'')}
+function nt(){const q=nz(F.q),r=N.filter(x=>(!q||nz(x.nombre+x.dni).includes(q))&&(!F.d1||x.fecha>=F.d1)&&(!F.d2||x.fecha<=F.d2)&&(F.p===''||+x.puntos===+F.p)&&(!F.c||x.ck===F.c)&&(!F.m||x.mods.includes(F.m))&&(!F.t||x.modo===F.t)).reverse();
+  const pt=r.reduce((s,x)=>s+ +x.puntos,0),pr=r.length?Math.round(r.reduce((s,x)=>s+ +x.nota,0)/r.length*10)/10:0;
+  $('nc').innerHTML=ncp();$('sm').textContent=r.length+' registros · Promedio '+pr+' · Puntos totales '+pt;
+  const mc=(x,m)=>m==='Examen Final'?EFC:(TEM[x.ck]||{c:'#555'}).c;
+  $('tn').innerHTML='<tr><th style="min-width:105px">Fecha</th><th style="min-width:300px">Alumno</th><th>DNI</th><th>Ciclo</th><th style="min-width:120px">Módulo</th><th>Nota</th><th>Puntos</th><th>Tipo</th></tr>'+r.map(x=>`<tr><td class="p" style="white-space:nowrap">${e(fv(x.fecha))}</td><td class="p" style="text-align:left;min-width:300px">${e(x.nombre)}</td><td class="p">${e(x.dni)}</td><td class="p"><span class="nm" style="background:${(TEM[x.ck]||{c:'#555'}).c}">${e(x.ciclo)}</span></td><td class="p">${x.mods.map(m=>`<span class="nm" style="background:${mc(x,m)}">${e(m)}</span>`).join('')}</td><td class="p">${e(x.nota)}</td><td class="p"><b>${e(x.puntos)}</b></td><td class="p"><span class="nm" style="background:${x.modo==='Examen'?'#e11d48':'#64748b'}">${e(x.modo)}</span></td></tr>`).join('')}
+const ML=()=>[...new Set([...Object.keys(TEM).flatMap(base),...D.map(d=>d.m.trim()).filter(Boolean)])].sort((a,b)=>a.localeCompare(b,'es',{numeric:true}));
+function mpr(){$('mb').innerHTML=`<div class="box"><div class="fl"><input placeholder="Buscar producto, módulo o código" value="${e(PQ)}" oninput="PQ=this.value;pl()"><button class="bt w" id="ba" onclick="pa()"></button><button class="bt" onclick="ps()">Guardar cambios</button></div><div class="chips" id="mc" style="margin:4px 0 10px"></div><datalist id="dm">${ML().map(m=>`<option value="${e(m)}">`).join('')}</datalist><p class="lk" id="pm"></p><div class="tw"><table id="tp"></table></div></div>`;mcp();pl()}
+const tOf=d=>mk([d.m,d.p||'x',d.c||'x']).t;let MLS=[],MK={};
+function mcp(){const g={};Object.keys(TEM).forEach(k=>base(k).forEach(m=>g[m]=k));D.forEach(d=>{const m=d.m.trim();if(m&&!g[m])g[m]=tOf(d)});MK=g;const o=Object.keys(TEM);MLS=Object.keys(g).sort((a,b)=>o.indexOf(g[a])-o.indexOf(g[b])||a.localeCompare(b,'es',{numeric:true}));if(PM&&!g[PM])PM='';
+  $('mc').innerHTML='<button class="ch '+(PM?'':'on')+'" onclick="pmod(-1)">Todos</button>'+MLS.map((m,i)=>{const c=TEM[g[m]].c;return`<button class="ch ${PM===m?'on':''}" style="border-color:${c};${PM===m?'background:'+c:''}" onclick="pmod(${i})">${e(m)}</button>`}).join('');$('ba').innerHTML=ic('plus')+' Agregar'+(PM?' a '+e(PM):'')}
+const pmod=i=>{PM=i<0?'':MLS[i];mcp();pl()}
+const pmx=()=>{const p=$('pm');if(p)p.textContent=PL+(DIRTY?' · cambios sin guardar':'')};
+const pf=(i,k,v)=>{D.find(d=>d.id===i)[k]=v;DIRTY=1;pmx()};
+function pl(){const q=nz(PQ),r=D.filter(d=>(!q||nz(d.p+d.c+d.m).includes(q))&&(!PM||d.m.trim()===PM));PL=r.length+' de '+D.length+' productos';pmx();
+  const c=(d,k,x)=>`<td class="e"><input ${k==='m'?'onchange="mcp()"':''} ${x||''} placeholder=" " class="${VAL&&!String(d[k]).trim()?'inc':''}" value="${e(d[k])}" oninput="pf(${d.id},'${k}',this.value);this.classList.remove('inc')"></td>`;
+  const hc=PM&&MK[PM]?TEM[MK[PM]].c:'',hs=hc?` style="background:${hc}"`:'';
+  $('tp').innerHTML=`<tr><th style="width:8px;padding:0${hc?';background:'+hc:''}"></th><th${hs}>Módulo</th><th${hs}>Producto</th><th${hs}>Código</th><th${hs}></th></tr>`+r.map(d=>`<tr><td style="background:${TEM[tOf(d)].c};width:8px;padding:0"></td>`+c(d,'m','list="dm"')+c(d,'p')+c(d,'c')+`<td class="e"><button class="bt w" style="padding:8px 10px" onclick="pd(${d.id})" aria-label="Quitar">${ic('trash')}</button></td></tr>`).join('')}
+function pa(){D.unshift({id:Date.now(),m:PM,p:'',c:''});PQ='';DIRTY=1;mpr();const i=document.querySelector('#tp tr:nth-child(2) td:nth-child(2) input');if(i)i.focus()}
+function pd(i){if(confirm('¿Quitar este producto?')){D=D.filter(d=>d.id!==i);DIRTY=1;pl()}}
+function fi(){const i=document.querySelector('#tp input.inc');if(i){i.scrollIntoView({block:'center'});i.focus()}}
+async function ps(){const bad=D.filter(d=>!d.m.trim()||!d.p.trim()||!d.c.trim());
+  if(bad.length){VAL=true;PQ='';PM='';mpr();return modal('<h3>Hay filas incompletas</h3><p>'+bad.length+' fila'+(bad.length>1?'s tienen':' tiene')+' campos vacíos (marcados en rojo). Complétalas o quítalas para poder guardar.</p><button class="bt" onclick="closeM();fi()">Entendido</button>')}
+  VAL=false;const rows=D.map(d=>[d.m.trim()==='Sin módulo'?'':d.m.trim(),d.p.trim(),d.c.trim().replace(/\s+/g,'').toUpperCase()]);
+  modal('<h3>Guardando…</h3><p>Un momento, no cierres la página.</p>');
+  try{if(API){const r=await api('guardarProductos',{productos:rows});if(!r.ok)throw 0;const g=await(await fetch(API+'?action=get')).json();if(!g.productos||g.productos.length!==rows.length)throw 0;const nr=r=>[String(r[0]).trim()==='Sin módulo'?'':String(r[0]).trim(),String(r[1]).trim(),String(r[2]).replace(/\s+/g,'').toUpperCase()].join('|'),bd=rows.map((r,k)=>[r,g.productos[k]]).filter(([a,b])=>nr(a)!==nr(b));
+      if(bd.length){lset('dc_prod',JSON.stringify(rows));setP(rows);DIRTY=0;pmx();return modal('<h3>Guardado con diferencias</h3><p>Google Sheets no dejó '+bd.length+' fila'+(bd.length>1?'s':'')+' igual que en pantalla. Ejemplo: <b>'+e(bd[0][0][1])+'</b> quedó con módulo «'+e(String(bd[0][1][0]||'Sin módulo'))+'» y debería ser «'+e(bd[0][0][0]||'Sin módulo')+'». Avísame para revisar el Apps Script.</p><button class="bt" onclick="closeM()">Cerrar</button>')}}}catch(x){return modal('<h3>No se pudo guardar</h3><p>Revisa tu conexión e intenta de nuevo. Tus cambios siguen en pantalla.</p><button class="bt" onclick="closeM()">Cerrar</button>')}
+  lset('dc_prod',JSON.stringify(rows));setP(rows);DIRTY=0;pmx();modal('<h3>'+ic('ok')+' Guardado</h3><p>'+rows.length+' productos guardados'+(API?' en Google Sheets.':' en este dispositivo.')+'</p><button class="bt" onclick="closeM()">Cerrar</button>')}
+function maj(){const L=!!LOCKS[MS];$('mb').innerHTML=`<div class="box" style="text-align:center"><p>Chocolateo en ${e(MS)}: <b>${L?'bloqueado':'libre'}</b></p><p class="lk">Bloqueado = examen (1 intento por DNI, suma puntos). Libre = práctica (no suma puntos).</p><button class="bt" onclick="sl()">${L?'Desbloquear':'Bloquear'} chocolateo</button><p class="lk">${API?'Conectado a Google Sheets.':'Sin Google Sheets: los datos se guardan solo en este dispositivo.'}</p></div>`}
+async function sl(){const v=!LOCKS[MS];try{if(API&&!(await api('setLock',{lock:v})).ok)throw 0}catch(x){return modal('<h3>No se pudo guardar</h3><button class="bt" onclick="closeM()">Cerrar</button>')}
+  LOCKS[MS]=v?1:0;lset('dc_locks',JSON.stringify(LOCKS));LOCK=!!LOCKS[S.sede];maj()}
+(function(){const c=J('dc_prod');if(c&&c.length)setP(c);LOCKS=J('dc_locks')||{};LOCK=!!LOCKS[S.sede]})();
+function boot(){if(P.length)return pick(S.t);S.v='h';document.body.classList.remove('wide');bn(false);
+  A.innerHTML=LD?'<div class="box" style="text-align:center"><div class="sp"></div><b>Cargando productos…</b></div>':'<div class="box" style="text-align:center"><b>No hay productos para mostrar.</b><p>Revisa tu conexión o que la hoja de productos del Excel tenga datos.</p><button class="bt" onclick="load()">Reintentar</button></div>'}
+function load(){if(!API){LD=0;return boot()}LD=1;if(!P.length)boot();
+  return fetch(API+'?action=get').then(r=>r.json()).then(r=>{if(Array.isArray(r.productos)){setP(r.productos);lset('dc_prod',JSON.stringify(r.productos))}LOCKS=r.locks||{};LOCK=!!LOCKS[S.sede];lset('dc_locks',JSON.stringify(LOCKS));if(r.sedes&&r.sedes.length)SEDES=r.sedes}).catch(()=>{}).finally(()=>{LD=0;if(S.v==='h'&&!(document.activeElement&&document.activeElement.tagName==='INPUT'))boot()})}
+load();
+</script></body></html>

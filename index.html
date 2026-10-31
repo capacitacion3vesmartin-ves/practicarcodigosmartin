@@ -33,9 +33,10 @@ td{border:1px solid #3a3a3a}
 td.p{background:var(--pc);text-align:center;padding:12px 10px;font-weight:600}
 td.k{background:var(--c);padding:8px;width:42%;min-width:130px}
 td.k input,td.k .fake{width:100%;border:2px solid transparent;border-radius:8px;padding:8px 10px;text-align:center;font-weight:800;letter-spacing:1px;text-transform:uppercase;background:#fff;color:#13302a;min-height:38px}
-td.k input:placeholder-shown:not(.ok):not(.bad){background:#e9e6dc}
+td.k input:placeholder-shown:not(.ok):not(.bad){background:#f6e9c4}
 td.k input:focus{outline:0;border-color:#ffd43b}
-td.k .ok{background:#dcfce7;border-color:#16a34a}td.k .bad{background:#ffe4ea;border-color:#e11d48}
+td.k .ok{background:#dcfce7;border-color:#16a34a}td.k .bad{background:#ffe4ea;border-color:#e11d48}td.k .vac{background:#f6e9c4;border-color:#d9bf7a}
+.av{border-radius:12px;padding:8px 12px;font-weight:800;text-align:center;margin-bottom:10px;font-size:13px;letter-spacing:.4px;color:#fff}.av.ev{background:#e11d48}.av.pr{background:#64748b}
 .res{text-align:center;margin-bottom:12px}.big{font-size:52px;font-weight:800;margin:0;color:var(--c);line-height:1.1}
 .lk{text-align:center;color:var(--mu);font-weight:700;font-size:13px;margin:10px 0 0}
 .stk{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
@@ -53,7 +54,7 @@ td.e{padding:4px}td.e input{width:100%}.pt{font-weight:800;color:var(--c);margin
 body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg transform='translate%288 10%29 rotate%28-10%29 scale%281.5%29' fill='none' stroke='rgba%2820%2C70%2C110%2C.10%29' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22v-5'/%3E%3Cpath d='M12 17c-4 0-6-2.5-6-5.5 0-1.5.7-2.6 1.7-3.4C7.6 5 9.4 2 12 2s4.4 3 4.3 6.1c1 .8 1.7 1.9 1.7 3.4 0 3-2 5.5-6 5.5z'/%3E%3C/g%3E%3Cg transform='translate%2892 18%29 rotate%2815%29 scale%281.5%29' fill='none' stroke='rgba%2820%2C70%2C110%2C.10%29' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z'/%3E%3C/g%3E%3Cg transform='translate%2820 92%29 rotate%288%29 scale%281.5%29' fill='none' stroke='rgba%2820%2C70%2C110%2C.10%29' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 2h6'/%3E%3Cpath d='M10 2v6.5L4.5 19a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L14 8.5V2'/%3E%3Cpath d='M7.5 15h9'/%3E%3C/g%3E%3Cg transform='translate%28100 98%29 rotate%28-8%29 scale%281.5%29' fill='none' stroke='rgba%2820%2C70%2C110%2C.10%29' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/g%3E%3C/svg%3E"),linear-gradient(180deg,var(--b1) 0,var(--b2) 38%,var(--b3) 100%);background-attachment:scroll,fixed;background-size:160px 160px,auto}
 @media(prefers-color-scheme:dark){body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg transform='translate%288 10%29 rotate%28-10%29 scale%281.5%29' fill='none' stroke='rgba%28255%2C255%2C255%2C.06%29' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22v-5'/%3E%3Cpath d='M12 17c-4 0-6-2.5-6-5.5 0-1.5.7-2.6 1.7-3.4C7.6 5 9.4 2 12 2s4.4 3 4.3 6.1c1 .8 1.7 1.9 1.7 3.4 0 3-2 5.5-6 5.5z'/%3E%3C/g%3E%3Cg transform='translate%2892 18%29 rotate%2815%29 scale%281.5%29' fill='none' stroke='rgba%28255%2C255%2C255%2C.06%29' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z'/%3E%3C/g%3E%3Cg transform='translate%2820 92%29 rotate%288%29 scale%281.5%29' fill='none' stroke='rgba%28255%2C255%2C255%2C.06%29' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 2h6'/%3E%3Cpath d='M10 2v6.5L4.5 19a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L14 8.5V2'/%3E%3Cpath d='M7.5 15h9'/%3E%3C/g%3E%3Cg transform='translate%28100 98%29 rotate%28-8%29 scale%281.5%29' fill='none' stroke='rgba%28255%2C255%2C255%2C.06%29' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/g%3E%3C/svg%3E"),linear-gradient(180deg,var(--b1) 0,var(--b2) 38%,var(--b3) 100%)}}
 .mu{display:block;margin-top:12px;font-size:13px;color:var(--mu);font-weight:600;cursor:pointer}
-td.k input[readonly]{cursor:default}td.k input.bad{cursor:help}
+td.k input[readonly]{cursor:default}td.k input.bad,td.k input.vac{cursor:help}
 #tip{position:fixed;z-index:80;display:none;background:#13302a;color:#fff;border-radius:8px;padding:6px 12px;font-weight:800;letter-spacing:1px;pointer-events:none;box-shadow:0 4px 12px rgba(0,0,0,.3)}
 td.e input:placeholder-shown{background:#e9e6dc}td.e input.inc{background:#ffe4ea;border-color:#e11d48}
 .mu2{font-weight:800;color:var(--mu);font-size:12px;text-transform:uppercase;align-self:center;min-width:54px}
@@ -67,21 +68,21 @@ td.e input:placeholder-shown{background:#e9e6dc}td.e input.inc{background:#ffe4e
 <script id="cfg" type="application/json">{"api":"https://script.google.com/macros/s/AKfycbxb-SzgZd2H3FUfTQf3uoWZIlV9RcuYsheiqWfZzdBj4wFWHctJFm8TO79PkaY3NScj-w/exec"}</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script id="main">
-const CFG=(()=>{try{return JSON.parse(document.getElementById('cfg').textContent)}catch(x){return{}}})(),API=CFG.api||'';let LOCK=false,KEY='',MS='',LOCKS={},SEDES=['Villa el Salvador','Puente Piedra','Arequipa','Piura'];const SC={'Villa el Salvador':'#0a8f2a','Puente Piedra':'#2563eb','Arequipa':'#7c3aed','Piura':'#f58a07'};
+const CFG=(()=>{try{return JSON.parse(document.getElementById('cfg').textContent)}catch(x){return{}}})(),API=CFG.api||'';let LOCK=false,KEY='',MS='',LOCKS={},MODOS={},SEDES=['Villa el Salvador','Puente Piedra','Arequipa','Piura'];const SC={'Villa el Salvador':'#0a8f2a','Puente Piedra':'#2563eb','Arequipa':'#7c3aed','Piura':'#f58a07'};
 const TEM={mad:{n:'Maderas',c:'#06621c',d:'#044a15',i:'tree'},fer:{n:'Ferretería',c:'#323232',d:'#1c1c1c',i:'wrench'},sin:{n:'Sintéticos',c:'#00b8a0',d:'#008a78',i:'flask'},pro:{n:'Proyectos',c:'#2563eb',d:'#1e40af',i:'proj'}};
-const mk=([m,p,c])=>{const code=String(c).replace(/\s+/g,'').toUpperCase(),mu=String(m).trim(),tm=/^maderas/i.test(mu)?'mad':/^ferreter/i.test(mu)?'fer':/^sint/i.test(mu)?'sin':/^proyect/i.test(mu)?'pro':'',
+const mk=([m,p,cl,c,ev])=>{const code=String(c).replace(/\s+/g,'').toUpperCase(),mu=String(m).trim(),tm=/^maderas/i.test(mu)?'mad':/^ferreter/i.test(mu)?'fer':/^sint/i.test(mu)?'sin':/^proyect/i.test(mu)?'pro':'',
   t=tm||(/^MAD/.test(code)?'mad':/^(FER|SUM)/.test(code)?'fer':'sin'),nu=mu.match(/(\d+)\s*$/);
-  return{p,code,t,m:tm&&nu?TEM[tm].n+' '+nu[1]:(mu&&mu.toLowerCase()!=='sin módulo'?mu[0].toUpperCase()+mu.slice(1).toLowerCase():'Sin módulo')}};
+  return{p,cl:String(cl||'').trim(),ev:/^(0|no|false)$/i.test(String(ev===undefined?'':ev).trim())?'0':'1',code,t,m:tm&&nu?TEM[tm].n+' '+nu[1]:(mu&&mu.toLowerCase()!=='sin módulo'?mu[0].toUpperCase()+mu.slice(1).toLowerCase():'Sin módulo')}};
 let RAW=[],P=[],LD=1;
 const e=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const nz=s=>String(s).toLowerCase().replace(/[^a-z0-9]/g,'');
 const sh=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
-const temas=()=>Object.keys(TEM).filter(k=>P.some(p=>p.t===k));
+const temas=()=>Object.keys(TEM).filter(k=>P.some(p=>p.t===k&&p.ev!=='0'));
 const base=t=>[1,2,3,4].map(n=>TEM[t].n+' '+n);
 const mods=t=>{const b=base(t),x=[...new Set(P.filter(p=>p.t===t).map(p=>p.m))].filter(m=>!b.includes(m)).sort((a,c)=>(a==='Sin módulo')-(c==='Sin módulo')||a.localeCompare(c,'es',{numeric:true}));return b.concat(x)};
-const hm=(t,m)=>P.some(p=>p.t===t&&p.m===m),fm1=t=>mods(t).find(m=>hm(t,m))||mods(t)[0];
+const hm=(t,m)=>P.some(p=>p.t===t&&p.m===m&&p.ev!=='0'),fm1=t=>mods(t).find(m=>hm(t,m))||mods(t)[0];
 const $=id=>document.getElementById(id),A=$('app'),MD=$('md');
-let S={t:temas()[0],v:'h',multi:false,ef:false,sede:'',m:new Set(),nom:'',dni:'',rows:[],done:false};
+let S={t:temas()[0],tp:'p',v:'h',multi:false,ef:false,sede:'',m:new Set(),nom:'',dni:'',rows:[],done:false};
 const lget=k=>{try{return localStorage.getItem(k)}catch(x){return null}},lset=(k,v)=>{try{localStorage.setItem(k,v)}catch(x){}};
 const J=k=>{try{return JSON.parse(lget(k))}catch(x){return null}};
 const hoy=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
@@ -89,7 +90,7 @@ const IC={tree:'<path d="M12 22v-5"/><path d="M12 17c-4 0-6-2.5-6-5.5 0-1.5.7-2.
 IC.eye='<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>';IC.eyeoff='<path d="M3 3l18 18"/><path d="M10.6 5.1A10 10 0 0 1 12 5c6.5 0 10 7 10 7a17 17 0 0 1-3.2 4.2M6.6 6.6A17 17 0 0 0 2 12s3.5 7 10 7a10 10 0 0 0 4.4-1"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/>';IC.proj='<rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4h6v3H9z"/><path d="M9 12h6M9 16h4"/>';IC.out='<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/>';IC.ok='<path d="M5 12l5 5L20 7"/>';IC.bld='<path d="M4 21V7l8-4 8 4v14"/><path d="M2 21h20"/><path d="M9 21v-6h6v6"/><path d="M9 10h.01M15 10h.01"/>';
 const ic=n=>'<svg class="i" viewBox="0 0 24 24" aria-hidden="true">'+IC[n]+'</svg>';
 async function api(a,d){const r=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(Object.assign({action:a,clave:KEY,sede:MS},d))});return r.json()}
-function setP(rows){RAW=rows;P=RAW.map(mk);if(!temas().includes(S.t))S.t=temas()[0]}
+function setP(rows){RAW=rows.map(r=>r.length===3?[r[0],r[1],'',r[2],'1']:[r[0],r[1],r[2]===undefined?'':r[2],r[3],r[4]===undefined?'':r[4]]);P=RAW.map(mk);if(!temas().includes(S.t))S.t=temas()[0]}
 async function guardar(r){if(!r.nombre&&!r.dni)return;
   if(API)try{await api('registrar',{r});return}catch(x){}
   const a=J('dc_notas')||[];a.push(r);lset('dc_notas',JSON.stringify(a))}
@@ -97,29 +98,49 @@ function paint(t){const T=TEM[t],r=document.documentElement.style;r.setProperty(
 function bn(back){$('bn').className='bn'+(S.v==='m'?' mm':'');$('bn').innerHTML=(back?'<button class="l" onclick="'+(S.v==='m'?'xm()':'home()')+'">← Inicio</button>':'')+'DICTADO DE CÓDIGOS'+(LOCK?' '+ic('lock'):'')+(S.v==='m'?'<button class="r" style="background:#e11d48;color:#fff" onclick="xm()">'+ic('out')+' Salir de master</button>':'<button class="r" onclick="master()">'+ic('lock')+' Master</button>')}
 function modal(h){MD.innerHTML='<div class="mc">'+h+'</div>';MD.classList.add('on')}
 function closeM(){MD.classList.remove('on')}
+const wait=t=>modal('<h3>'+t+'</h3><div class="sp"></div><p>Un momento, por favor.</p>');
 MD.addEventListener('click',ev=>{if(ev.target===MD)closeM()});
 function pick(t){S.t=t;S.ef=false;S.m=new Set([fm1(t)]);home()}
-function tg(m){if(S.multi&&!S.ef)S.m.has(m)?S.m.delete(m):S.m.add(m);else S.m=new Set([m]);S.ef=false;home()}
-function ef(){S.ef=true;S.m=new Set(mods(S.t));home()}
+function tg(m){if(S.multi&&!S.ef)S.m.has(m)?S.m.delete(m):S.m.add(m);else S.m=new Set([m]);S.ef=false;home();chk()}
+function ef(){S.ef=true;S.m=new Set(mods(S.t));home();chk()}
+async function chk(){if(S.v==='h'&&LOCK&&S.sede&&S.dni.length===8&&await yaHizo())modal(YA())}
 function mm(v){S.multi=v;if(!v&&!S.ef&&S.m.size>1)S.m=new Set([[...S.m][0]]);home()}
 function ss(x){S.sede=x;LOCK=!!LOCKS[x];refLock();if(S.nom.trim()&&S.dni.length===8)home();else idScreen()}
 function idScreen(er){S.v='i';document.body.classList.remove('wide');paint(TEM[S.t]?S.t:'mad');bn(false);
   A.innerHTML=`<h1>${ic('pen')} Tus datos</h1><p class="sub">${e(S.sede)} · <a href="#" onclick="S.sede='';wel();return false" style="color:var(--c)">cambiar sede</a></p>
-  <div class="box f"><input id="inm" placeholder="Nombre completo" autocomplete="name" value="${e(S.nom)}"><input id="idn" inputmode="numeric" maxlength="8" placeholder="DNI" value="${e(S.dni)}">
+  <div class="box f"><input id="idn" inputmode="numeric" maxlength="8" placeholder="DNI" value="${e(S.dni)}"><input id="inm" placeholder="Nombre completo" autocomplete="name" value="${e(S.nom)}"><p id="ist" class="lk" style="display:none;margin:0 0 8px"></p>
   <label class="mu"><input type="checkbox" id="irm" ${J('dc_id')?'checked':''}> Recordar mis datos en este celular</label></div>
   ${er?`<p class="er">${er}</p>`:''}<button class="bt" style="width:100%;font-size:17px" onclick="idok()">Continuar</button>`;
-  $('idn').oninput=function(){this.value=this.value.replace(/\D/g,'')};
+  $('inm').dataset.auto=S.nom?'0':'1';$('inm').addEventListener('input',function(){this.dataset.auto='0'});
+  $('idn').oninput=function(){this.value=this.value.replace(/\D/g,'');if(this.value.length===8)nomDni(this.value);else{NQ++;BUSQ=false;$('ist').style.display='none';$('inm').placeholder='Nombre completo';$('inm').disabled=false;if($('inm').dataset.auto==='2'){$('inm').value='';$('inm').dataset.auto='1'}}};
   $('idn').onkeydown=$('inm').onkeydown=ev=>{if(ev.key==='Enter'){ev.preventDefault();idok()}}}
-function idok(){const n=$('inm').value.trim().replace(/\s+/g,' '),d=$('idn').value.replace(/\D/g,'');S.nom=n;S.dni=d;
+let NQ=0,BUSQ=false;
+async function nomDni(d){const q=++NQ,i=$('inm'),st=$('ist');if(!i||!st)return;
+  BUSQ=true;st.style.display='';st.textContent='Buscando tu DNI en la base de datos…';i.placeholder='Buscando…';i.disabled=true;
+  let n='';
+  try{if(API){const c=new AbortController(),t=setTimeout(()=>c.abort(),6000);try{const r=await(await fetch(API+'?action=nombre&dni='+d,{signal:c.signal})).json();if(r&&r.nombre)n=String(r.nombre).trim()}finally{clearTimeout(t)}}}catch(x){}
+  if(!n){try{const l=(J('dc_notas')||[]).filter(x=>String(x.dni)===d&&x.nombre).pop();if(l)n=String(l.nombre).trim()}catch(x){}}
+  const i2=$('inm'),st2=$('ist'),d2=$('idn');if(q!==NQ)return;if(!i2||!st2||!d2||d2.value!==d){BUSQ=false;if(i2){i2.disabled=false;i2.placeholder='Nombre completo'}return}
+  BUSQ=false;i2.disabled=false;i2.placeholder='Nombre completo';
+  if(!n){st2.textContent='No encontramos este DNI. Escribe tu nombre completo.';return}
+  if(i2.dataset.auto!=='0'||!i2.value.trim()){i2.value=n;i2.dataset.auto='2';st2.textContent='Nombre encontrado.'}
+  else st2.textContent='Nombre encontrado. Se mantuvo el que escribiste.'}
+function idok(){if(BUSQ)return;const n=$('inm').value.trim().replace(/\s+/g,' '),d=$('idn').value.replace(/\D/g,'');S.nom=n;S.dni=d;
   if(n.length<3)return idScreen('Escribe tu nombre completo.');if(d.length!==8)return idScreen('El DNI debe tener 8 dígitos.');
   if($('irm').checked)lset('dc_id',JSON.stringify({nom:n,dni:d}));else try{localStorage.removeItem('dc_id')}catch(x){}
   home()}
 function noyo(){S.nom='';S.dni='';try{localStorage.removeItem('dc_id')}catch(x){}idScreen()}
-async function refLock(){if(!API)return;try{const c=new AbortController(),t=setTimeout(()=>c.abort(),4500),r=await(await fetch(API+'?action=get&t='+Date.now(),{signal:c.signal})).json();clearTimeout(t);if(r.locks){LOCKS=r.locks;lset('dc_locks',JSON.stringify(LOCKS))}}catch(x){}LOCK=!!LOCKS[S.sede]}
+async function refLock(){if(!API)return;try{const c=new AbortController(),t=setTimeout(()=>c.abort(),3500),r=await(await fetch(API+'?action=get&t='+Date.now(),{signal:c.signal})).json();clearTimeout(t);if(r.locks){LOCKS=r.locks;lset('dc_locks',JSON.stringify(LOCKS))}if(r.modos){MODOS=r.modos;lset('dc_modos',JSON.stringify(MODOS))}}catch(x){}LOCK=!!LOCKS[S.sede]}
+const TP={p:'Producto',c:'Como lo pide el cliente',m:'Mixto'},TPN={producto:'p',cliente:'c',mixto:'m'};
+const eff=()=>LOCK?(TPN[MODOS[S.sede]]||'p'):S.tp;
+const stp=k=>{S.tp=k;home()};
+function tipoH(){const x=eff();return '<h3>Tipo de dictado</h3><div class="chips">'+Object.keys(TP).map(k=>'<button class="ch '+(x===k?'on':'')+'" '+(LOCK?'disabled style="'+(x===k?'':'opacity:.4;')+'cursor:not-allowed"':'onclick="stp(\''+k+'\')"')+'>'+TP[k]+'</button>').join('')+'</div>'+(LOCK?'<p class="lk" style="text-align:left;margin:8px 0 0">'+ic('lock')+' En evaluación el tipo lo define el master.</p>':'')}
+const fn=n=>n<10?'0'+n:''+n;
+const avt=()=>LOCK?ic('lock')+' EVALUACIÓN':'PRÁCTICA · sin nota ni puntaje (simulación)';
 const mstr=()=>S.ef?'Examen Final':[...S.m].join(', ');
-const dk=()=>'dc_'+S.sede+'|'+S.dni+'|'+TEM[S.t].n+'|'+(S.ef?'EF':[...S.m].sort().join(','));
+const dks=()=>(S.ef?['EF']:[...S.m]).map(m=>'dc_'+S.sede+'|'+S.dni+'|'+TEM[S.t].n+'|'+m);
 const YA=()=>'<h3>'+ic('lock')+' Ya realizaste esta evaluación</h3><p>Tu DNI ya tiene registrado el dictado de <b>'+e(TEM[S.t].n+' · '+mstr())+'</b>. Solo se puede rendir una vez.</p><button class="bt" onclick="closeM()">Entendido</button>';
-async function yaHizo(){if(lget(dk()))return true;
+async function yaHizo(){if(dks().some(k=>lget(k)))return true;
   if(API)try{const q='&dni='+S.dni+'&sede='+encodeURIComponent(S.sede)+'&tema='+encodeURIComponent(TEM[S.t].n)+'&modulos='+encodeURIComponent(mstr());if((await(await fetch(API+'?action=check'+q)).json()).done)return true}catch(x){}
   return false}
 function wel(){if(!J('dc_id')){S.nom='';S.dni=''}S.v='h';document.body.classList.remove('wide');bn(false);
@@ -129,23 +150,25 @@ function home(er){KEY='';if(!S.sede)return wel();if(!S.nom.trim()||S.dni.length!
   A.innerHTML=`<h1>${ic('pen')} Dictado de códigos</h1><p class="sub">${e(S.sede)} · <a href="#" onclick="S.sede='';home();return false" style="color:var(--c)">cambiar sede</a></p>
   <p class="lk" style="margin:-8px 0 14px">${e(S.nom)} · DNI ${e(S.dni)} · <a href="#" onclick="noyo();return false" style="color:var(--c)">no soy yo</a></p>
   <div class="box"><h3>Temática</h3><div class="chips">${temas().map(k=>`<button class="ch ${S.t===k?'on':''}" style="${S.t===k?`background:${TEM[k].c};border-color:${TEM[k].c}`:`border-color:${TEM[k].c}`}" onclick="pick('${k}')">${ic(TEM[k].i)} ${TEM[k].n}</button>`).join('')}</div>
-  <h3>Módulo</h3><div class="chips">${mods(S.t).map(m=>`<button class="ch ${S.m.has(m)&&!S.ef?'on':''}" ${hm(S.t,m)?`onclick="tg('${m}')"`:'disabled style="opacity:.4;cursor:not-allowed"'}>${e(m)}</button>`).join('')}<button class="ch ${S.ef?'on':''}" style="border-style:dashed" onclick="ef()">${ic('star')} Examen Final</button></div><label class="mu"><input type="checkbox" ${S.multi?'checked':''} onchange="mm(this.checked)"> Elegir varios módulos</label></div>
-  ${LOCK?'<div class="warn">'+ic('lock')+' Examen bloqueado: cada módulo se puede llenar <b>una sola vez</b> por alumno.</div>':''}
+  <h3>Módulo</h3><div class="chips">${mods(S.t).map(m=>`<button class="ch ${S.m.has(m)&&!S.ef?'on':''}" ${hm(S.t,m)?`onclick="tg('${m}')"`:'disabled style="opacity:.4;cursor:not-allowed"'}>${e(m)}</button>`).join('')}<button class="ch ${S.ef?'on':''}" style="border-style:dashed" onclick="ef()">${ic('star')} Examen Final</button></div>${tipoH()}<label class="mu"><input type="checkbox" ${S.multi?'checked':''} onchange="mm(this.checked)"> Elegir varios módulos</label></div>
+  ${LOCK?'<div class="warn">'+ic('lock')+' Evaluación: cada módulo se puede llenar <b>una sola vez</b> por alumno.</div>':'<div class="warn" style="background:#eef2ff;border-color:#818cf8;color:#3730a3">Práctica: simulación sin nota ni puntaje.</div>'}
   ${er?`<p class="er">${er}</p>`:''}
-  <button class="bt" style="width:100%;font-size:17px" onclick="gen(true)">Generar dictado</button>`}
+  <button class="bt" style="width:100%;font-size:17px" onclick="gen(true)">Generar dictado</button>
+  <button class="bt w" style="width:100%;margin-top:12px" onclick="reg()">${ic('proj')} Ver mis notas</button>`}
 async function gen(first){
   if(!S.sede)return home('Elige tu sede.');
   if(!S.nom.trim()||S.dni.length!==8)return idScreen();
-  if(S.busy)return;S.busy=1;await refLock();
-  if(LOCK){if(await yaHizo()){S.busy=0;return modal(YA())}first=true}
-  S.busy=0;
+  if(S.busy)return;S.busy=1;wait('Preparando tu dictado…');const pre=LOCK?yaHizo():null;await refLock();
+  if(LOCK){if(await(pre||yaHizo())){S.busy=0;return modal(YA())}first=true}
+  S.busy=0;closeM();
   S.v='g';paint(S.t);bn(true);S.done=false;const seen=new Set();
-  let r=P.filter(p=>p.t===S.t&&S.m.has(p.m)).filter(p=>!seen.has(p.p)&&seen.add(p.p));
+  const tp=eff();let r=P.filter(p=>p.t===S.t&&S.m.has(p.m)&&p.ev!=='0'&&(tp!=='c'||p.cl)).filter(p=>!seen.has(p.p)&&seen.add(p.p));
+  if(!r.length){home();return modal('<h3>No hay códigos para este dictado</h3><p>'+(tp==='c'?'Estos módulos todavía no tienen frases de «Como lo pide el cliente».':'Los códigos de estos módulos están desactivados.')+'</p><button class="bt" onclick="closeM()">Entendido</button>')}
   if(!first){r=sh(r);const lo=Math.min(5,r.length);r=r.slice(0,lo+(Math.random()*(r.length-lo+1)|0))}
-  S.rows=r;
-  A.innerHTML=`<div class="stk" id="stk0" style="margin:0 0 12px"></div>${LOCK?'<div class="warn">'+ic('lock')+' EXAMEN: solo puedes llenarlo <b>una vez</b>. Al calificar no podrás repetirlo.</div>':''}<div id="cap"><div class="who" id="who"></div>
-  <span class="tag">${ic(TEM[S.t].i)} ${TEM[S.t].n} · ${S.ef?'Examen Final':[...S.m].map(e).join(', ')}</span><div id="res"></div>
-  <div class="tw"><table><tr><th>Producto</th><th>Código</th></tr>${r.map((p,i)=>`<tr><td class="p">${e(p.p)}</td><td class="k"><input data-i="${i}" maxlength="${p.code.length}" placeholder=" " autocomplete="off" autocapitalize="characters" spellcheck="false"></td></tr>`).join('')}</table></div></div>
+  r=r.map(p=>{const c=tp==='c'||(tp==='m'&&p.cl&&Math.random()<.5);return{p:p.p,code:p.code,txt:c?p.cl:p.p,kd:c?'c':'p'}});S.rows=r;
+  A.innerHTML=`<div class="stk" id="stk0" style="margin:0 0 12px"></div>${LOCK?'<div class="warn">'+ic('lock')+' EVALUACIÓN: solo puedes llenarla <b>una vez</b>. Al calificar no podrás repetirla.</div>':''}<div id="cap"><div class="av ${LOCK?'ev':'pr'}" id="av">${avt()}</div><div class="who" id="who"></div>
+  <span class="tag">${ic(TEM[S.t].i)} ${TEM[S.t].n} · ${S.ef?'Examen Final':[...S.m].map(e).join(', ')}${tp==='p'?'':' · '+TP[tp]}</span><div id="res"></div>
+  <div class="tw"><table><tr><th>${tp==='c'?'Como lo pide el cliente':tp==='m'?'Producto / Pedido del cliente':'Producto'}</th><th>Código</th></tr>${r.map((p,i)=>`<tr><td class="p">${p.kd==='c'?'<i>“'+e(p.txt)+'”</i>':e(p.txt)}</td><td class="k"><input data-i="${i}" maxlength="${p.code.length}" placeholder=" " autocomplete="off" autocapitalize="characters" spellcheck="false"></td></tr>`).join('')}</table></div></div>
   ${LOCK?'<p class="lk">'+ic('lock')+' Solo puedes llenarlo una vez</p>':''}<div class="stk" id="stk"></div>`;
   bar();wh();const ins=[...A.querySelectorAll('#cap input')];
   ins.forEach((x,i)=>x.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();ins[i+1]?ins[i+1].focus():calif()}}));
@@ -161,15 +184,14 @@ function tip(x,on){let t=$('tip');if(!t){t=document.createElement('div');t.id='t
 function wrong(x){x.addEventListener('mouseenter',()=>tip(x,1));x.addEventListener('mouseleave',()=>tip(x,0));x.addEventListener('click',()=>{tip(x,1);setTimeout(()=>tip(x,0),2500)})}
 async function calif(sure){if(S.done||S.busy)return;
   if(!S.nom.trim()||S.dni.length!==8)return idScreen();
-  S.busy=1;await refLock();bar();
-  if(LOCK){if(await yaHizo()){S.busy=0;return modal(YA())}
-    if(sure!==true){S.busy=0;return modal('<h3>'+ic('lock')+' Solo tienes una oportunidad</h3><p>Este dictado es un <b>examen de una sola vez</b>. Al calificar ya no podrás repetirlo ni chocolatear.</p><button class="bt" onclick="closeM();calif(true)">Sí, calificar</button><button class="bt w" onclick="closeM()">Seguir revisando</button>')}}
-  S.busy=0;if(S.done)return;let ok=0;
-  A.querySelectorAll('#cap input').forEach(x=>{const g=nz(x.value)===nz(S.rows[+x.dataset.i].code);x.readOnly=true;x.classList.add(g?'ok':'bad');if(g)ok++;else wrong(x)});
-  const dt=$('dat');if(dt)dt.remove();wh();const n=S.rows.length,nota=Math.round(ok/n*200)/10,pts=S.ef?0:nota>=20?1:nota>=17?.5:0;S.done=true;
-  if(LOCK)lset(dk(),'1');
-  guardar({ts:new Date().toISOString(),fecha:hoy(),nombre:S.nom.trim(),dni:S.dni,tema:TEM[S.t].n,modulos:mstr(),ok,total:n,nota,puntos:pts,modo:LOCK?'Examen':'Práctica',sede:S.sede});
-  $('res').innerHTML=`<div class="res"><p class="big">${nota}/20</p><b>${nota>=20?'¡Perfecto!':nota>=17?'¡Muy bien!':'Sigue practicando'}</b><p class="pt">${S.ef?'Examen Final · no suma puntos':ic('star')+' Puntos ganados: '+pts}</p>${nota<17?'<p class="er">Tienes que repasar más.</p>':''}</div>`;
+  S.busy=1;wait('Calificando…');const pre=LOCK?yaHizo():null;await refLock();bar();
+  if(LOCK){if(await(pre||yaHizo())){S.busy=0;return modal(YA())}
+    if(sure!==true){S.busy=0;return modal('<h3>'+ic('lock')+' Solo tienes una oportunidad</h3><p>Esto es una <b>evaluación de una sola vez</b>. Al calificar ya no podrás repetirla ni chocolatear.</p><button class="bt" onclick="closeM();calif(true)">Sí, calificar</button><button class="bt w" onclick="closeM()">Seguir revisando</button>')}}
+  S.busy=0;closeM();if(S.done)return;let ok=0;const av=$('av');if(av){av.className='av '+(LOCK?'ev':'pr');av.innerHTML=avt()}
+  A.querySelectorAll('#cap input').forEach(x=>{const v=x.value.trim(),g=nz(v)===nz(S.rows[+x.dataset.i].code);x.readOnly=true;x.classList.add(g?'ok':v?'bad':'vac');if(g)ok++;else wrong(x)});
+  const dt=$('dat');if(dt)dt.remove();wh();const n=S.rows.length,nota=Math.round(ok/n*200)/10,pts=LOCK&&!S.ef?nota>=20?1:nota>=17?.5:0:0;S.done=true;
+  if(LOCK){dks().forEach(k=>lset(k,'1'));guardar({ts:new Date().toISOString(),fecha:hoy(),nombre:S.nom.trim(),dni:S.dni,tema:TEM[S.t].n,modulos:mstr(),ok,total:n,nota,puntos:pts,modo:'Examen',sede:S.sede})}
+  $('res').innerHTML=LOCK?`<div class="res"><p class="big">${fn(nota)}</p><b>${nota>=20?'¡Perfecto!':nota>=17?'¡Muy bien!':'Sigue practicando'}</b><p class="pt">${S.ef?'Examen Final · no suma puntos':ic('star')+' Puntos ganados: '+pts}</p>${nota<17?'<p class="er">Tienes que repasar más.</p>':''}</div>`:`<div class="res"><b>Práctica terminada</b><p class="lk">Sin nota ni puntaje: es una simulación y no se guarda.</p></div>`;
   bar();window.scrollTo(0,0)}
 async function img(){
   if(!window.html2canvas)return modal('<h3>No se pudo preparar la imagen</h3><button class="bt" onclick="closeM()">Cerrar</button>');
@@ -185,6 +207,26 @@ async function img(){
     const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=nm;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);closeM()
   }catch(x){modal('<h3>No se pudo generar la imagen</h3><p>Intenta de nuevo.</p><button class="bt" onclick="closeM()">Cerrar</button>')}
   S.imgb=0}
+/* ===== Mis notas ===== */
+let RG=[],RF={c:'',m:'',t:''},RM=[];
+const fh=x=>x.t?new Date(x.t).toLocaleString('es-PE',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}):fv(fd(x.fecha));
+async function reg(){S.v='r';document.body.classList.add('wide');paint(TEM[S.t]?S.t:'mad');bn(true);RF={c:'',m:'',t:''};
+  A.innerHTML=`<h1>${ic('proj')} Mis notas</h1><div class="box" style="text-align:center"><div class="sp"></div><b>Buscando tus notas…</b></div>`;
+  let L=[],er='';
+  try{if(API){const r=await(await fetch(API+'?action=mis&dni='+S.dni)).json();if(!r.ok)er='El servidor aún no tiene activada esta opción. Avisa al administrador.';else L=r.notas||[]}else L=(J('dc_notas')||[]).filter(x=>String(x.dni)===S.dni)}catch(x){er='No se pudo cargar. Revisa tu conexión e intenta de nuevo.'}
+  if(S.v!=='r')return;
+  RG=L.map(x=>{const pt=String(x.tema||'').split('·').map(a=>a.trim()),ci=pt[0],mt=String(x.modulos||'').trim()||pt[1]||'',d=new Date(x.ts);return Object.assign({},x,{ciclo:ci,ck:CK(ci),mods:mt.split(',').map(a=>a.trim()).filter(Boolean),puntos:pp(x.nota,mt),t:isNaN(d)?0:d.getTime()})}).sort((a,b)=>b.t-a.t);
+  A.innerHTML=`<h1>${ic('proj')} Mis notas</h1><p class="sub">${e(S.nom)} · DNI ${e(S.dni)}</p>`+(er?`<p class="er">${er}</p>`:`<div class="box"><div class="fl"><select onchange="RF.t=this.value;rt()">${[['','Examen y práctica'],['Examen','Solo examen'],['Práctica','Solo práctica']].map(([v,t])=>`<option value="${v}">${t}</option>`).join('')}</select></div><div id="rcc"></div><p class="lk" id="rs"></p><div class="tw"><table id="rtb"></table></div></div>`);
+  if(!er)rt()}
+const rc=k=>{RF.c=k;RF.m='';rt()},rm=i=>{RF.m=RF.m===RM[i].m?'':RM[i].m;rt()};
+function rt(){const chip=(l,c,on,fn)=>`<button class="ch" style="border-color:${c};${on?'background:'+c+';color:#fff':''}" onclick="${fn}">${l}</button>`;
+  RM=[];if(RF.c){const c=TEM[RF.c].c;mods(RF.c).forEach(m=>RM.push({m,c}));RG.forEach(x=>x.ck===RF.c&&x.mods.forEach(m=>{if(m!=='Examen Final'&&!RM.some(o=>o.m===m))RM.push({m,c})}));RM.push({m:'Examen Final',c:EFC})}
+  $('rcc').innerHTML=`<div class="chips" style="margin:10px 0">${chip('Todos','#475569',!RF.c,"rc('')")}${Object.keys(TEM).map(k=>chip(ic(TEM[k].i)+' '+TEM[k].n,TEM[k].c,RF.c===k,`rc('${k}')`)).join('')}</div>`+(RF.c?`<div class="chips" style="margin:0 0 10px">${chip('Todos','#475569',!RF.m,"RF.m='';rt()")}${RM.map((o,i)=>chip(e(o.m.replace(/^\D+(?=\d)/,'Módulo ')),o.c,RF.m===o.m,`rm(${i})`)).join('')}</div>`:'');
+  const r=RG.filter(x=>(!RF.c||x.ck===RF.c)&&(!RF.m||x.mods.includes(RF.m))&&(!RF.t||x.modo===RF.t)),
+    pt=r.reduce((s,x)=>s+x.puntos,0),pr=r.length?Math.round(r.reduce((s,x)=>s+ +x.nota,0)/r.length*10)/10:0,
+    mc=(x,m)=>m==='Examen Final'?EFC:(TEM[x.ck]||{c:'#555'}).c;
+  $('rs').textContent=r.length+' registros · Promedio '+pr+' · Puntos totales '+pt;
+  $('rtb').innerHTML='<tr><th style="min-width:130px">Fecha y hora</th><th>Ciclo</th><th style="min-width:120px">Módulo</th><th>Nota</th><th>Puntos</th><th>Tipo</th></tr>'+(r.length?r.map(x=>`<tr><td class="p" style="white-space:nowrap">${e(fh(x))}</td><td class="p"><span class="nm" style="background:${(TEM[x.ck]||{c:'#555'}).c}">${e(x.ciclo)}</span></td><td class="p">${x.mods.map(m=>`<span class="nm" style="background:${mc(x,m)}">${e(m)}</span>`).join('')}</td><td class="p"><b>${e(x.nota)}</b></td><td class="p"><b>${x.mods.includes('Examen Final')?'—':ic('star')+' '+e(x.puntos)}</b></td><td class="p"><span class="nm" style="background:${x.modo==='Examen'?'#e11d48':'#64748b'}">${e(x.modo)}</span></td></tr>`).join(''):'<tr><td class="p" colspan="6">No hay notas con ese filtro.</td></tr>')}
 /* ===== Master ===== */
 function master(){if(KEY)return mp();modal('<h3>'+ic('lock')+' Master</h3>'+(S.sede?'<p>Sede: <b>'+e(S.sede)+'</b></p><input type="hidden" id="ms" value="'+e(S.sede)+'">':'<div class="f"><select id="ms">'+SEDES.map(x=>'<option>'+e(x)+'</option>').join('')+'</select></div>')+'<div class="f pwb"><input id="pw" type="password" placeholder="Clave de la sede" onkeydown="if(event.key===\'Enter\')mlog()"><button type="button" id="ey" onclick="eye()" aria-label="Mostrar clave">'+ic('eye')+'</button></div><button class="bt" onclick="mlog()">Entrar</button><button class="bt w" onclick="closeM()">Cerrar</button>');setTimeout(()=>$('pw')&&$('pw').focus(),50)}
 function eye(){const i=$('pw'),h=i.type==='password';i.type=h?'text':'password';$('ey').innerHTML=ic(h?'eyeoff':'eye');i.focus()}
@@ -195,7 +237,7 @@ async function mlog(){const k=$('pw').value;MS=$('ms').value;let ok=false;modal(
 let MT='n',N=[],D=[],F={q:'',d1:'',d2:'',p:'',c:'',m:'',t:''},PQ='',PM='',VAL=false,DIRTY=0,PL='';
 async function mp(){S.v='m';bn(true);document.body.classList.add('wide');
   try{N=API?((await api('notas')).notas||[]):(J('dc_notas')||[]).filter(x=>x.sede===MS)}catch(x){N=[]}N=N.map(x=>{const pt=String(x.tema||'').split('·').map(a=>a.trim()),ci=pt[0],mt=String(x.modulos||'').trim()||pt[1]||'';return Object.assign({},x,{fecha:fd(x.fecha),ciclo:ci,ck:CK(ci),puntos:pp(x.nota,mt),mods:mt.split(',').map(a=>a.trim()).filter(Boolean)})});F.c='';F.m='';F.t='';
-  D=RAW.map((r,i)=>({id:i,m:String(r[0]).trim()||'Sin módulo',p:r[1],c:r[2]}));PQ='';PM='';PC='';VAL=false;DIRTY=0;mv()}
+  D=RAW.map((r,i)=>({id:i,m:String(r[0]).trim()||'Sin módulo',p:r[1],cl:r[2],c:r[3],ev:/^(0|no|false)$/i.test(String(r[4]).trim())?'0':'1'}));PQ='';PM='';PC='';VAL=false;DIRTY=0;mv()}
 const MO={jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
 const fd=x=>{const t=String(x||'').trim(),z=n=>String(n).padStart(2,'0');let m=t.match(/^(\d{4})-(\d{2})-(\d{2})/);if(m)return m[1]+'-'+m[2]+'-'+m[3];
   m=t.match(/^\w{3},?\s+(\w{3})\s+(\d{1,2})\s+(\d{4})/);if(m&&MO[m[1].toLowerCase()])return m[3]+'-'+z(MO[m[1].toLowerCase()])+'-'+z(m[2]);
@@ -219,8 +261,8 @@ function nt(){const q=nz(F.q),r=N.filter(x=>(!q||nz(x.nombre+x.dni).includes(q))
   const mc=(x,m)=>m==='Examen Final'?EFC:(TEM[x.ck]||{c:'#555'}).c;
   $('tn').innerHTML='<tr><th style="min-width:105px">Fecha</th><th style="min-width:300px">Alumno</th><th>DNI</th><th>Ciclo</th><th style="min-width:120px">Módulo</th><th>Nota</th><th>Puntos</th><th>Tipo</th></tr>'+r.map(x=>`<tr><td class="p" style="white-space:nowrap">${e(fv(x.fecha))}</td><td class="p" style="text-align:left;min-width:300px">${e(x.nombre)}</td><td class="p">${e(x.dni)}</td><td class="p"><span class="nm" style="background:${(TEM[x.ck]||{c:'#555'}).c}">${e(x.ciclo)}</span></td><td class="p">${x.mods.map(m=>`<span class="nm" style="background:${mc(x,m)}">${e(m)}</span>`).join('')}</td><td class="p">${e(x.nota)}</td><td class="p"><b>${x.mods.includes('Examen Final')?'—':ic('star')+' '+e(x.puntos)}</b></td><td class="p"><span class="nm" style="background:${x.modo==='Examen'?'#e11d48':'#64748b'}">${e(x.modo)}</span></td></tr>`).join('')}
 const ML=()=>[...new Set([...Object.keys(TEM).flatMap(base),...D.map(d=>d.m.trim()).filter(Boolean)])].sort((a,b)=>a.localeCompare(b,'es',{numeric:true}));
-function mpr(){$('mb').innerHTML=`<div class="box"><div class="fl"><input placeholder="Buscar producto, módulo o código" value="${e(PQ)}" oninput="PQ=this.value;pl()"><button class="bt w" id="ba" onclick="pa()"></button><button class="bt" onclick="ps()">Guardar cambios</button></div><div id="mc" style="margin:4px 0 10px"></div><datalist id="dm">${ML().map(m=>`<option value="${e(m)}">`).join('')}</datalist><p class="lk" id="pm"></p><div class="tw"><table id="tp"></table></div></div>`;mcp();pl()}
-const tOf=d=>mk([d.m,d.p||'x',d.c||'x']).t;let MLS=[],MK={},PC='';
+function mpr(){$('mb').innerHTML=`<div class="box"><div class="fl"><input placeholder="Buscar producto, módulo o código" value="${e(PQ)}" oninput="PQ=this.value;pl()"><button class="bt w" id="ba" onclick="pa()"></button><button class="bt w" onclick="pev(1)">Marcar todos</button><button class="bt w" onclick="pev(0)">Desmarcar todos</button><button class="bt" onclick="ps()">Guardar cambios</button></div><div id="mc" style="margin:4px 0 10px"></div><datalist id="dm">${ML().map(m=>`<option value="${e(m)}">`).join('')}</datalist><p class="lk" id="pm"></p><div class="tw"><table id="tp"></table></div></div>`;mcp();pl()}
+const tOf=d=>mk([d.m,d.p||'x','',d.c||'x']).t;let MLS=[],MK={},PC='';
 function mcp(){const g={};Object.keys(TEM).forEach(k=>base(k).forEach(m=>g[m]=k));D.forEach(d=>{const m=d.m.trim();if(m&&!g[m])g[m]=tOf(d)});MK=g;const o=Object.keys(TEM);
   const all=Object.keys(g).sort((a,b)=>o.indexOf(g[a])-o.indexOf(g[b])||a.localeCompare(b,'es',{numeric:true}));
   if(PM&&(!g[PM]||(PC&&g[PM]!==PC)))PM='';MLS=PC?all.filter(m=>g[m]===PC):[];
@@ -232,29 +274,36 @@ const pmod=i=>{PM=i<0?'':MLS[i];mcp();pl()}
 const pmx=()=>{const p=$('pm');if(p)p.textContent=PL+(DIRTY?' · cambios sin guardar':'')};
 const pf=(i,k,v)=>{D.find(d=>d.id===i)[k]=v;DIRTY=1;pmx()};
 function pl(){const q=nz(PQ),r=D.filter(d=>(!q||nz(d.p+d.c+d.m).includes(q))&&(!PC||MK[d.m.trim()]===PC)&&(!PM||d.m.trim()===PM));PL=r.length+' de '+D.length+' productos';pmx();
-  const c=(d,k,x)=>`<td class="e"><input ${k==='m'?'onchange="mcp()"':''} ${x||''} placeholder=" " class="${VAL&&!String(d[k]).trim()?'inc':''}" value="${e(d[k])}" oninput="pf(${d.id},'${k}',this.value);this.classList.remove('inc')"></td>`;
+  const c=(d,k,x)=>`<td class="e"><input ${k==='m'?'onchange="mcp()"':''} ${x||''} placeholder=" " class="${VAL&&k!=='cl'&&!String(d[k]).trim()?'inc':''}" value="${e(d[k])}" oninput="pf(${d.id},'${k}',this.value);this.classList.remove('inc')"></td>`;
   const hk=PM?MK[PM]:PC,hc=hk&&TEM[hk]?TEM[hk].c:'',hs=hc?` style="background:${hc}"`:'';
-  $('tp').innerHTML=`<tr><th style="width:8px;padding:0${hc?';background:'+hc:''}"></th><th${hs}>Módulo</th><th${hs}>Producto</th><th${hs}>Código</th><th${hs}></th></tr>`+r.map(d=>`<tr><td style="background:${TEM[tOf(d)].c};width:8px;padding:0"></td>`+c(d,'m','list="dm"')+c(d,'p')+c(d,'c')+`<td class="e"><button class="bt w" style="padding:8px 10px" onclick="pd(${d.id})" aria-label="Quitar">${ic('trash')}</button></td></tr>`).join('')}
-function pa(){D.unshift({id:Date.now(),m:PM||(PC?base(PC)[0]:''),p:'',c:''});PQ='';DIRTY=1;mpr();const i=document.querySelector('#tp tr:nth-child(2) td:nth-child(2) input');if(i)i.focus()}
+  $('tp').innerHTML=`<tr><th style="width:8px;padding:0${hc?';background:'+hc:''}"></th><th${hs}>Módulo</th><th${hs}>Producto</th><th${hs}>Como lo pide el cliente</th><th${hs}>Código</th><th${hs}>Evaluar</th><th${hs}></th></tr>`+r.map(d=>`<tr${d.ev==='0'?' style="opacity:.5"':''}><td style="background:${TEM[tOf(d)].c};width:8px;padding:0"></td>`+c(d,'m','list="dm"')+c(d,'p')+c(d,'cl')+c(d,'c')+`<td class="e" style="text-align:center"><input type="checkbox" style="width:24px;height:24px" ${d.ev==='0'?'':'checked'} onchange="pf(${d.id},'ev',this.checked?'1':'0');this.closest('tr').style.opacity=this.checked?1:.5" aria-label="Evaluar"></td><td class="e"><button class="bt w" style="padding:8px 10px" onclick="pd(${d.id})" aria-label="Quitar">${ic('trash')}</button></td></tr>`).join('')}
+const pev=v=>{const q=nz(PQ);D.filter(d=>(!q||nz(d.p+d.c+d.m).includes(q))&&(!PC||MK[d.m.trim()]===PC)&&(!PM||d.m.trim()===PM)).forEach(d=>d.ev=v?'1':'0');DIRTY=1;pl()};
+function pa(){D.unshift({id:Date.now(),m:PM||(PC?base(PC)[0]:''),p:'',cl:'',c:'',ev:'1'});PQ='';DIRTY=1;mpr();const i=document.querySelector('#tp tr:nth-child(2) td:nth-child(2) input');if(i)i.focus()}
 function pd(i){if(confirm('¿Quitar este producto?')){D=D.filter(d=>d.id!==i);DIRTY=1;pl()}}
 function fi(){const i=document.querySelector('#tp input.inc');if(i){i.scrollIntoView({block:'center'});i.focus()}}
 async function ps(){const bad=D.filter(d=>!d.m.trim()||!d.p.trim()||!d.c.trim());
   if(bad.length){VAL=true;PQ='';PM='';PC='';mpr();return modal('<h3>Hay filas incompletas</h3><p>'+bad.length+' fila'+(bad.length>1?'s tienen':' tiene')+' campos vacíos (marcados en rojo). Complétalas o quítalas para poder guardar.</p><button class="bt" onclick="closeM();fi()">Entendido</button>')}
-  VAL=false;const rows=D.map(d=>[d.m.trim()==='Sin módulo'?'':d.m.trim(),d.p.trim(),d.c.trim().replace(/\s+/g,'').toUpperCase()]);
+  VAL=false;const rows=D.map(d=>[d.m.trim()==='Sin módulo'?'':d.m.trim(),d.p.trim(),String(d.cl||'').trim(),d.c.trim().replace(/\s+/g,'').toUpperCase(),d.ev==='0'?'0':'1']);
   modal('<h3>Guardando…</h3><p>Un momento, no cierres la página.</p>');
-  try{if(API){const r=await api('guardarProductos',{productos:rows});if(!r.ok)throw 0;const g=await(await fetch(API+'?action=get')).json();if(!g.productos||g.productos.length!==rows.length)throw 0;const nr=r=>[String(r[0]).trim()==='Sin módulo'?'':String(r[0]).trim(),String(r[1]).trim(),String(r[2]).replace(/\s+/g,'').toUpperCase()].join('|'),bd=rows.map((r,k)=>[r,g.productos[k]]).filter(([a,b])=>nr(a)!==nr(b));
+  try{if(API){const r=await api('guardarProductos',{productos:rows});if(!r.ok)throw 0;const g=await(await fetch(API+'?action=get')).json();if(!g.productos||g.productos.length!==rows.length)throw 0;const nr=r=>[String(r[0]).trim()==='Sin módulo'?'':String(r[0]).trim(),String(r[1]).trim(),String(r[2]===undefined?'':r[2]).trim(),String(r[3]).replace(/\s+/g,'').toUpperCase(),/^(0|no|false)$/i.test(String(r[4]===undefined?'':r[4]).trim())?'0':'1'].join('|'),bd=rows.map((r,k)=>[r,g.productos[k]]).filter(([a,b])=>nr(a)!==nr(b));
       if(bd.length){lset('dc_prod',JSON.stringify(rows));setP(rows);DIRTY=0;pmx();return modal('<h3>Guardado con diferencias</h3><p>Google Sheets no dejó '+bd.length+' fila'+(bd.length>1?'s':'')+' igual que en pantalla. Ejemplo: <b>'+e(bd[0][0][1])+'</b> quedó con módulo «'+e(String(bd[0][1][0]||'Sin módulo'))+'» y debería ser «'+e(bd[0][0][0]||'Sin módulo')+'». Avísame para revisar el Apps Script.</p><button class="bt" onclick="closeM()">Cerrar</button>')}}}catch(x){return modal('<h3>No se pudo guardar</h3><p>Revisa tu conexión e intenta de nuevo. Tus cambios siguen en pantalla.</p><button class="bt" onclick="closeM()">Cerrar</button>')}
   lset('dc_prod',JSON.stringify(rows));setP(rows);DIRTY=0;pmx();modal('<h3>'+ic('ok')+' Guardado</h3><p>'+rows.length+' productos guardados'+(API?' en Google Sheets.':' en este dispositivo.')+'</p><button class="bt" onclick="closeM()">Cerrar</button>')}
-function maj(){const L=!!LOCKS[MS];$('mb').innerHTML=`<div class="box" style="text-align:center"><p class="lk" style="margin:0">Chocolateo en ${e(MS)}</p><div class="stt ${L?'lock':'free'}">${L?ic('lock')+' BLOQUEADO':ic('ok')+' LIBRE'}</div><p class="lk">${L?'Examen: cada alumno puede llenar cada módulo una sola vez y no puede chocolatear. Suma puntos (excepto el Examen Final).':'Práctica: los alumnos pueden chocolatear las veces que quieran. Suma puntos (excepto el Examen Final).'}</p><button class="bt" style="background:${L?'#16a34a':'#e11d48'}" onclick="sl()">${L?'Desbloquear chocolateo':'Bloquear chocolateo'}</button><p class="lk">${API?'Conectado a Google Sheets.':'Sin Google Sheets: los datos se guardan solo en este dispositivo.'}</p></div>`}
+function maj(){const L=!!LOCKS[MS];$('mb').innerHTML=`<div class="box" style="text-align:center"><p class="lk" style="margin:0">Chocolateo en ${e(MS)}</p><div class="stt ${L?'lock':'free'}">${L?ic('lock')+' BLOQUEADO':ic('ok')+' LIBRE'}</div><p class="lk">${L?'Evaluación: cada alumno llena cada módulo una sola vez, con nota y puntos (el Examen Final no suma puntos). No puede chocolatear.':'Práctica: simulación sin nota ni puntaje. Pueden chocolatear las veces que quieran y no se guarda.'}</p><button class="bt" style="background:${L?'#16a34a':'#e11d48'}" onclick="sl()">${L?'Desbloquear chocolateo':'Bloquear chocolateo'}</button><p class="lk">${API?'Conectado a Google Sheets.':'Sin Google Sheets: los datos se guardan solo en este dispositivo.'}</p></div>${modoBox()}`}
+const MN={producto:'Producto',cliente:'Como lo pide el cliente',mixto:'Mixto'};
+function modoBox(){const m=MODOS[MS]||'producto';return `<div class="box" style="text-align:center"><p class="lk" style="margin:0">Tipo de dictado en evaluación · ${e(MS)}</p><div class="chips" style="justify-content:center;margin-top:10px">${Object.keys(MN).map(k=>`<button class="ch ${m===k?'on':''}" onclick="sm('${k}')">${MN[k]}</button>`).join('')}</div><p class="lk">${m==='producto'?'Se muestra el nombre del producto y el alumno escribe el código.':m==='cliente'?'Se muestra cómo lo pide el cliente y el alumno escribe el código.':'Mezcla de nombres de producto y pedidos del cliente.'} En práctica el alumno elige el tipo.</p></div>`}
+async function sm(v){modal('<h3>Guardando…</h3><div class="sp"></div><p>Un momento, por favor.</p>');
+  try{if(API&&!(await api('setModo',{modo:v})).ok)throw 0}catch(x){return modal('<h3>No se pudo guardar</h3><p>No se cambió nada. Revisa tu conexión y que el Apps Script esté actualizado.</p><button class="bt" onclick="closeM()">Cerrar</button>')}
+  MODOS[MS]=v;lset('dc_modos',JSON.stringify(MODOS));mv();
+  modal('<h3>'+ic('ok')+' Tipo de dictado: '+MN[v]+'</h3><p>Se aplica a las evaluaciones de '+e(MS)+'.</p><button class="bt" onclick="closeM()">Entendido</button>')}
 async function sl(){const v=!LOCKS[MS];modal('<h3>Guardando…</h3><div class="sp"></div><p>Un momento, por favor.</p>');
   try{if(API&&!(await api('setLock',{lock:v})).ok)throw 0}catch(x){return modal('<h3>No se pudo guardar</h3><p>No se cambió nada. Revisa tu conexión e intenta de nuevo.</p><button class="bt" onclick="closeM()">Cerrar</button>')}
   LOCKS[MS]=v?1:0;lset('dc_locks',JSON.stringify(LOCKS));LOCK=!!LOCKS[S.sede];bn(true);mv();
   modal('<h3>'+ic(v?'lock':'ok')+' Chocolateo '+(v?'bloqueado':'desbloqueado')+'</h3><p>'+(v?'Desde ahora cada alumno solo puede llenar cada módulo una vez.':'Los alumnos vuelven a poder chocolatear.')+'</p><button class="bt" onclick="closeM()">Entendido</button>')}
-(function(){const c=J('dc_prod');if(c&&c.length)setP(c);LOCKS=J('dc_locks')||{};LOCK=!!LOCKS[S.sede];const R=J('dc_id');if(R&&R.nom&&String(R.dni).length===8){S.nom=R.nom;S.dni=String(R.dni)}})();
+(function(){const c=J('dc_prod');if(c&&c.length)setP(c);LOCKS=J('dc_locks')||{};MODOS=J('dc_modos')||{};LOCK=!!LOCKS[S.sede];const R=J('dc_id');if(R&&R.nom&&String(R.dni).length===8){S.nom=R.nom;S.dni=String(R.dni)}})();
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&S.sede&&API&&S.v==='h')refLock().then(()=>{if(S.v==='h')home()})});
 function boot(){if(P.length)return pick(S.t);S.v='h';document.body.classList.remove('wide');bn(false);
   A.innerHTML=LD?'<div class="box" style="text-align:center"><div class="sp"></div><b>Cargando productos…</b></div>':'<div class="box" style="text-align:center"><b>No hay productos para mostrar.</b><p>Revisa tu conexión o que la hoja de productos del Excel tenga datos.</p><button class="bt" onclick="load()">Reintentar</button></div>'}
 function load(){if(!API){LD=0;return boot()}LD=1;if(!P.length)boot();
-  return fetch(API+'?action=get').then(r=>r.json()).then(r=>{if(Array.isArray(r.productos)){setP(r.productos);lset('dc_prod',JSON.stringify(r.productos))}LOCKS=r.locks||{};LOCK=!!LOCKS[S.sede];lset('dc_locks',JSON.stringify(LOCKS));if(r.sedes&&r.sedes.length)SEDES=r.sedes}).catch(()=>{}).finally(()=>{LD=0;if(S.v==='h'&&!(document.activeElement&&document.activeElement.tagName==='INPUT'))boot()})}
+  return fetch(API+'?action=get').then(r=>r.json()).then(r=>{if(Array.isArray(r.productos)){setP(r.productos);lset('dc_prod',JSON.stringify(r.productos))}LOCKS=r.locks||{};MODOS=r.modos||{};lset('dc_modos',JSON.stringify(MODOS));LOCK=!!LOCKS[S.sede];lset('dc_locks',JSON.stringify(LOCKS));if(r.sedes&&r.sedes.length)SEDES=r.sedes}).catch(()=>{}).finally(()=>{LD=0;if(S.v==='h'&&!(document.activeElement&&document.activeElement.tagName==='INPUT'))boot()})}
 load();
 </script></body></html>

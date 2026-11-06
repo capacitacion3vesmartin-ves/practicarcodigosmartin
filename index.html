@@ -44,7 +44,7 @@ td.k .ok{background:#dcfce7;border-color:#16a34a}td.k .bad{background:#ffe4ea;bo
 .mc{background:var(--card);border-radius:18px;padding:20px;max-width:420px;width:100%;text-align:center;max-height:90vh;overflow:auto}.mc h3{margin:0 0 8px}.mc img{max-width:100%;border-radius:10px}
 .mc .bt{margin:6px 4px 0}
 .i{width:1.15em;height:1.15em;vertical-align:-.22em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-body.wide #app{max-width:1000px}
+body.wide #app{max-width:min(1600px,96vw)}
 .fl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}.fl input,.fl select,td.e input{border:2px solid var(--bd);border-radius:10px;padding:8px 10px;background:var(--card);color:var(--tx);min-width:0}.fl input:not([type=date]){flex:1 1 180px}.fl label{font-size:12px;color:var(--mu);font-weight:600}
 td.e{padding:4px}td.e input{width:100%}.pt{font-weight:800;color:var(--c);margin:6px 0 0;font-size:18px}
 .f select{width:100%;border:2px solid var(--bd);border-radius:12px;padding:10px 14px;margin-bottom:8px;background:var(--card);color:var(--tx)}
@@ -62,7 +62,23 @@ td.e input:placeholder-shown{background:#e9e6dc}td.e input.inc{background:#ffe4e
 .pwb{position:relative}.pwb input{padding-right:46px}.pwb button{position:absolute;right:6px;top:5px;border:0;background:transparent;color:var(--mu);cursor:pointer;padding:6px;border-radius:8px}
 .sp{width:34px;height:34px;border:4px solid var(--bd);border-top-color:var(--c);border-radius:50%;margin:10px auto;animation:spn .8s linear infinite}@keyframes spn{to{transform:rotate(360deg)}}
 @media(max-width:480px){.bn.mm{padding-right:128px;font-size:10px;letter-spacing:0}}
+.tt{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:4px}
+.tl{display:flex;align-items:center;gap:10px;text-align:left;border:2px solid var(--tc);background:var(--card);color:var(--tx);border-radius:16px;padding:10px 12px;cursor:pointer;font-weight:800;font-size:15px}
+.tl small{display:block;font-weight:600;color:var(--mu);font-size:11px}
+.tb{width:38px;height:38px;border-radius:12px;background:var(--tc);color:#fff;display:flex;align-items:center;justify-content:center;flex:0 0 38px;font-size:18px}
+.tl.on{background:var(--tc);color:#fff;box-shadow:0 3px 0 rgba(0,0,0,.2)}.tl.on small{color:#fff;opacity:.85}.tl.on .tb{background:rgba(255,255,255,.25)}
+.tl.off{opacity:.45}.tl.off:not(.on){border-style:dashed}
+.hr{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.sw{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--mu);cursor:pointer;margin-top:4px}.sw input{display:none}
+.tk{width:36px;height:20px;border-radius:20px;background:var(--bd);position:relative;transition:.2s}.tk:after{content:'';position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 2px rgba(0,0,0,.3)}.sw input:checked+.tk{background:var(--c)}.sw input:checked+.tk:after{left:18px}
+.tr{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;text-align:left;border:2px solid var(--bd);background:var(--card);color:var(--tx);border-radius:14px;padding:10px 14px;cursor:pointer;font-size:15px}.tr:disabled{opacity:.6;cursor:not-allowed}
+.tr small{display:block;color:var(--mu);font-weight:600;font-size:11px}.tc2{color:var(--c);font-weight:800;font-size:13px;white-space:nowrap}
+.op{display:block;width:100%;text-align:left;border:2px solid var(--bd);background:var(--card);color:var(--tx);border-radius:14px;padding:12px 14px;margin:0 0 8px;cursor:pointer;font-size:15px}.op small{display:block;color:var(--mu);font-weight:600;font-size:12px;margin-top:2px}.op.on{border-color:var(--c);background:var(--c);color:#fff}.op.on small{color:#fff;opacity:.85}
 .stt{display:inline-flex;align-items:center;gap:10px;border-radius:30px;padding:12px 26px;font-weight:800;font-size:22px;color:#fff;margin:6px 0}.stt.lock{background:#e11d48}.stt.free{background:#16a34a}
+.mth{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:800;color:var(--c);margin:10px 0 6px;text-transform:uppercase;letter-spacing:.4px}
+.gq{border:2px solid var(--bd);border-radius:14px;padding:12px;margin:6px 0 4px}.gqs{margin-bottom:14px}.gqs>b{display:block;font-size:14px}
+.gh2{display:block;font-size:12px;color:var(--mu);font-weight:600;margin:2px 0 8px}.gh{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.gres{background:var(--pc);border-radius:12px;padding:10px 12px;font-size:13px}
 </style></head><body>
 <div class="bn" id="bn"></div><div id="app"></div><div class="md" id="md"></div>
 <script id="cfg" type="application/json">{"api":"https://script.google.com/macros/s/AKfycbxb-SzgZd2H3FUfTQf3uoWZIlV9RcuYsheiqWfZzdBj4wFWHctJFm8TO79PkaY3NScj-w/exec"}</script>
@@ -82,7 +98,32 @@ const base=t=>[1,2,3,4].map(n=>TEM[t].n+' '+n);
 const mods=t=>{const b=base(t),x=[...new Set(P.filter(p=>p.t===t).map(p=>p.m))].filter(m=>!b.includes(m)).sort((a,c)=>(a==='Sin módulo')-(c==='Sin módulo')||a.localeCompare(c,'es',{numeric:true}));return b.concat(x)};
 const hm=(t,m)=>P.some(p=>p.t===t&&p.m===m&&p.ev!=='0'),fm1=t=>mods(t).find(m=>hm(t,m))||mods(t)[0];
 const $=id=>document.getElementById(id),A=$('app'),MD=$('md');
-let S={t:temas()[0],tp:'p',v:'h',multi:false,ef:false,sede:'',m:new Set(),nom:'',dni:'',rows:[],done:false};
+let S={t:temas()[0],tp:'p',v:'h',multi:false,ef:false,sede:'',m:new Set(),nom:'',dni:'',rows:[],done:false,ts:new Set(),multiT:false};
+/* ===== Varias temáticas ===== */
+const TS=()=>{const a=Object.keys(TEM).filter(k=>S.ts.has(k));return a.length?a:[S.t]};
+const syncT=()=>{S.t=TS()[0]};
+const allM=()=>[...new Set(TS().flatMap(mods))];
+const mT=t=>S.ef?'Examen Final':[...S.m].filter(m=>hm(t,m)).join(', ');
+const ETS=()=>S.ef?TS().filter(t=>temas().includes(t)):TS().filter(t=>[...S.m].some(m=>hm(t,m)));
+const tn=()=>ETS().map(t=>TEM[t].n).join(', ');
+const gcs=g=>String(g&&g.c||'').split(',').map(x=>x.trim()).filter(Boolean);
+const gks=g=>gcs(g).map(n=>Object.keys(TEM).find(k=>TEM[k].n===n)).filter(Boolean);
+const EV=()=>S.grp?(+S.grp.i||0)>0:!!LOCK;
+const LIM=()=>S.grp?(+S.grp.i||0):LOCK?1:0;
+const evTxt=()=>LIM()===1?'solo puedes llenarla <b>una vez</b>. Al calificar no podrás repetirla.':LIM()>1?'tienes <b>'+LIM()+' intentos</b> (usados: '+(S.used||0)+'). Al calificar se gasta un intento.':'no hay límite de intentos; cada uno queda registrado.';
+const GM=()=>!!(S.grp&&S.grp.mo&&S.grp.mo.length),GC=()=>!!(S.grp&&S.grp.c);
+function aplicaG(){const g=S.grp;if(!g)return;
+  const ks=gks(g);
+  if(ks.length){const igual=ks.length===TS().length&&ks.every(k=>S.ts.has(k));
+    if(!igual){S.ts=new Set(ks);S.multiT=ks.length>1;syncT();S.ef=false;S.m=new Set([fm1(S.t)])}
+    if(g.mo&&g.mo.length){if(g.mo.includes('Examen Final')){S.ef=true;S.m=new Set(allM())}else{S.ef=false;S.m=new Set(g.mo.filter(m=>ks.some(k=>hm(k,m))));S.multi=S.m.size>1||S.multiT}}}}
+async function miGrupo(){const k=S.sede+'|'+S.dni;let g=null;
+  try{if(API){const r=await(await fetch(API+'?action=migrupo&dni='+S.dni+'&sede='+encodeURIComponent(S.sede))).json();if(r&&r.ok)g=r.g||null}
+  else{const h=hoy(),L=gnorm(J('dc_grupos_'+S.sede)||[]).find(x=>x.d1<=h&&h<=x.d2&&x.m.some(m=>m.dni===S.dni));if(L){const m=L.m.find(m=>m.dni===S.dni);g={n:L.n,d1:L.d1,d2:L.d2,c:L.c,mo:L.mo,t:L.t,x:L.x||[],i:m.i>0?m.i:L.i,u:0}}}}catch(x){}
+  S.grp=g;S.used=g?(+g.u||0):0;S.gk=k}
+function gBan(){const g=S.grp;if(!g)return'';const l=LIM();
+  if(!EV())return `<div class="warn" style="background:#eef2ff;border-color:#818cf8;color:#3730a3"><b>${ic('proj')} Perteneces al grupo «${e(g.n)}»</b><br>Por ahora estás en <b>práctica libre</b>: puedes reintentar las veces que quieras; verás tu nota pero no se guarda. Cuando se active la evaluación ya no podrás chocolatear.</div>`;
+  return `<div class="warn" style="background:#ecfdf3;border-color:#16a34a;color:#14532d"><b>${ic('lock')} Evaluación · grupo «${e(g.n)}»</b><br>Del ${e(fv(g.d1))} al ${e(fv(g.d2))} · ${e(g.c||'Ciclo a elección')} · ${e(g.mo&&g.mo.length?g.mo.join(', '):'módulos a elección')} · ${e(g.t?TP[TPN[g.t]]:'Tipo de la sede')}<br>Intentos: usaste <b>${S.used||0}</b> de <b>${l}</b></div>`}
 const lget=k=>{try{return localStorage.getItem(k)}catch(x){return null}},lset=(k,v)=>{try{localStorage.setItem(k,v)}catch(x){}};
 const J=k=>{try{return JSON.parse(lget(k))}catch(x){return null}};
 const hoy=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
@@ -90,92 +131,113 @@ const IC={tree:'<path d="M12 22v-5"/><path d="M12 17c-4 0-6-2.5-6-5.5 0-1.5.7-2.
 IC.eye='<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>';IC.eyeoff='<path d="M3 3l18 18"/><path d="M10.6 5.1A10 10 0 0 1 12 5c6.5 0 10 7 10 7a17 17 0 0 1-3.2 4.2M6.6 6.6A17 17 0 0 0 2 12s3.5 7 10 7a10 10 0 0 0 4.4-1"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/>';IC.proj='<rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4h6v3H9z"/><path d="M9 12h6M9 16h4"/>';IC.out='<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/>';IC.ok='<path d="M5 12l5 5L20 7"/>';IC.bld='<path d="M4 21V7l8-4 8 4v14"/><path d="M2 21h20"/><path d="M9 21v-6h6v6"/><path d="M9 10h.01M15 10h.01"/>';
 const ic=n=>'<svg class="i" viewBox="0 0 24 24" aria-hidden="true">'+IC[n]+'</svg>';
 async function api(a,d){const r=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(Object.assign({action:a,clave:KEY,sede:MS},d))});return r.json()}
-function setP(rows){RAW=rows.map(r=>r.length===3?[r[0],r[1],'',r[2],'1']:[r[0],r[1],r[2]===undefined?'':r[2],r[3],r[4]===undefined?'':r[4]]);P=RAW.map(mk);if(!temas().includes(S.t))S.t=temas()[0]}
+function setP(rows){RAW=rows.map(r=>r.length===3?[r[0],r[1],'',r[2],'1']:[r[0],r[1],r[2]===undefined?'':r[2],r[3],r[4]===undefined?'':r[4]]);P=RAW.map(mk);if(!temas().includes(S.t))S.t=temas()[0];S.ts=new Set(TS().filter(k=>temas().includes(k)));if(!S.ts.size)S.ts=new Set([S.t]);syncT();if(S.ts.size<2)S.multiT=false}
 async function guardar(r){if(!r.nombre&&!r.dni)return;
   if(API)try{await api('registrar',{r});return}catch(x){}
   const a=J('dc_notas')||[];a.push(r);lset('dc_notas',JSON.stringify(a))}
 function paint(t){const T=TEM[t],r=document.documentElement.style;r.setProperty('--c',T.c);r.setProperty('--d',T.d)}
-function bn(back){$('bn').className='bn'+(S.v==='m'?' mm':'');$('bn').innerHTML=(back?'<button class="l" onclick="'+(S.v==='m'?'xm()':'home()')+'">← Inicio</button>':'')+'DICTADO DE CÓDIGOS'+(LOCK?' '+ic('lock'):'')+(S.v==='m'?'<button class="r" style="background:#e11d48;color:#fff" onclick="xm()">'+ic('out')+' Salir de master</button>':'<button class="r" onclick="master()">'+ic('lock')+' Master</button>')}
+function bn(back){$('bn').className='bn'+(S.v==='m'?' mm':'');$('bn').innerHTML=(back?'<button class="l" onclick="'+(S.v==='m'?'xm()':'home()')+'">← Inicio</button>':'')+'DICTADO DE CÓDIGOS'+(EV()?' '+ic('lock'):'')+(S.v==='m'?'<button class="r" style="background:#e11d48;color:#fff" onclick="xm()">'+ic('out')+' Salir de master</button>':'<button class="r" onclick="master()">'+ic('lock')+' Master</button>')}
 function modal(h){MD.innerHTML='<div class="mc">'+h+'</div>';MD.classList.add('on')}
 function closeM(){MD.classList.remove('on')}
+let _ak=null;
+function ask(t,p,ok,fn,danger){_ak=fn;modal('<h3>'+t+'</h3><p>'+p+'</p><button class="bt" '+(danger?'style="background:#e11d48" ':'')+'onclick="askOk()">'+ok+'</button><button class="bt w" onclick="closeM()">Cancelar</button>')}
+function askOk(){const f=_ak;_ak=null;closeM();if(f)f()}
 const wait=t=>modal('<h3>'+t+'</h3><div class="sp"></div><p>Un momento, por favor.</p>');
 MD.addEventListener('click',ev=>{if(ev.target===MD)closeM()});
-function pick(t){S.t=t;S.ef=false;S.m=new Set([fm1(t)]);home()}
+function pick(t){S.ts=new Set([t]);S.multiT=false;S.t=t;S.ef=false;S.m=new Set([fm1(t)]);home()}
+function fixM(){const o=[...S.m].filter(m=>TS().some(t=>hm(t,m)));S.m=new Set(S.multiT?o:[]);if(!S.m.size)S.m=new Set([fm1(S.t)]);if(!S.multi&&S.m.size>1)S.m=new Set([[...S.m][0]])}
+function pk(t){const a=new Set(TS());if(S.multiT){if(a.has(t)){if(a.size>1)a.delete(t)}else a.add(t)}else{a.clear();a.add(t)}S.ts=a;syncT();S.ef=false;fixM();home()}
+function mtm(v){S.multiT=v;if(v)S.multi=true;else S.ts=new Set([TS()[0]]);syncT();S.ef=false;fixM();home()}
+const chipsM=t=>mods(t).map(m=>`<button class="ch ${S.m.has(m)&&!S.ef?'on':''}" ${hm(t,m)&&!GM()?`onclick="tg('${m}')"`:'disabled style="'+(S.m.has(m)&&!S.ef?'':'opacity:.4;')+'cursor:not-allowed"'}>${e(m)}</button>`).join('');
+const efChip=()=>`<button class="ch ${S.ef?'on':''}" ${GM()?'disabled style="border-style:dashed;'+(S.ef?'':'opacity:.4;')+'cursor:not-allowed"':'style="border-style:dashed" onclick="ef()"'}>${ic('star')} Examen Final</button>`;
+const modsUI=()=>TS().length>1?TS().map(t=>'<div class="mth" style="--c:'+TEM[t].c+'">'+ic(TEM[t].i)+' '+e(TEM[t].n)+'</div><div class="chips" style="--c:'+TEM[t].c+'">'+chipsM(t)+'</div>').join('')+'<div class="chips" style="margin-top:10px">'+efChip()+'</div>':'<div class="chips">'+chipsM(S.t)+efChip()+'</div>';
 function tg(m){if(S.multi&&!S.ef)S.m.has(m)?S.m.delete(m):S.m.add(m);else S.m=new Set([m]);S.ef=false;home();chk()}
-function ef(){S.ef=true;S.m=new Set(mods(S.t));home();chk()}
-async function chk(){if(S.v==='h'&&LOCK&&S.sede&&S.dni.length===8&&await yaHizo())modal(YA())}
+function ef(){S.ef=true;S.m=new Set(allM());home();chk()}
+async function chk(){if(S.v==='h'&&EV()&&S.sede&&S.dni.length===8&&await yaHizo())modal(YA())}
 function mm(v){S.multi=v;if(!v&&!S.ef&&S.m.size>1)S.m=new Set([[...S.m][0]]);home()}
 function ss(x){S.sede=x;LOCK=!!LOCKS[x];refLock();if(S.nom.trim()&&S.dni.length===8)home();else idScreen()}
 function idScreen(er){S.v='i';document.body.classList.remove('wide');paint(TEM[S.t]?S.t:'mad');bn(false);
   A.innerHTML=`<h1>${ic('pen')} Tus datos</h1><p class="sub">${e(S.sede)} · <a href="#" onclick="S.sede='';wel();return false" style="color:var(--c)">cambiar sede</a></p>
-  <div class="box f"><input id="idn" inputmode="numeric" maxlength="8" placeholder="DNI" value="${e(S.dni)}"><input id="inm" placeholder="Nombre completo" autocomplete="name" value="${e(S.nom)}"><p id="ist" class="lk" style="display:none;margin:0 0 8px"></p>
+  <div class="box f"><input id="idn" inputmode="numeric" maxlength="8" placeholder="Tu DNI" value="${e(S.dni)}"><p id="ist" class="lk" style="${S.nom?'':'display:none;'}margin:0 0 8px">${S.nom?'Hola, <b>'+e(S.nom)+'</b>':''}</p><input id="inm" placeholder="Nombre completo" autocomplete="name" value="${e(S.nom)}" style="display:none">
   <label class="mu"><input type="checkbox" id="irm" ${J('dc_id')?'checked':''}> Recordar mis datos en este celular</label></div>
   ${er?`<p class="er">${er}</p>`:''}<button class="bt" style="width:100%;font-size:17px" onclick="idok()">Continuar</button>`;
-  $('inm').dataset.auto=S.nom?'0':'1';$('inm').addEventListener('input',function(){this.dataset.auto='0'});
-  $('idn').oninput=function(){this.value=this.value.replace(/\D/g,'');if(this.value.length===8)nomDni(this.value);else{NQ++;BUSQ=false;$('ist').style.display='none';$('inm').placeholder='Nombre completo';$('inm').disabled=false;if($('inm').dataset.auto==='2'){$('inm').value='';$('inm').dataset.auto='1'}}};
-  $('idn').onkeydown=$('inm').onkeydown=ev=>{if(ev.key==='Enter'){ev.preventDefault();idok()}}}
+  $('idn').oninput=function(){this.value=this.value.replace(/\D/g,'');S.nom='';if(this.value.length===8)nomDni(this.value);else{NQ++;BUSQ=false;$('ist').style.display='none';$('inm').style.display='none';$('inm').value=''}};
+  $('idn').onkeydown=$('inm').onkeydown=ev=>{if(ev.key==='Enter'){ev.preventDefault();idok()}};
+  if(S.dni.length===8&&!S.nom)nomDni(S.dni)}
 let NQ=0,BUSQ=false;
-async function nomDni(d){const q=++NQ,i=$('inm'),st=$('ist');if(!i||!st)return;
-  BUSQ=true;st.style.display='';st.textContent='Buscando tu DNI en la base de datos…';i.placeholder='Buscando…';i.disabled=true;
-  let n='';
-  try{if(API){const c=new AbortController(),t=setTimeout(()=>c.abort(),6000);try{const r=await(await fetch(API+'?action=nombre&dni='+d,{signal:c.signal})).json();if(r&&r.nombre)n=String(r.nombre).trim()}finally{clearTimeout(t)}}}catch(x){}
+async function nomSede(d){let n='';
+  try{if(API){const c=new AbortController(),t=setTimeout(()=>c.abort(),6000);try{const r=await(await fetch(API+'?action=migrupo&dni='+d+'&sede='+encodeURIComponent(S.sede),{signal:c.signal})).json();if(r&&r.ok){const g=r.g||{};n=String(g.nom||g.nombre||r.nom||r.nombre||'').trim()}}finally{clearTimeout(t)}}}catch(x){}
+  if(!n){try{for(const g of gnorm(J('dc_grupos_'+S.sede)||[])){const m=g.m.find(m=>m.dni===d&&m.nom);if(m){n=m.nom;break}}}catch(x){}}
+  if(!n){try{if(API){const c=new AbortController(),t=setTimeout(()=>c.abort(),6000);try{const r=await(await fetch(API+'?action=nombre&dni='+d,{signal:c.signal})).json();if(r&&r.nombre)n=String(r.nombre).trim()}finally{clearTimeout(t)}}}catch(x){}}
   if(!n){try{const l=(J('dc_notas')||[]).filter(x=>String(x.dni)===d&&x.nombre).pop();if(l)n=String(l.nombre).trim()}catch(x){}}
-  const i2=$('inm'),st2=$('ist'),d2=$('idn');if(q!==NQ)return;if(!i2||!st2||!d2||d2.value!==d){BUSQ=false;if(i2){i2.disabled=false;i2.placeholder='Nombre completo'}return}
-  BUSQ=false;i2.disabled=false;i2.placeholder='Nombre completo';
-  if(!n){st2.textContent='No encontramos este DNI. Escribe tu nombre completo.';return}
-  if(i2.dataset.auto!=='0'||!i2.value.trim()){i2.value=n;i2.dataset.auto='2';st2.textContent='Nombre encontrado.'}
-  else st2.textContent='Nombre encontrado. Se mantuvo el que escribiste.'}
-function idok(){if(BUSQ)return;const n=$('inm').value.trim().replace(/\s+/g,' '),d=$('idn').value.replace(/\D/g,'');S.nom=n;S.dni=d;
-  if(n.length<3)return idScreen('Escribe tu nombre completo.');if(d.length!==8)return idScreen('El DNI debe tener 8 dígitos.');
+  return n}
+async function nomDni(d){const q=++NQ,i=$('inm'),st=$('ist');if(!i||!st)return;
+  BUSQ=true;st.style.display='';st.textContent='Buscando tu DNI en '+S.sede+'…';i.style.display='none';
+  const n=await nomSede(d);
+  const i2=$('inm'),st2=$('ist'),d2=$('idn');if(q!==NQ)return;if(!i2||!st2||!d2||d2.value!==d){BUSQ=false;return}
+  BUSQ=false;
+  if(n){i2.value=n;i2.style.display='none';st2.innerHTML='Hola, <b>'+e(n)+'</b>'}
+  else{i2.value='';i2.style.display='';st2.textContent='Tu DNI no está registrado en esta sede. Escribe tu nombre completo.'}}
+function idok(){if(BUSQ)return;const n=$('inm').value.trim().replace(/\s+/g,' '),d=$('idn').value.replace(/\D/g,'');S.dni=d;
+  if(d.length!==8){S.nom='';return idScreen('El DNI debe tener 8 dígitos.')}
+  if(n.length<3){S.nom='';$('inm').style.display='';$('ist').style.display='';$('ist').textContent='Escribe tu nombre completo.';return}
+  S.nom=n;
   if($('irm').checked)lset('dc_id',JSON.stringify({nom:n,dni:d}));else try{localStorage.removeItem('dc_id')}catch(x){}
   home()}
 function noyo(){S.nom='';S.dni='';try{localStorage.removeItem('dc_id')}catch(x){}idScreen()}
 async function refLock(){if(!API)return;try{const c=new AbortController(),t=setTimeout(()=>c.abort(),3500),r=await(await fetch(API+'?action=get&t='+Date.now(),{signal:c.signal})).json();clearTimeout(t);if(r.locks){LOCKS=r.locks;lset('dc_locks',JSON.stringify(LOCKS))}if(r.modos){MODOS=r.modos;lset('dc_modos',JSON.stringify(MODOS))}}catch(x){}LOCK=!!LOCKS[S.sede]}
 const TP={p:'Producto',c:'Como lo pide el cliente',m:'Mixto'},TPN={producto:'p',cliente:'c',mixto:'m'};
-const eff=()=>LOCK?(TPN[MODOS[S.sede]]||'p'):S.tp;
+const eff=()=>EV()?(TPN[(S.grp&&S.grp.t)||MODOS[S.sede]]||'p'):S.tp;
 const stp=k=>{S.tp=k;home()};
-function tipoH(){const x=eff();return '<h3>Tipo de dictado</h3><div class="chips">'+Object.keys(TP).map(k=>'<button class="ch '+(x===k?'on':'')+'" '+(LOCK?'disabled style="'+(x===k?'':'opacity:.4;')+'cursor:not-allowed"':'onclick="stp(\''+k+'\')"')+'>'+TP[k]+'</button>').join('')+'</div>'+(LOCK?'<p class="lk" style="text-align:left;margin:8px 0 0">'+ic('lock')+' En evaluación el tipo lo define el master.</p>':'')}
+function tipoR(){const x=eff(),ev=EV();return `<button class="tr" ${ev?'disabled':'onclick="tipoM()"'}><span><b>${TP[x]}</b><small>${ev?'En evaluación lo define el master':'Toca para cambiar'}</small></span><span class="tc2">${ev?ic('lock'):'Cambiar ›'}</span></button>`}
+function sinTema(k){modal('<h3>'+e(TEM[k].n)+' · próximamente</h3><p>Todavía no hay códigos activos en esta temática. Avisa a tu master para que los cargue.</p><button class="bt" onclick="closeM()">Entendido</button>')}
+function tipoM(){const D={p:'Ves el nombre del producto y escribes su código.',c:'Ves la frase tal como la pide el cliente.',m:'Mezcla de productos y pedidos del cliente.'},x=eff();modal('<h3>Tipo de dictado</h3>'+Object.keys(TP).map(k=>'<button class="op '+(x===k?'on':'')+'" onclick="stp(\''+k+'\');closeM()"><b>'+TP[k]+'</b><small>'+D[k]+'</small></button>').join('')+'<button class="bt w" onclick="closeM()">Cerrar</button>')}
+function tipoH(){const x=eff();return '<h3>Tipo de dictado</h3><div class="chips">'+Object.keys(TP).map(k=>'<button class="ch '+(x===k?'on':'')+'" '+(EV()?'disabled style="'+(x===k?'':'opacity:.4;')+'cursor:not-allowed"':'onclick="stp(\''+k+'\')"')+'>'+TP[k]+'</button>').join('')+'</div>'+(EV()?'<p class="lk" style="text-align:left;margin:8px 0 0">'+ic('lock')+' En evaluación el tipo lo define el master.</p>':'')}
 const fn=n=>n<10?'0'+n:''+n;
-const avt=()=>LOCK?ic('lock')+' EVALUACIÓN':'PRÁCTICA · sin nota ni puntaje (simulación)';
+const avt=()=>EV()?ic('lock')+' EVALUACIÓN':'PRÁCTICA · simulación (la nota no se guarda)';
 const mstr=()=>S.ef?'Examen Final':[...S.m].join(', ');
-const dks=()=>(S.ef?['EF']:[...S.m]).map(m=>'dc_'+S.sede+'|'+S.dni+'|'+TEM[S.t].n+'|'+m);
-const YA=()=>'<h3>'+ic('lock')+' Ya realizaste esta evaluación</h3><p>Tu DNI ya tiene registrado el dictado de <b>'+e(TEM[S.t].n+' · '+mstr())+'</b>. Solo se puede rendir una vez.</p><button class="bt" onclick="closeM()">Entendido</button>';
-async function yaHizo(){if(dks().some(k=>lget(k)))return true;
-  if(API)try{const q='&dni='+S.dni+'&sede='+encodeURIComponent(S.sede)+'&tema='+encodeURIComponent(TEM[S.t].n)+'&modulos='+encodeURIComponent(mstr());if((await(await fetch(API+'?action=check'+q)).json()).done)return true}catch(x){}
-  return false}
+const dks=()=>ETS().flatMap(t=>(S.ef?['EF']:[...S.m].filter(m=>hm(t,m))).map(m=>'dc_'+S.sede+'|'+S.dni+'|'+TEM[t].n+'|'+m+(S.grp?'|g:'+S.grp.n+S.grp.d1:'')));
+const YA=()=>'<h3>'+ic('lock')+' Ya realizaste esta evaluación</h3><p>Tu DNI ya tiene registrado el dictado de <b>'+e(tn()+' · '+mstr())+'</b>. '+(LIM()>1?'Ya usaste los '+LIM()+' intentos permitidos.':'Solo se puede rendir una vez.')+'</p><button class="bt" onclick="closeM()">Entendido</button>';
+async function yaHizo(){const l=LIM();let n=0;dks().forEach(k=>{n=Math.max(n,+lget(k)||0)});
+  if(l>0&&n>=l){S.used=n;return true}
+  if(API)try{for(const t of ETS()){const q='&dni='+S.dni+'&sede='+encodeURIComponent(S.sede)+'&tema='+encodeURIComponent(TEM[t].n)+'&modulos='+encodeURIComponent(mT(t));const r=await(await fetch(API+'?action=check'+q)).json();if(r)n=Math.max(n,+r.n||(r.done?1:0))}}catch(x){}
+  S.used=n;return l>0&&n>=l}
 function wel(){if(!J('dc_id')){S.nom='';S.dni=''}S.v='h';document.body.classList.remove('wide');bn(false);
   A.innerHTML=`<h1>Dictado de códigos</h1><p class="sub">Elige tu sede</p><div class="sg">${SEDES.map(x=>`<button class="sd" style="--c:${SC[x]||'#06621c'}" onclick="ss('${e(x)}')"><i>${ic('bld')}</i><span>${e(x)}<small>Sede</small></span></button>`).join('')}</div>`}
-function home(er){KEY='';if(!S.sede)return wel();if(!S.nom.trim()||S.dni.length!==8)return idScreen();if(!P.length)return boot();S.v='h';document.body.classList.remove('wide');if(!S.m.size)S.m=new Set([fm1(S.t)]);paint(S.t);bn(false);
+function home(er){KEY='';if(!S.sede)return wel();if(!S.nom.trim()||S.dni.length!==8)return idScreen();if(!P.length)return boot();if(S.gk!==S.sede+'|'+S.dni&&!S.gl){S.gl=1;S.grp=null;miGrupo().then(()=>{S.gl=0;if(S.v==='h')home()})}aplicaG();S.v='h';document.body.classList.remove('wide');if(!S.m.size)S.m=new Set([fm1(S.t)]);paint(S.t);bn(false);
   const cnt=m=>P.filter(p=>p.t===S.t&&p.m===m).length;
   A.innerHTML=`<h1>${ic('pen')} Dictado de códigos</h1><p class="sub">${e(S.sede)} · <a href="#" onclick="S.sede='';home();return false" style="color:var(--c)">cambiar sede</a></p>
   <p class="lk" style="margin:-8px 0 14px">${e(S.nom)} · DNI ${e(S.dni)} · <a href="#" onclick="noyo();return false" style="color:var(--c)">no soy yo</a></p>
-  <div class="box"><h3>Temática</h3><div class="chips">${temas().map(k=>`<button class="ch ${S.t===k?'on':''}" style="${S.t===k?`background:${TEM[k].c};border-color:${TEM[k].c}`:`border-color:${TEM[k].c}`}" onclick="pick('${k}')">${ic(TEM[k].i)} ${TEM[k].n}</button>`).join('')}</div>
-  <h3>Módulo</h3><div class="chips">${mods(S.t).map(m=>`<button class="ch ${S.m.has(m)&&!S.ef?'on':''}" ${hm(S.t,m)?`onclick="tg('${m}')"`:'disabled style="opacity:.4;cursor:not-allowed"'}>${e(m)}</button>`).join('')}<button class="ch ${S.ef?'on':''}" style="border-style:dashed" onclick="ef()">${ic('star')} Examen Final</button></div>${tipoH()}<label class="mu"><input type="checkbox" ${S.multi?'checked':''} onchange="mm(this.checked)"> Elegir varios módulos</label></div>
-  ${LOCK?'<div class="warn">'+ic('lock')+' Evaluación: cada módulo se puede llenar <b>una sola vez</b> por alumno.</div>':'<div class="warn" style="background:#eef2ff;border-color:#818cf8;color:#3730a3">Práctica: simulación sin nota ni puntaje.</div>'}
+  ${gBan()}<div class="box"><div class="hr"><h3>Temática</h3><label class="sw"><input type="checkbox" ${S.multiT?'checked':''} ${GC()?'disabled':''} onchange="mtm(this.checked)"><span class="tk"></span>Varias temáticas</label></div><div class="tt">${Object.keys(TEM).map(k=>{const n=P.filter(p=>p.t===k&&p.ev!=='0').length,on=TS().includes(k),off=!n,lk=GC();return `<button class="tl ${on?'on':''} ${off||(lk&&!on)?'off':''}" style="--tc:${TEM[k].c}" ${off?`onclick="sinTema('${k}')"`:lk?'disabled':`onclick="pk('${k}')"`}><span class="tb">${ic(TEM[k].i)}</span><span>${TEM[k].n}<small>${off?'Próximamente':n+' código'+(n===1?'':'s')}</small></span></button>`}).join('')}</div>
+  <div class="hr"><h3>Módulo</h3><label class="sw"><input type="checkbox" ${S.multi?'checked':''} ${GM()||S.multiT?'disabled':''} onchange="mm(this.checked)"><span class="tk"></span>Varios módulos</label></div>${modsUI()}
+  <h3>Tipo de dictado</h3>${tipoR()}</div>
+  ${EV()?'<div class="warn">'+ic('lock')+' Evaluación: '+(LIM()===1?'cada módulo se puede llenar <b>una sola vez</b> por alumno.':LIM()>1?'tienes <b>'+LIM()+' intentos</b> por examen.':'sin límite de intentos; cada uno queda registrado.')+'</div>':'<div class="warn" style="background:#eef2ff;border-color:#818cf8;color:#3730a3">Práctica: simulación; verás tu nota pero no se guarda ni suma puntos.</div>'}
   ${er?`<p class="er">${er}</p>`:''}
   <button class="bt" style="width:100%;font-size:17px" onclick="gen(true)">Generar dictado</button>
   <button class="bt w" style="width:100%;margin-top:12px" onclick="reg()">${ic('proj')} Ver mis notas</button>`}
-async function gen(first){
+async function gen(first,same){
   if(!S.sede)return home('Elige tu sede.');
   if(!S.nom.trim()||S.dni.length!==8)return idScreen();
-  if(S.busy)return;S.busy=1;wait('Preparando tu dictado…');const pre=LOCK?yaHizo():null;await refLock();
-  if(LOCK){if(await(pre||yaHizo())){S.busy=0;return modal(YA())}first=true}
+  if(S.busy)return;S.busy=1;wait('Preparando tu dictado…');const pre=EV()?yaHizo():null;await refLock();
+  if(EV()){if(await(pre||yaHizo())){S.busy=0;return modal(YA())}first=true}
   S.busy=0;closeM();
   S.v='g';paint(S.t);bn(true);S.done=false;const seen=new Set();
-  const tp=eff();let r=P.filter(p=>p.t===S.t&&S.m.has(p.m)&&p.ev!=='0'&&(tp!=='c'||p.cl)).filter(p=>!seen.has(p.p)&&seen.add(p.p));
+  const tp=eff();let r=P.filter(p=>ETS().includes(p.t)&&S.m.has(p.m)&&p.ev!=='0'&&(tp!=='c'||p.cl)&&!(S.grp&&Array.isArray(S.grp.x)&&S.grp.x.includes(p.t+'|'+p.p))).filter(k=>!seen.has(k.t+'|'+k.p)&&seen.add(k.t+'|'+k.p));
   if(!r.length){home();return modal('<h3>No hay códigos para este dictado</h3><p>'+(tp==='c'?'Estos módulos todavía no tienen frases de «Como lo pide el cliente».':'Los códigos de estos módulos están desactivados.')+'</p><button class="bt" onclick="closeM()">Entendido</button>')}
-  if(!first){r=sh(r);const lo=Math.min(5,r.length);r=r.slice(0,lo+(Math.random()*(r.length-lo+1)|0))}
-  r=r.map(p=>{const c=tp==='c'||(tp==='m'&&p.cl&&Math.random()<.5);return{p:p.p,code:p.code,txt:c?p.cl:p.p,kd:c?'c':'p'}});S.rows=r;
-  A.innerHTML=`<div class="stk" id="stk0" style="margin:0 0 12px"></div>${LOCK?'<div class="warn">'+ic('lock')+' EVALUACIÓN: solo puedes llenarla <b>una vez</b>. Al calificar no podrás repetirla.</div>':''}<div id="cap"><div class="av ${LOCK?'ev':'pr'}" id="av">${avt()}</div><div class="who" id="who"></div>
-  <span class="tag">${ic(TEM[S.t].i)} ${TEM[S.t].n} · ${S.ef?'Examen Final':[...S.m].map(e).join(', ')}${tp==='p'?'':' · '+TP[tp]}</span><div id="res"></div>
+  if(same&&S.rows&&S.rows.length)r=S.rows.map(x=>({...x}));
+  else{if(!first){r=sh(r);const lo=Math.min(5,r.length);r=r.slice(0,lo+(Math.random()*(r.length-lo+1)|0))}
+  r=r.map(p=>{const c=tp==='c'||(tp==='m'&&p.cl&&Math.random()<.5);return{p:p.p,t:p.t,code:p.code,txt:c?p.cl:p.p,kd:c?'c':'p'}})}S.rows=r;
+  A.innerHTML=`<div class="stk" id="stk0" style="margin:0 0 12px"></div>${EV()?'<div class="warn">'+ic('lock')+' EVALUACIÓN: '+evTxt()+'</div>':''}<div id="cap"><div class="av ${EV()?'ev':'pr'}" id="av">${avt()}</div><div class="who" id="who"></div>
+  <span class="tag">${ETS().map(t=>ic(TEM[t].i)+' '+TEM[t].n+' · '+(S.ef?'Examen Final':[...S.m].filter(m=>hm(t,m)).map(e).join(', '))).join(' + ')}${tp==='p'?'':' · '+TP[tp]}</span><div id="res"></div>
   <div class="tw"><table><tr><th>${tp==='c'?'Como lo pide el cliente':tp==='m'?'Producto / Pedido del cliente':'Producto'}</th><th>Código</th></tr>${r.map((p,i)=>`<tr><td class="p">${p.kd==='c'?'<i>“'+e(p.txt)+'”</i>':e(p.txt)}</td><td class="k"><input data-i="${i}" maxlength="${p.code.length}" placeholder=" " autocomplete="off" autocapitalize="characters" spellcheck="false"></td></tr>`).join('')}</table></div></div>
-  ${LOCK?'<p class="lk">'+ic('lock')+' Solo puedes llenarlo una vez</p>':''}<div class="stk" id="stk"></div>`;
+  ${EV()&&LIM()===1?'<p class="lk">'+ic('lock')+' Solo puedes llenarlo una vez</p>':''}<div class="stk" id="stk"></div>`;
   bar();wh();const ins=[...A.querySelectorAll('#cap input')];
   ins.forEach((x,i)=>x.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();ins[i+1]?ins[i+1].focus():calif()}}));
   window.scrollTo(0,0);ins[0]&&ins[0].focus()}
+function rein(){modal('<h3>Reintentar</h3><p>¿Cómo quieres volver a intentarlo?</p><button class="op" onclick="closeM();gen(false,true)"><b>Mismo orden</b><small>Los mismos productos, en el mismo orden.</small></button><button class="op" onclick="closeM();gen(false)"><b>Orden al azar</b><small>Productos mezclados en otro orden.</small></button><button class="bt w" onclick="closeM()">Cancelar</button>')}
 function bar(){const h=S.done?
-  (LOCK?'':'<button class="bt" onclick="gen(false)">'+ic('choc')+' Chocolatear</button>')+'<button class="bt w" onclick="img()">'+ic('dl')+' Descargar imagen</button><button class="bt w" onclick="home()">Inicio</button>':
-  '<button class="bt" onclick="calif()">Calificar</button>'+(LOCK?'':'<button class="bt w" onclick="gen(false)">'+ic('choc')+' Chocolatear</button>');$('stk').innerHTML=h;$('stk0').innerHTML=h}
+  (EV()?'':'<button class="bt" onclick="rein()">'+ic('choc')+' Reintentar</button>')+'<button class="bt w" onclick="img()">'+ic('dl')+' Descargar imagen</button><button class="bt w" onclick="home()">Inicio</button>':
+  '<button class="bt" onclick="calif()">Calificar</button>'+(EV()?'':'<button class="bt w" onclick="rein()">'+ic('choc')+' Reintentar</button>');$('stk').innerHTML=h;$('stk0').innerHTML=h}
 function wh(){$('who').innerHTML='<div><b>'+e(S.nom)+'</b><br><span>DNI '+e(S.dni)+'</span></div><span style="text-align:right">'+e(S.sede)+'<br>'+new Date().toLocaleDateString('es-PE')+'</span>'}
 function faltan(){const d=$('dat');if(d){window.scrollTo(0,0);const i=d.querySelector('input');i&&i.focus()}}
 function tip(x,on){let t=$('tip');if(!t){t=document.createElement('div');t.id='tip';document.body.appendChild(t)}
@@ -184,14 +246,14 @@ function tip(x,on){let t=$('tip');if(!t){t=document.createElement('div');t.id='t
 function wrong(x){x.addEventListener('mouseenter',()=>tip(x,1));x.addEventListener('mouseleave',()=>tip(x,0));x.addEventListener('click',()=>{tip(x,1);setTimeout(()=>tip(x,0),2500)})}
 async function calif(sure){if(S.done||S.busy)return;
   if(!S.nom.trim()||S.dni.length!==8)return idScreen();
-  S.busy=1;wait('Calificando…');const pre=LOCK?yaHizo():null;await refLock();bar();
-  if(LOCK){if(await(pre||yaHizo())){S.busy=0;return modal(YA())}
-    if(sure!==true){S.busy=0;return modal('<h3>'+ic('lock')+' Solo tienes una oportunidad</h3><p>Esto es una <b>evaluación de una sola vez</b>. Al calificar ya no podrás repetirla ni chocolatear.</p><button class="bt" onclick="closeM();calif(true)">Sí, calificar</button><button class="bt w" onclick="closeM()">Seguir revisando</button>')}}
-  S.busy=0;closeM();if(S.done)return;let ok=0;const av=$('av');if(av){av.className='av '+(LOCK?'ev':'pr');av.innerHTML=avt()}
-  A.querySelectorAll('#cap input').forEach(x=>{const v=x.value.trim(),g=nz(v)===nz(S.rows[+x.dataset.i].code);x.readOnly=true;x.classList.add(g?'ok':v?'bad':'vac');if(g)ok++;else wrong(x)});
-  const dt=$('dat');if(dt)dt.remove();wh();const n=S.rows.length,nota=Math.round(ok/n*200)/10,pts=LOCK&&!S.ef?nota>=20?1:nota>=17?.5:0:0;S.done=true;
-  if(LOCK){dks().forEach(k=>lset(k,'1'));guardar({ts:new Date().toISOString(),fecha:hoy(),nombre:S.nom.trim(),dni:S.dni,tema:TEM[S.t].n,modulos:mstr(),ok,total:n,nota,puntos:pts,modo:'Examen',sede:S.sede})}
-  $('res').innerHTML=LOCK?`<div class="res"><p class="big">${fn(nota)}</p><b>${nota>=20?'¡Perfecto!':nota>=17?'¡Muy bien!':'Sigue practicando'}</b><p class="pt">${S.ef?'Examen Final · no suma puntos':ic('star')+' Puntos ganados: '+pts}</p>${nota<17?'<p class="er">Tienes que repasar más.</p>':''}</div>`:`<div class="res"><b>Práctica terminada</b><p class="lk">Sin nota ni puntaje: es una simulación y no se guarda.</p></div>`;
+  S.busy=1;wait('Calificando…');const pre=EV()?yaHizo():null;await refLock();bar();
+  if(EV()){if(await(pre||yaHizo())){S.busy=0;return modal(YA())}
+    if(sure!==true){S.busy=0;return modal('<h3>'+ic('lock')+(LIM()===1?' Solo tienes una oportunidad</h3><p>Esto es una <b>evaluación de una sola vez</b>. Al calificar ya no podrás repetirla ni chocolatear.</p>':' Evaluación</h3><p>'+(LIM()>1?'Te quedan <b>'+(LIM()-(S.used||0))+'</b> de '+LIM()+' intentos y este usará uno.':'Este intento quedará registrado.')+'</p>')+'<button class="bt" onclick="closeM();calif(true)">Sí, calificar</button><button class="bt w" onclick="closeM()">Seguir revisando</button>')}}
+  S.busy=0;closeM();if(S.done)return;let ok=0;const okt={};const av=$('av');if(av){av.className='av '+(EV()?'ev':'pr');av.innerHTML=avt()}
+  A.querySelectorAll('#cap input').forEach(x=>{const v=x.value.trim(),g=nz(v)===nz(S.rows[+x.dataset.i].code);x.readOnly=true;x.classList.add(g?'ok':v?'bad':'vac');if(g){ok++;const rt=S.rows[+x.dataset.i].t||S.t;okt[rt]=(okt[rt]||0)+1}else wrong(x)});
+  const dt=$('dat');if(dt)dt.remove();wh();const n=S.rows.length,nota=Math.round(ok/n*200)/10,per=[...new Set(S.rows.map(r=>r.t||S.t))].map(t=>{const nn=S.rows.filter(r=>(r.t||S.t)===t).length,oo=okt[t]||0,nt=Math.round(oo/nn*200)/10;return{t,ok:oo,n:nn,nota:nt,pts:EV()&&!S.ef?nt>=20?1:nt>=17?.5:0:0}}),pts=per.reduce((a,x)=>a+x.pts,0),brk=per.length>1?'<p class="lk" style="margin:4px 0">'+per.map(x=>e(TEM[x.t].n)+': <b>'+fn(x.nota)+'</b> ('+x.ok+'/'+x.n+')').join(' · ')+'</p>':'';S.done=true;
+  if(EV()){dks().forEach(k=>lset(k,String((+lget(k)||0)+1)));S.used=(S.used||0)+1;per.forEach(x=>guardar({ts:new Date().toISOString(),fecha:hoy(),nombre:S.nom.trim(),dni:S.dni,tema:TEM[x.t].n,modulos:mT(x.t),ok:x.ok,total:x.n,nota:x.nota,puntos:x.pts,modo:'Examen',sede:S.sede}))}
+  $('res').innerHTML=EV()?`<div class="res"><p class="big">${fn(nota)}</p>${brk}<b>${nota>=20?'¡Perfecto!':nota>=17?'¡Muy bien!':'Sigue practicando'}</b><p class="pt">${S.ef?'Examen Final · no suma puntos':ic('star')+' Puntos ganados: '+pts}</p>${nota<17?'<p class="er">Tienes que repasar más.</p>':''}</div>`:`<div class="res"><p class="big">${fn(nota)}</p>${brk}<b>Práctica terminada</b><p class="pt">${ok} de ${n} correctos</p><p class="lk">Esta nota es solo de simulación: no se guarda ni suma puntos.</p></div>`;
   bar();window.scrollTo(0,0)}
 async function img(){
   if(!window.html2canvas)return modal('<h3>No se pudo preparar la imagen</h3><button class="bt" onclick="closeM()">Cerrar</button>');
@@ -234,9 +296,9 @@ async function mlog(){const k=$('pw').value;MS=$('ms').value;let ok=false;modal(
   if(API){KEY=k;try{ok=(await api('login')).ok}catch(x){}}
   if(!ok){KEY='';return modal('<h3>Clave incorrecta</h3><button class="bt" onclick="master()">Reintentar</button>')}
   KEY=k||' ';modal('<h3>'+ic('ok')+' Credenciales correctas</h3><div class="sp"></div><p>Cargando datos de '+e(MS)+'…</p>');await mp();closeM()}
-let MT='n',N=[],D=[],F={q:'',d1:'',d2:'',p:'',c:'',m:'',t:''},PQ='',PM='',VAL=false,DIRTY=0,PL='';
+let MT='n',N=[],D=[],GR=[],GD=[],GI=-1,GDIRTY=0,F={q:'',d1:'',d2:'',p:'',c:'',m:'',t:'',g:''},PQ='',PM='',VAL=false,DIRTY=0,PL='';
 async function mp(){S.v='m';bn(true);document.body.classList.add('wide');
-  try{N=API?((await api('notas')).notas||[]):(J('dc_notas')||[]).filter(x=>x.sede===MS)}catch(x){N=[]}N=N.map(x=>{const pt=String(x.tema||'').split('·').map(a=>a.trim()),ci=pt[0],mt=String(x.modulos||'').trim()||pt[1]||'';return Object.assign({},x,{fecha:fd(x.fecha),ciclo:ci,ck:CK(ci),puntos:pp(x.nota,mt),mods:mt.split(',').map(a=>a.trim()).filter(Boolean)})});F.c='';F.m='';F.t='';
+  try{if(API){const r=await api('notas');N=r.notas||[];GR=r.grupos||[]}else{N=(J('dc_notas')||[]).filter(x=>x.sede===MS);GR=J('dc_grupos_'+MS)||[]}}catch(x){N=[];GR=[]}GR=gnorm(GR);GD=JSON.parse(JSON.stringify(GR));GI=-1;GDIRTY=0;N=N.map(x=>{const pt=String(x.tema||'').split('·').map(a=>a.trim()),ci=pt[0],mt=String(x.modulos||'').trim()||pt[1]||'';return Object.assign({},x,{fecha:fd(x.fecha),ciclo:ci,ck:CK(ci),puntos:pp(x.nota,mt),mods:mt.split(',').map(a=>a.trim()).filter(Boolean)})});F.c='';F.m='';F.t='';F.g=gdef();
   D=RAW.map((r,i)=>({id:i,m:String(r[0]).trim()||'Sin módulo',p:r[1],cl:r[2],c:r[3],ev:/^(0|no|false)$/i.test(String(r[4]).trim())?'0':'1'}));PQ='';PM='';PC='';VAL=false;DIRTY=0;mv()}
 const MO={jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
 const fd=x=>{const t=String(x||'').trim(),z=n=>String(n).padStart(2,'0');let m=t.match(/^(\d{4})-(\d{2})-(\d{2})/);if(m)return m[1]+'-'+m[2]+'-'+m[3];
@@ -247,19 +309,24 @@ const fv=f=>/^\d{4}-\d\d-\d\d$/.test(f)?f.split('-').reverse().join('/'):f;
 const pp=(n,m)=>/examen final/i.test(String(m))?0:+n>=20?1:+n>=17?.5:0;
 const CK=n=>Object.keys(TEM).find(k=>TEM[k].n===String(n).trim())||'';
 const tc=n=>(Object.values(TEM).find(t=>t.n===n)||{c:'#555'}).c;
-function xm(){if(DIRTY&&!confirm('Tienes cambios sin guardar. ¿Salir de todos modos?'))return;home()}
-function mv(){A.innerHTML=`<h1>Modo master · ${e(MS)}</h1><div class="chips" style="justify-content:center;margin-bottom:14px">${[['n','Notas'],['p','Productos'],['a','Ajustes']].map(([k,t])=>`<button class="ch ${MT===k?'on':''}" onclick="MT='${k}';mv()">${t}${k==='a'&&LOCKS[MS]?' '+ic('lock'):''}</button>`).join('')}<button class="ch" style="border-color:#e11d48;color:#e11d48" onclick="xm()">${ic('out')} Salir de master</button></div><div id="mb"></div>`;({n:mn,p:mpr,a:maj})[MT]()}
-function mn(){$('mb').innerHTML=`<div class="box"><div class="fl"><input placeholder="Nombre o DNI" value="${e(F.q)}" oninput="F.q=this.value;nt()"><label>Desde <input type="date" value="${F.d1}" onchange="F.d1=this.value;nt()"></label><label>Hasta <input type="date" value="${F.d2}" onchange="F.d2=this.value;nt()"></label><select onchange="F.p=this.value;nt()">${[['','Todos los puntos'],['1','1 punto'],['0.5','0.5 puntos'],['0','Sin puntos']].map(([v,t])=>`<option value="${v}" ${F.p===v?'selected':''}>${t}</option>`).join('')}</select><select onchange="F.t=this.value;nt()">${[['','Examen y práctica'],['Examen','Solo examen'],['Práctica','Solo práctica']].map(([v,t])=>`<option value="${v}" ${F.t===v?'selected':''}>${t}</option>`).join('')}</select></div><div id="nc"></div><p class="lk" id="sm"></p><div class="tw"><table id="tn"></table></div></div>`;nt()}
+function xm(){if(DIRTY||GDIRTY)return ask('Tienes cambios sin guardar','Si sales ahora, se perderán los cambios que no guardaste.','Salir sin guardar',home,1);home()}
+function mv(){A.innerHTML=`<h1>Modo master · ${e(MS)}</h1><div class="chips" style="justify-content:center;margin-bottom:14px">${[['n','Notas'],['g','Grupos'],['p','Productos'],['a','Ajustes']].map(([k,t])=>`<button class="ch ${MT===k?'on':''}" onclick="MT='${k}';mv()">${t}${k==='a'&&LOCKS[MS]?' '+ic('lock'):''}</button>`).join('')}<button class="ch" style="border-color:#e11d48;color:#e11d48" onclick="xm()">${ic('out')} Salir de master</button></div><div id="mb"></div>`;({n:mn,g:mg,p:mpr,a:maj})[MT]()}
+function mn(){$('mb').innerHTML=`<div class="box"><div class="fl">${gsel()}<input placeholder="Nombre o DNI" value="${e(F.q)}" oninput="F.q=this.value;nt()"><label>Desde <input type="date" value="${F.d1}" onchange="F.d1=this.value;nt()"></label><label>Hasta <input type="date" value="${F.d2}" onchange="F.d2=this.value;nt()"></label><select onchange="F.p=this.value;nt()">${[['','Todos los puntos'],['1','1 punto'],['0.5','0.5 puntos'],['0','Sin puntos']].map(([v,t])=>`<option value="${v}" ${F.p===v?'selected':''}>${t}</option>`).join('')}</select><select onchange="F.t=this.value;nt()">${[['','Examen y práctica'],['Examen','Solo examen'],['Práctica','Solo práctica']].map(([v,t])=>`<option value="${v}" ${F.t===v?'selected':''}>${t}</option>`).join('')}</select></div><div id="nc"></div><p class="lk" id="sm"></p><div class="tw"><table id="tn"></table></div></div>`;nt()}
 let NM=[];const EFC='#b45309';
 const fc=k=>{F.c=k;F.m='';nt()},fm=i=>{F.m=F.m===NM[i].m?'':NM[i].m;nt()},ft=v=>{F.t=v;nt()};
 function ncp(){const chip=(l,c,on,fn)=>`<button class="ch" style="border-color:${c};${on?'background:'+c+';color:#fff':''}" onclick="${fn}">${l}</button>`;
   NM=[];if(F.c){const c=TEM[F.c].c;mods(F.c).forEach(m=>NM.push({m,c}));N.forEach(x=>x.ck===F.c&&x.mods.forEach(m=>{if(m!=='Examen Final'&&!NM.some(o=>o.m===m))NM.push({m,c})}));NM.push({m:'Examen Final',c:EFC})}
   return `<div class="chips" style="margin:10px 0">${chip('Todos','#475569',!F.c,"fc('')")}${Object.keys(TEM).map(k=>chip(ic(TEM[k].i)+' '+TEM[k].n,TEM[k].c,F.c===k,`fc('${k}')`)).join('')}</div>`+(F.c?`<div class="chips" style="margin:0 0 10px">${chip('Todos','#475569',!F.m,"F.m='';nt()")}${NM.map((o,i)=>chip(e(o.m.replace(/^\D+(?=\d)/,'Módulo ')),o.c,F.m===o.m,`fm(${i})`)).join('')}</div>`:'')}
-function nt(){const q=nz(F.q),r=N.filter(x=>(!q||nz(x.nombre+x.dni).includes(q))&&(!F.d1||x.fecha>=F.d1)&&(!F.d2||x.fecha<=F.d2)&&(F.p===''||+x.puntos===+F.p)&&(!F.c||x.ck===F.c)&&(!F.m||x.mods.includes(F.m))&&(!F.t||x.modo===F.t)).reverse();
+function nt(){const q=nz(F.q),r=N.filter(x=>(!q||nz(x.nombre+x.dni).includes(q))&&(!F.d1||x.fecha>=F.d1)&&(!F.d2||x.fecha<=F.d2)&&(F.p===''||+x.puntos===+F.p)&&(!F.c||x.ck===F.c)&&(!F.m||x.mods.includes(F.m))&&(!F.t||x.modo===F.t)&&gok(x)).reverse();
   const pt=r.reduce((s,x)=>s+ +x.puntos,0),pr=r.length?Math.round(r.reduce((s,x)=>s+ +x.nota,0)/r.length*10)/10:0;
-  $('nc').innerHTML=ncp();$('sm').textContent=r.length+' registros · Promedio '+pr+' · Puntos totales '+pt;
+  $('nc').innerHTML=ncp();$('sm').textContent=r.length+' registros · '+new Set(r.map(x=>x.dni)).size+' alumnos · Promedio '+pr+' · Puntos totales '+pt;
   const mc=(x,m)=>m==='Examen Final'?EFC:(TEM[x.ck]||{c:'#555'}).c;
   $('tn').innerHTML='<tr><th style="min-width:105px">Fecha</th><th style="min-width:300px">Alumno</th><th>DNI</th><th>Ciclo</th><th style="min-width:120px">Módulo</th><th>Nota</th><th>Puntos</th><th>Tipo</th></tr>'+r.map(x=>`<tr><td class="p" style="white-space:nowrap">${e(fv(x.fecha))}</td><td class="p" style="text-align:left;min-width:300px">${e(x.nombre)}</td><td class="p">${e(x.dni)}</td><td class="p"><span class="nm" style="background:${(TEM[x.ck]||{c:'#555'}).c}">${e(x.ciclo)}</span></td><td class="p">${x.mods.map(m=>`<span class="nm" style="background:${mc(x,m)}">${e(m)}</span>`).join('')}</td><td class="p">${e(x.nota)}</td><td class="p"><b>${x.mods.includes('Examen Final')?'—':ic('star')+' '+e(x.puntos)}</b></td><td class="p"><span class="nm" style="background:${x.modo==='Examen'?'#e11d48':'#64748b'}">${e(x.modo)}</span></td></tr>`).join('')}
+const gnorm=a=>(Array.isArray(a)?a:[]).map(g=>({n:String(g.n||'').trim(),d1:fd(g.d1),d2:fd(g.d2),c:String(g.c||''),mo:Array.isArray(g.mo)?g.mo.map(String):[],t:['producto','cliente','mixto'].includes(g.t)?g.t:'',i:Math.max(0,parseInt(g.i)||0),x:Array.isArray(g.x)?g.x.map(String):[],m:(Array.isArray(g.m)?g.m:[]).map(x=>({dni:String(x.dni||'').replace(/\D/g,''),nom:String(x.nom||'').trim(),i:Math.max(0,parseInt(x.i)||0)})).filter(x=>x.dni.length===8)})).filter(g=>g.n&&g.d1&&g.d2);
+const gdef=()=>{const h=hoy(),g=GR.find(g=>g.d1<=h&&h<=g.d2);return g?g.n:''};
+const gin=(g,x)=>x.fecha>=g.d1&&x.fecha<=g.d2&&(!g.m.length||g.m.some(m=>m.dni===String(x.dni).trim()));
+const gok=x=>{if(!F.g)return true;if(F.g==='__none')return !GR.some(g=>gin(g,x));const g=GR.find(g=>g.n===F.g);return !g||gin(g,x)};
+const gsel=()=>`<select onchange="F.g=this.value;nt()">${[['','Todos los grupos']].concat(GR.slice().sort((a,b)=>b.d1.localeCompare(a.d1)).map(g=>[g.n,g.n+' ('+fv(g.d1)+' – '+fv(g.d2)+')'])).concat(GR.length?[['__none','Sin grupo']]:[]).map(([v,t])=>`<option value="${e(v)}" ${F.g===v?'selected':''}>${e(t)}</option>`).join('')}</select>`;
 const ML=()=>[...new Set([...Object.keys(TEM).flatMap(base),...D.map(d=>d.m.trim()).filter(Boolean)])].sort((a,b)=>a.localeCompare(b,'es',{numeric:true}));
 function mpr(){$('mb').innerHTML=`<div class="box"><div class="fl"><input placeholder="Buscar producto, módulo o código" value="${e(PQ)}" oninput="PQ=this.value;pl()"><button class="bt w" id="ba" onclick="pa()"></button><button class="bt w" onclick="pev(1)">Marcar todos</button><button class="bt w" onclick="pev(0)">Desmarcar todos</button><button class="bt" onclick="ps()">Guardar cambios</button></div><div id="mc" style="margin:4px 0 10px"></div><datalist id="dm">${ML().map(m=>`<option value="${e(m)}">`).join('')}</datalist><p class="lk" id="pm"></p><div class="tw"><table id="tp"></table></div></div>`;mcp();pl()}
 const tOf=d=>mk([d.m,d.p||'x','',d.c||'x']).t;let MLS=[],MK={},PC='';
@@ -279,7 +346,7 @@ function pl(){const q=nz(PQ),r=D.filter(d=>(!q||nz(d.p+d.c+d.m).includes(q))&&(!
   $('tp').innerHTML=`<tr><th style="width:8px;padding:0${hc?';background:'+hc:''}"></th><th${hs}>Módulo</th><th${hs}>Producto</th><th${hs}>Como lo pide el cliente</th><th${hs}>Código</th><th${hs}>Evaluar</th><th${hs}></th></tr>`+r.map(d=>`<tr${d.ev==='0'?' style="opacity:.5"':''}><td style="background:${TEM[tOf(d)].c};width:8px;padding:0"></td>`+c(d,'m','list="dm"')+c(d,'p')+c(d,'cl')+c(d,'c')+`<td class="e" style="text-align:center"><input type="checkbox" style="width:24px;height:24px" ${d.ev==='0'?'':'checked'} onchange="pf(${d.id},'ev',this.checked?'1':'0');this.closest('tr').style.opacity=this.checked?1:.5" aria-label="Evaluar"></td><td class="e"><button class="bt w" style="padding:8px 10px" onclick="pd(${d.id})" aria-label="Quitar">${ic('trash')}</button></td></tr>`).join('')}
 const pev=v=>{const q=nz(PQ);D.filter(d=>(!q||nz(d.p+d.c+d.m).includes(q))&&(!PC||MK[d.m.trim()]===PC)&&(!PM||d.m.trim()===PM)).forEach(d=>d.ev=v?'1':'0');DIRTY=1;pl()};
 function pa(){D.unshift({id:Date.now(),m:PM||(PC?base(PC)[0]:''),p:'',cl:'',c:'',ev:'1'});PQ='';DIRTY=1;mpr();const i=document.querySelector('#tp tr:nth-child(2) td:nth-child(2) input');if(i)i.focus()}
-function pd(i){if(confirm('¿Quitar este producto?')){D=D.filter(d=>d.id!==i);DIRTY=1;pl()}}
+function pd(i){ask('Quitar producto','¿Seguro que quieres quitar este producto de la lista?','Quitar',()=>{D=D.filter(d=>d.id!==i);DIRTY=1;pl()},1)}
 function fi(){const i=document.querySelector('#tp input.inc');if(i){i.scrollIntoView({block:'center'});i.focus()}}
 async function ps(){const bad=D.filter(d=>!d.m.trim()||!d.p.trim()||!d.c.trim());
   if(bad.length){VAL=true;PQ='';PM='';PC='';mpr();return modal('<h3>Hay filas incompletas</h3><p>'+bad.length+' fila'+(bad.length>1?'s tienen':' tiene')+' campos vacíos (marcados en rojo). Complétalas o quítalas para poder guardar.</p><button class="bt" onclick="closeM();fi()">Entendido</button>')}
@@ -288,7 +355,92 @@ async function ps(){const bad=D.filter(d=>!d.m.trim()||!d.p.trim()||!d.c.trim())
   try{if(API){const r=await api('guardarProductos',{productos:rows});if(!r.ok)throw 0;const g=await(await fetch(API+'?action=get')).json();if(!g.productos||g.productos.length!==rows.length)throw 0;const nr=r=>[String(r[0]).trim()==='Sin módulo'?'':String(r[0]).trim(),String(r[1]).trim(),String(r[2]===undefined?'':r[2]).trim(),String(r[3]).replace(/\s+/g,'').toUpperCase(),/^(0|no|false)$/i.test(String(r[4]===undefined?'':r[4]).trim())?'0':'1'].join('|'),bd=rows.map((r,k)=>[r,g.productos[k]]).filter(([a,b])=>nr(a)!==nr(b));
       if(bd.length){lset('dc_prod',JSON.stringify(rows));setP(rows);DIRTY=0;pmx();return modal('<h3>Guardado con diferencias</h3><p>Google Sheets no dejó '+bd.length+' fila'+(bd.length>1?'s':'')+' igual que en pantalla. Ejemplo: <b>'+e(bd[0][0][1])+'</b> quedó con módulo «'+e(String(bd[0][1][0]||'Sin módulo'))+'» y debería ser «'+e(bd[0][0][0]||'Sin módulo')+'». Avísame para revisar el Apps Script.</p><button class="bt" onclick="closeM()">Cerrar</button>')}}}catch(x){return modal('<h3>No se pudo guardar</h3><p>Revisa tu conexión e intenta de nuevo. Tus cambios siguen en pantalla.</p><button class="bt" onclick="closeM()">Cerrar</button>')}
   lset('dc_prod',JSON.stringify(rows));setP(rows);DIRTY=0;pmx();modal('<h3>'+ic('ok')+' Guardado</h3><p>'+rows.length+' productos guardados'+(API?' en Google Sheets.':' en este dispositivo.')+'</p><button class="bt" onclick="closeM()">Cerrar</button>')}
-function maj(){const L=!!LOCKS[MS];$('mb').innerHTML=`<div class="box" style="text-align:center"><p class="lk" style="margin:0">Chocolateo en ${e(MS)}</p><div class="stt ${L?'lock':'free'}">${L?ic('lock')+' BLOQUEADO':ic('ok')+' LIBRE'}</div><p class="lk">${L?'Evaluación: cada alumno llena cada módulo una sola vez, con nota y puntos (el Examen Final no suma puntos). No puede chocolatear.':'Práctica: simulación sin nota ni puntaje. Pueden chocolatear las veces que quieran y no se guarda.'}</p><button class="bt" style="background:${L?'#16a34a':'#e11d48'}" onclick="sl()">${L?'Desbloquear chocolateo':'Bloquear chocolateo'}</button><p class="lk">${API?'Conectado a Google Sheets.':'Sin Google Sheets: los datos se guardan solo en este dispositivo.'}</p></div>${modoBox()}`}
+function maj(){const L=!!LOCKS[MS];$('mb').innerHTML=`<div class="box" style="text-align:center"><p class="lk" style="margin:0">Chocolateo en ${e(MS)}</p><div class="stt ${L?'lock':'free'}">${L?ic('lock')+' BLOQUEADO':ic('ok')+' LIBRE'}</div><p class="lk">${L?'Evaluación: cada alumno llena cada módulo una sola vez, con nota y puntos (el Examen Final no suma puntos). No puede chocolatear.':'Práctica: simulación; verás tu nota pero no se guarda ni suma puntos. Pueden chocolatear las veces que quieran y no se guarda.'}</p><button class="bt" style="background:${L?'#16a34a':'#e11d48'}" onclick="sl()">${L?'Desbloquear chocolateo':'Bloquear chocolateo'}</button><p class="lk">Este interruptor solo afecta a alumnos que <b>no</b> están en un grupo. Para tus grupos usa el modo de cada grupo (pestaña Grupos).</p><p class="lk">${API?'Conectado a Google Sheets.':'Sin Google Sheets: los datos se guardan solo en este dispositivo.'}</p></div>${modoBox()}`}
+/* ===== Grupos (master) ===== */
+const TPL={producto:'Producto',cliente:'Como lo pide el cliente',mixto:'Mixto'};
+const fr=g=>(g.d1?fv(g.d1):'?')+' – '+(g.d2?fv(g.d2):'?');
+const gml=()=>{const g=GD[GI],ks=gks(g);return ks.length?[...new Set(ks.flatMap(mods))].concat(['Examen Final']):[]};
+const gres=g=>{const ks=gks(g),T=g.t?TPL[g.t]:'según la sede';
+  if(!ks.length)return '<b>Resumen:</b> el alumno elige su ciclo y sus módulos · tipo de examen: '+e(T);
+  const mo=g.mo.length?(g.mo.includes('Examen Final')?'Examen Final de cada ciclo':g.mo.join(', ')+(g.mo.length>1?' (juntos en un solo examen)':'')):'módulos a elección del alumno';
+  return '<b>Resumen:</b> '+(ks.length>1?'ciclos ':'ciclo ')+e(ks.map(k=>TEM[k].n).join(' + '))+' · '+e(mo)+' · tipo de examen: '+e(T)};
+let GV=0,GQ='',GW=0,GL=[];
+function mg(){GI>=0&&GD[GI]?(GV?gpv():gdet()):(GI=-1,glist())}
+function glist(){const h=hoy();$('mb').innerHTML=`<div class="box"><h3 style="margin-top:0">Grupos · ${e(MS)}</h3><p class="lk" style="text-align:left;margin:0 0 10px">Cada grupo tiene sus participantes y está en <b>Simulación</b> (practican y chocolatean) o en <b>Evaluación</b> (sin chocolateo, con intentos). Entra a un grupo para cambiarlo.</p>${GD.length?GD.map((g,i)=>{const ks=gks(g),st=g.d2&&g.d2<h?['Finalizado','#64748b']:g.d1>h?['Próximo','#f58a07']:['En curso','#16a34a'];return `<div class="box" style="cursor:pointer;margin-bottom:10px;border-left:8px solid ${ks.length===1?TEM[ks[0]].c:'#64748b'}" onclick="gopen(${i})"><div class="gh"><b>${e(g.n||'(sin nombre)')}</b><span class="nm" style="background:${st[1]}">${st[0]}</span></div><div class="lk" style="margin:2px 0 6px;text-align:left">${e(fr(g))} · ${g.m.length} participante${g.m.length===1?'':'s'}</div><div>${ks.length?ks.map(k=>`<span class="nm" style="background:${TEM[k].c}">${e(TEM[k].n)}</span>`).join(''):'<span class="nm" style="background:#64748b">Cualquier ciclo</span>'}<span class="nm" style="background:#64748b">${e(g.mo.length?g.mo.join(', '):'Módulos a elección')}</span><span class="nm" style="background:#64748b">${e(g.t?TPL[g.t]:'Tipo de la sede')}</span><span class="nm" style="background:${g.i?'#e11d48':'#4f46e5'}">${g.i?'Evaluación · '+g.i+' intento'+(g.i>1?'s':''):'Simulación'}</span></div></div>`}).join(''):'<p class="lk">Aún no hay grupos.</p>'}<div class="fl" style="margin-top:10px"><button class="bt w" onclick="gadd()">${ic('plus')} Nuevo grupo</button><button class="bt" onclick="gsave()">Guardar grupos</button></div></div>`}
+function gdet(){const g=GD[GI];if(!g){GI=-1;return glist()}
+  const ml=gml(),ks=gks(g),ev=g.i>0,us=m=>N.filter(x=>x.modo==='Examen'&&String(x.dni).trim()===m.dni&&x.fecha>=g.d1&&x.fecha<=g.d2&&(!g.c||gcs(g).includes(x.ciclo))&&(!g.mo.length||x.mods.some(a=>g.mo.includes(a)))).length;
+  $('mb').innerHTML=`<div class="box">${GDIRTY?'<div class="warn" style="background:#fff7ed;border-color:#f58a07;color:#7c2d12"><b>Cambios sin guardar.</b> Los alumnos no los verán hasta que pulses <button class="bt" style="padding:6px 12px;margin-left:6px" onclick="gsave()">Guardar grupos</button></div>':''}<div class="fl"><button class="bt w" onclick="gback()">← Todos los grupos</button><button class="bt w" style="color:#e11d48" onclick="gdel(${GI})">${ic('trash')} Eliminar grupo</button></div>
+  <h3>Datos del grupo</h3><div class="fl"><input placeholder="Nombre. Ej: Grupo Noviembre 2026" value="${e(g.n)}" oninput="GD[GI].n=this.value;GDIRTY=1"><label>Desde <input type="date" value="${e(g.d1)}" onchange="GD[GI].d1=this.value;GDIRTY=1"></label><label>Hasta <input type="date" value="${e(g.d2)}" onchange="GD[GI].d2=this.value;GDIRTY=1"></label></div>
+  <h3>Qué van a rendir</h3>
+  <div class="gq">
+   <div class="gqs"><b>1 · Ciclos</b><span class="gh2">Elige uno o varios. Si no eliges ninguno, el alumno decide.</span><div class="chips"><button class="ch ${!ks.length?'on':''}" style="--c:#64748b" onclick="gcic('')">El alumno decide</button>${Object.keys(TEM).map(k=>`<button class="ch ${ks.includes(k)?'on':''}" style="--c:${TEM[k].c}" onclick="gcic('${k}')">${ic(TEM[k].i)} ${e(TEM[k].n)}</button>`).join('')}</div></div>
+   <div class="gqs"><b>2 · Tipo de examen</b><div class="chips" style="--c:#4f46e5">${[['','Según la sede']].concat(Object.entries(TPL)).map(([v,t])=>`<button class="ch ${g.t===v?'on':''}" onclick="gtp('${v}')">${e(t)}</button>`).join('')}</div></div>
+   <div class="gqs"><b>3 · Módulos</b><span class="gh2">${ks.length?'Si eliges varios, se rinden juntos en un solo examen. Si no eliges ninguno, el alumno decide.':'Elige primero un ciclo para ver sus módulos.'}</span>${ks.length?ks.map(k=>`<div class="mth" style="--c:${TEM[k].c}">${e(TEM[k].n)}</div><div class="chips" style="--c:${TEM[k].c}">${mods(k).map(m=>`<button class="ch ${g.mo.includes(m)?'on':''}" onclick="gmod(${ml.indexOf(m)})">${e(m)}</button>`).join('')}</div>`).join('')+`<div class="chips" style="margin-top:10px"><button class="ch ${g.mo.includes('Examen Final')?'on':''}" style="border-style:dashed;--c:#475569" onclick="gmod(${ml.length-1})">${ic('star')} Examen Final</button></div>`:''}</div>
+   <div class="gres">${gres(g)}</div>
+   <div class="fl" style="margin-top:10px"><button class="bt w" onclick="gpvo()">${ic('eye')} Ver prueba como alumno / elegir productos</button><span class="lk" style="margin:0">${gpl(g).filter(p=>!(g.x||[]).includes(p.t+'|'+p.p)).length} de ${gpl(g).length} productos visibles${(g.x||[]).length?' · <b>'+(g.x||[]).length+' oculto'+((g.x||[]).length>1?'s':'')+'</b>':''}</span></div>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:14px 0 8px"><h3 style="margin:0">Participantes (${g.m.length})</h3><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end"><span class="stt ${ev?'lock':'free'}" style="font-size:13px;padding:7px 14px;gap:6px;margin:0" title="${ev?'Los participantes ya no pueden chocolatear. Cada uno rinde con los intentos que tú le des (nota y puntaje se guardan).':'Los participantes practican cuando quieran y pueden chocolatear. Sin nota ni puntaje; nada se guarda.'}">${ev?ic('lock')+' EVALUACIÓN':ic('ok')+' SIMULACIÓN'}</span>${ev?`<label class="lk" style="margin:0;display:flex;align-items:center;gap:4px">Intentos <input type="number" min="1" style="flex:0 0 60px;width:60px" value="${g.i}" onchange="gint(this.value)"></label><button class="bt w" style="padding:7px 12px" onclick="gmodo(0)">Volver a simulación</button>`:`<button class="bt" style="background:#e11d48;padding:7px 12px" onclick="gmodo(1)">${ic('lock')} Iniciar evaluación</button>`}</div></div><div class="tw"><table><tr><th>DNI</th><th style="min-width:220px">Nombre</th>${ev?'<th>Intentos</th><th style="min-width:210px">Intento extra</th>':''}<th></th></tr>${g.m.length?g.m.map((m,j)=>{const lim=m.i>0?m.i:g.i,ex=Math.max(0,lim-g.i),u=ev?us(m):0,out=ev&&u>=lim;return `<tr><td class="p">${e(m.dni)}</td><td class="e"><input value="${e(m.nom)}" placeholder="Nombre" oninput="GD[GI].m[${j}].nom=this.value;GDIRTY=1"></td>${ev?`<td class="p" style="white-space:nowrap">${u} / ${lim}${out?' <b style="color:#e11d48">· sin intentos</b>':''}</td><td class="e" style="white-space:nowrap"><button class="bt w" style="padding:8px 10px" onclick="gextra(${j},1)">${ic('plus')} Dar 1 intento</button>${ex?` <span class="nm" style="background:#16a34a">✔ +${ex} otorgado${ex>1?'s':''}</span> <button class="bt w" style="padding:8px 10px" onclick="gextra(${j},-1)" aria-label="Quitar un intento extra">−</button>`:''}</td>`:''}<td class="e"><button class="bt w" style="padding:8px 10px" onclick="gquit(${j})" aria-label="Quitar">${ic('trash')}</button></td></tr>`}).join(''):`<tr><td class="p" colspan="${ev?5:3}">Aún no hay participantes. Agrega el primero en la fila de abajo.</td></tr>`}<tr style="background:var(--pc)"><td class="e"><input id="gnd" inputmode="numeric" maxlength="8" placeholder="DNI (8 dígitos)" style="width:130px" oninput="gdni(this)" onkeydown="if(event.key==='Enter'){event.preventDefault();gadd1()}"></td><td class="e"><input id="gnn" placeholder="Nombre (se completa solo si ya rindió antes)" onkeydown="if(event.key==='Enter'){event.preventDefault();gadd1()}"></td><td class="e" colspan="${ev?3:1}"><button class="bt" style="padding:8px 12px;white-space:nowrap" onclick="gadd1()">${ic('plus')} Agregar</button></td></tr></table></div>
+  <details style="margin-top:10px"><summary class="lk" style="cursor:pointer;text-align:left;margin:0;font-weight:700">Pegar varios a la vez (desde Excel o WhatsApp)</summary><textarea id="gpeg" rows="4" style="width:100%;margin-top:8px;border:2px solid var(--bd);border-radius:10px;padding:8px;background:var(--card);color:var(--tx)" placeholder="Uno por línea: DNI y nombre (el nombre es opcional)&#10;12345678 Juan Pérez&#10;87654321"></textarea><div class="fl" style="margin-top:8px"><button class="bt w" onclick="gpeg()">${ic('plus')} Agregar a la lista</button></div></details>
+  <div class="fl" style="margin-top:12px"><button class="bt" onclick="gsave()">Guardar grupos</button></div>
+  <p class="lk" style="text-align:left">Los cambios llegan a los alumnos solo cuando pulsas <b>Guardar grupos</b>. El alumno se entera al ingresar su DNI: verá el aviso de su grupo.</p></div>`}
+
+/* ===== Vista previa del grupo ===== */
+const gk=p=>p.t+'|'+p.p;
+const gpl=g=>{const ks=gks(g),T=ks.length?ks:temas(),all=!g.mo.length||g.mo.includes('Examen Final'),seen=new Set();return P.filter(p=>T.includes(p.t)&&p.ev!=='0'&&(all||g.mo.includes(p.m))&&(g.t!=='cliente'||p.cl)).filter(p=>{const k=gk(p);return !seen.has(k)&&seen.add(k)})};
+function gpvo(){GV=1;GQ='';GW=0;gpv()}
+function gpvx(){GV=0;gdet()}
+function gpv(){const g=GD[GI];GL=gpl(g);
+  $('mb').innerHTML=`<div class="box">${GDIRTY?'<div class="warn" style="background:#fff7ed;border-color:#f58a07;color:#7c2d12"><b>Cambios sin guardar.</b> Los alumnos no los verán hasta que pulses <button class="bt" style="padding:6px 12px;margin-left:6px" onclick="gsave()">Guardar grupos</button></div>':''}
+  <div class="fl"><button class="bt w" onclick="gpvx()">← Volver al grupo</button><button class="bt" onclick="gsave()">Guardar grupos</button></div>
+  <h3 style="margin-top:6px">Prueba de «${e(g.n||'(sin nombre)')}»</h3><p class="lk" style="text-align:left;margin:0 0 10px">${gres(g)}</p>
+  <div class="chips" style="margin-bottom:10px"><button class="ch ${GW?'':'on'}" onclick="GW=0;gpv()">Elegir productos</button><button class="ch ${GW?'on':''}" onclick="GW=1;gpv()">${ic('eye')} Vista del alumno</button></div>
+  ${GW?'':`<div class="fl"><input placeholder="Buscar producto, módulo o código" value="${e(GQ)}" oninput="GQ=this.value;gpt()"><button class="bt w" onclick="gall(1)">Mostrar todos</button><button class="bt w" onclick="gall(0)">Ocultar todos</button></div>`}
+  <p class="lk" id="gpc"></p><div id="gpt"></div></div>`;gpt()}
+function gpt(){const g=GD[GI],x=new Set(g.x||[]),vis=GL.filter(p=>!x.has(gk(p))),tp=g.t||'producto';
+  if(GW){
+    $('gpc').textContent=vis.length+' productos en la prueba'+(tp==='mixto'?' (en «Mixto» cada alumno ve al azar el producto o la frase del cliente)':'');
+    $('gpt').innerHTML=`<div class="av ${g.i>0?'ev':'pr'}">${g.i>0?ic('lock')+' EVALUACIÓN':'PRÁCTICA · simulación'}</div><span class="tag" style="background:#475569">${e(ETSg(g))}${tp==='producto'?'':' · '+TPL[tp]}</span><div class="tw"><table><tr><th>${tp==='cliente'?'Como lo pide el cliente':tp==='mixto'?'Producto / Pedido del cliente':'Producto'}</th><th>Código</th></tr>${vis.length?vis.map(p=>`<tr><td class="p">${tp==='cliente'?'<i>“'+e(p.cl)+'”</i>':e(p.p)}</td><td class="k"><input readonly placeholder=" " style="cursor:default"></td></tr>`).join(''):'<tr><td class="p" colspan="2">Sin productos: el alumno no podrá generar la prueba.</td></tr>'}</table></div><p class="lk">Así la ve el alumno (el orden se mezcla en cada intento).</p>`;return}
+  const q=nz(GQ),r=GL.filter(p=>!q||nz(p.p+p.code+p.m+p.cl).includes(q));
+  $('gpc').textContent=vis.length+' de '+GL.length+' productos visibles para el alumno'+(GL.length-vis.length?' · '+(GL.length-vis.length)+' oculto'+(GL.length-vis.length>1?'s':''):'');
+  $('gpt').innerHTML='<div class="tw"><table><tr><th>Mostrar</th><th>Módulo</th><th>Producto</th><th>Como lo pide el cliente</th><th>Código</th></tr>'+(r.length?r.map(p=>{const i=GL.indexOf(p),h=x.has(gk(p));return `<tr${h?' style="opacity:.45"':''}><td class="p"><input type="checkbox" style="width:22px;height:22px" ${h?'':'checked'} onchange="gtogp(${i},this.checked)" aria-label="Mostrar"></td><td class="p">${e(p.m)}</td><td class="p" style="text-align:left">${e(p.p)}</td><td class="p" style="text-align:left">${e(p.cl)}</td><td class="p">${e(p.code)}</td></tr>`}).join(''):'<tr><td class="p" colspan="5">No hay productos con ese filtro.</td></tr>')+'</table></div>'}
+const ETSg=g=>{const ks=gks(g);return (ks.length?ks.map(k=>TEM[k].n).join(' + '):'Cualquier ciclo')+' · '+(g.mo.length?g.mo.join(', '):'módulos a elección')};
+function gtogp(i,on){const g=GD[GI],k=gk(GL[i]),s=new Set(g.x||[]);on?s.delete(k):s.add(k);g.x=[...s];GDIRTY=1;gpt()}
+function gall(on){const g=GD[GI],q=nz(GQ),s=new Set(g.x||[]);GL.filter(p=>!q||nz(p.p+p.code+p.m+p.cl).includes(q)).forEach(p=>on?s.delete(gk(p)):s.add(gk(p)));g.x=[...s];GDIRTY=1;gpt()}
+function gopen(i){GI=i;GV=0;gdet()}
+function gback(){GI=-1;GV=0;glist()}
+function gadd(){GD.push({n:'',d1:hoy(),d2:'',c:'',mo:[],t:'',i:0,x:[],m:[]});GI=GD.length-1;GDIRTY=1;gdet()}
+function gcic(k){const g=GD[GI];if(!k){g.c='';g.mo=[]}else{const a=new Set(gks(g));a.has(k)?a.delete(k):a.add(k);g.c=Object.keys(TEM).filter(x=>a.has(x)).map(x=>TEM[x].n).join(', ');const ks=gks(g);g.mo=g.mo.filter(m=>m==='Examen Final'||ks.some(x=>mods(x).includes(m)))}GDIRTY=1;gdet()}
+function gtp(v){GD[GI].t=v;GDIRTY=1;gdet()}
+function gmod(i){const g=GD[GI],m=gml()[i];if(m==='Examen Final')g.mo=g.mo.includes(m)?[]:[m];else{g.mo=g.mo.filter(x=>x!=='Examen Final');g.mo=g.mo.includes(m)?g.mo.filter(x=>x!==m):g.mo.concat(m)}GDIRTY=1;gdet()}
+function gmodo(v){const g=GD[GI];
+  if(v)ask(ic('lock')+' Iniciar evaluación','Los participantes de este grupo <b>ya no podrán chocolatear</b> y cada uno tendrá <b>1 intento</b>. Luego podrás darle un intento extra a quien lo necesite.','Sí, iniciar evaluación',()=>{g.i=1;g.m.forEach(m=>m.i=0);GDIRTY=1;gdet()},1);
+  else ask(ic('ok')+' Volver a simulación','Los participantes podrán <b>chocolatear otra vez</b> y se quitarán los intentos extra otorgados. Las notas ya guardadas no se borran.','Sí, volver a simulación',()=>{g.i=0;g.m.forEach(m=>m.i=0);GDIRTY=1;gdet()})}
+function gint(v){const g=GD[GI],n=Math.max(1,parseInt(v)||1);g.m.forEach(m=>{m.i=m.i>g.i?n+(m.i-g.i):0});g.i=n;GDIRTY=1;gdet()}
+function gextra(j,d){const g=GD[GI],m=g.m[j],cur=m.i>0?m.i:g.i;if(d>0)m.i=cur+1;else{const n=cur-1;m.i=n<=g.i?0:n}GDIRTY=1;gdet()}
+const gnm=d=>{const x=(typeof N!=='undefined'?N:[]).slice().reverse().find(x=>String(x.dni).trim()===d&&x.nombre);return x?String(x.nombre).trim():''};
+function gdni(el){el.value=el.value.replace(/\D/g,'').slice(0,8);const n=$('gnn');if(el.value.length===8&&n&&!n.value.trim())n.value=gnm(el.value)}
+function gadd1(){const g=GD[GI],d=($('gnd').value||'').replace(/\D/g,''),nom=($('gnn').value||'').trim().replace(/\s+/g,' ');
+  const bad=(t,m)=>modal('<h3>'+t+'</h3><p>'+m+'</p><button class="bt" onclick="closeM();var x=document.getElementById(\'gnd\');x&&x.focus()">Entendido</button>');
+  if(d.length!==8)return bad('DNI no válido','El DNI debe tener exactamente 8 dígitos.');
+  if(g.m.some(x=>x.dni===d))return bad('Ya está en el grupo','El DNI <b>'+e(d)+'</b> ya está en la lista de este grupo.');
+  const o=GD.find((h,k)=>k!==GI&&h.d1<=g.d2&&g.d1<=h.d2&&h.m.some(x=>x.dni===d));
+  if(o)return bad('Está en otro grupo','El DNI <b>'+e(d)+'</b> ya está en «'+e(o.n||'sin nombre')+'» con fechas que se cruzan con este grupo.');
+  g.m.push({dni:d,nom:nom||gnm(d),i:0});GDIRTY=1;gdet();setTimeout(()=>{const x=$('gnd');x&&x.focus()},0)}
+function gquit(j){GD[GI].m.splice(j,1);GDIRTY=1;gdet()}
+function gdel(i){ask(ic('trash')+' Eliminar grupo','Se eliminará el grupo y su lista de participantes. Las notas no se borran. Se aplica al pulsar <b>Guardar grupos</b>.','Sí, eliminar',()=>{GD.splice(i,1);GI=-1;GDIRTY=1;glist()},1)}
+function gpeg(){const g=GD[GI],nm=d=>{const x=N.slice().reverse().find(x=>String(x.dni).trim()===d&&x.nombre);return x?String(x.nombre).trim():''};let add=0,rep=0;const bl=[];
+  ($('gpeg').value||'').split(/\n/).forEach(l=>{l=l.trim();if(!l)return;const m=l.match(/^(\d{8})(?!\d)[\s,;:\t–-]*(.*)$/);if(!m)return bl.push(l);
+    if(g.m.some(x=>x.dni===m[1]))return rep++;g.m.push({dni:m[1],nom:m[2].trim().replace(/\s+/g,' ')||nm(m[1]),i:0});add++});
+  if(add)GDIRTY=1;gdet();
+  modal('<h3>'+ic('ok')+' Listo</h3><p>Agregados: <b>'+add+'</b> · Ya estaban: <b>'+rep+'</b> · No válidos: <b>'+bl.length+'</b></p>'+(bl.length?'<p class="lk" style="text-align:left">Revisa estas líneas (el DNI debe tener 8 dígitos):<br>'+bl.slice(0,5).map(e).join('<br>')+'</p>':'')+'<button class="bt" onclick="closeM()">Entendido</button>')}
+async function gsave(){const bad=GD.find(g=>!g.n.trim()||!g.d1||!g.d2||g.d1>g.d2);
+  if(bad)return modal('<h3>Revisa los grupos</h3><p>Cada grupo necesita nombre, fecha de inicio y fecha de fin (el fin no puede ser antes del inicio).</p><button class="bt" onclick="closeM()">Entendido</button>');
+  const ns=GD.map(g=>g.n.trim().toLowerCase());if(new Set(ns).size!==ns.length)return modal('<h3>Nombres repetidos</h3><p>Cada grupo debe tener un nombre distinto.</p><button class="bt" onclick="closeM()">Entendido</button>');
+  for(let a=0;a<GD.length;a++)for(let b=a+1;b<GD.length;b++){const X=GD[a],Y=GD[b];if(X.d1<=Y.d2&&Y.d1<=X.d2){const c=X.m.find(x=>Y.m.some(y=>y.dni===x.dni));if(c)return modal('<h3>Un alumno en dos grupos</h3><p>El DNI <b>'+e(c.dni)+'</b> está en «'+e(X.n)+'» y en «'+e(Y.n)+'» con fechas que se cruzan. Quítalo de uno o cambia las fechas.</p><button class="bt" onclick="closeM()">Entendido</button>')}}
+  const L=gnorm(GD);modal('<h3>Guardando…</h3><div class="sp"></div><p>Un momento, por favor.</p>');
+  try{if(API&&!(await api('setGrupos',{grupos:L})).ok)throw 0}catch(x){return modal('<h3>No se pudo guardar</h3><p>Revisa tu conexión y que el Apps Script esté actualizado (nueva versión).</p><button class="bt" onclick="closeM()">Cerrar</button>')}
+  GR=L;GD=JSON.parse(JSON.stringify(GR));lset('dc_grupos_'+MS,JSON.stringify(GR));GDIRTY=0;if(F.g&&F.g!=='__none'&&!GR.some(g=>g.n===F.g))F.g='';if(GI>=GD.length)GI=-1;
+  mg();modal('<h3>'+ic('ok')+' Grupos guardados</h3><p>Los participantes verán su grupo al ingresar su DNI.</p><button class="bt" onclick="closeM()">Entendido</button>')}
 const MN={producto:'Producto',cliente:'Como lo pide el cliente',mixto:'Mixto'};
 function modoBox(){const m=MODOS[MS]||'producto';return `<div class="box" style="text-align:center"><p class="lk" style="margin:0">Tipo de dictado en evaluación · ${e(MS)}</p><div class="chips" style="justify-content:center;margin-top:10px">${Object.keys(MN).map(k=>`<button class="ch ${m===k?'on':''}" onclick="sm('${k}')">${MN[k]}</button>`).join('')}</div><p class="lk">${m==='producto'?'Se muestra el nombre del producto y el alumno escribe el código.':m==='cliente'?'Se muestra cómo lo pide el cliente y el alumno escribe el código.':'Mezcla de nombres de producto y pedidos del cliente.'} En práctica el alumno elige el tipo.</p></div>`}
 async function sm(v){modal('<h3>Guardando…</h3><div class="sp"></div><p>Un momento, por favor.</p>');
@@ -300,7 +452,7 @@ async function sl(){const v=!LOCKS[MS];modal('<h3>Guardando…</h3><div class="s
   LOCKS[MS]=v?1:0;lset('dc_locks',JSON.stringify(LOCKS));LOCK=!!LOCKS[S.sede];bn(true);mv();
   modal('<h3>'+ic(v?'lock':'ok')+' Chocolateo '+(v?'bloqueado':'desbloqueado')+'</h3><p>'+(v?'Desde ahora cada alumno solo puede llenar cada módulo una vez.':'Los alumnos vuelven a poder chocolatear.')+'</p><button class="bt" onclick="closeM()">Entendido</button>')}
 (function(){const c=J('dc_prod');if(c&&c.length)setP(c);LOCKS=J('dc_locks')||{};MODOS=J('dc_modos')||{};LOCK=!!LOCKS[S.sede];const R=J('dc_id');if(R&&R.nom&&String(R.dni).length===8){S.nom=R.nom;S.dni=String(R.dni)}})();
-document.addEventListener('visibilitychange',()=>{if(!document.hidden&&S.sede&&API&&S.v==='h')refLock().then(()=>{if(S.v==='h')home()})});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&S.sede&&API&&S.v==='h')refLock().then(()=>{S.gk='';if(S.v==='h')home()})});
 function boot(){if(P.length)return pick(S.t);S.v='h';document.body.classList.remove('wide');bn(false);
   A.innerHTML=LD?'<div class="box" style="text-align:center"><div class="sp"></div><b>Cargando productos…</b></div>':'<div class="box" style="text-align:center"><b>No hay productos para mostrar.</b><p>Revisa tu conexión o que la hoja de productos del Excel tenga datos.</p><button class="bt" onclick="load()">Reintentar</button></div>'}
 function load(){if(!API){LD=0;return boot()}LD=1;if(!P.length)boot();
